@@ -1,0 +1,32 @@
+.footer {
+  background: #333333;
+  color: #F6F6F6;
+  padding: 20px;
+
+  .footer__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Две колонки с одинаковой шириной */
+    grid-template-rows: auto; /* Одна строка с автоматической высотой */
+  }
+
+  .footer__block {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    text-align: left;
+
+    p:first-child {
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    a {
+      transition: all 0.3s;
+      cursor: grab;
+    }
+
+    a:hover {
+      color: #1DA9DD;
+    }
+  }
+}

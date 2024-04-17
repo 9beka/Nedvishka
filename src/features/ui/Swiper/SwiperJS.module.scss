@@ -1,0 +1,51 @@
+.swiper{
+  margin-top: 50vw;
+}
+.sell__p {
+  font-size: 50px;
+  margin-bottom: 70px;
+}
+
+.card {
+  box-shadow: 0 0 10px 1px black;
+  padding: 20px;
+  margin: 0 50px;
+  border-radius: 10px ;
+  img {
+    width: 100%;
+  }
+  p {
+    font-size: 20px;
+  }
+  .geo__p {
+    color: blue;
+    font-weight: bold;
+  }
+
+  .price__p {
+    font-weight: bold;
+  }
+
+  .footer__slide {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    p {
+      margin: 0;
+    }
+    img {
+      width: 8%;
+      border-radius: 50%;
+    }
+  }
+}
+
+.btn__wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.swiper {
+  padding-bottom: 50px;
+}

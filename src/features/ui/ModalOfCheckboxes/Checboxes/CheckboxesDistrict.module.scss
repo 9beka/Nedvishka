@@ -1,0 +1,12 @@
+.CheckboxesDistrict__wrapper{
+   display: flex;
+   flex-direction: column;
+   overflow:auto;
+   height: 50vh;
+}
+:global{
+   .ant-modal-content{
+      width: 1000px;
+
+   }
+}

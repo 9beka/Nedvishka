@@ -1,0 +1,57 @@
+.header{
+   height: 10vh;
+   padding-top:5px ;
+   position: sticky;
+   top: 0;
+   background-color: #fff;
+   width: 100%;
+   z-index: 1000;
+   .header__wrapp{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #333333;
+      font-size: 15px;
+      font-weight: 700;
+      max-width: 90%;
+	   margin: 0 auto;
+      ul{
+         display: flex;
+         li{
+              padding-left: 30px; 
+         }
+         
+         a{
+            color: #333333;
+            text-decoration: none;
+         }
+         a:hover{
+            color: #1DA9DD;
+         }
+      }
+      .header__logo{
+         img{
+            height: 8vh;
+            width: 160px;
+         }
+      }
+      .header__right {
+         display: flex;
+         align-items: center; /* Выравнивание дочерних элементов по центру по вертикали */
+         justify-content: center; /* Выравнивание дочерних элементов по центру по горизонтали */
+            .header__favorite{
+               padding-right: 10px;
+            }
+      }
+       .header__phone {
+         display: flex;
+         align-items: center; /* Это выравнивает иконку и номер телефона по центру по вертикали */
+         margin-right: 20px; /* Добавьте некоторый отступ справа, если хотите отделить этот блок от следующего элемента */
+       }
+       
+       /* Дополнительно: стилизация номера телефона для лучшей визуализации */
+       .header__phone span {
+         margin-left: 10px; /* Добавляет небольшой отступ слева от иконки до текста */
+       }
+   }
+}

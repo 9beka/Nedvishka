@@ -1,0 +1,15 @@
+.filterButtons{
+  background-color: #FFF;
+  height: 30vh;
+  button{
+    // border: 2px solid #6CA5DC;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-weight: 700;
+    margin-right: 3px;
+    height: 36px;
+  }
+  input,select{
+    border: 2px solid #6CA5DC;
+  }
+}
