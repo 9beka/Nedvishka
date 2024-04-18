@@ -5,6 +5,9 @@ import OurServices from './InfoTabs/OurServices'
 import ReasonsWhy from './InfoTabs/ReasonsWhy'
 import Vtorichka from "./Vtorichka/Vtorichka";
 import Elitka from "./Elitka/Elitka"
+import Novostroika from "./Novostroika/Novostroika"
+import Houses from "./Houses/Houses";
+import Commerce from "./Commerce/Commerce";
 export {
    FilterForm,
    Vtorichka,
@@ -13,4 +16,7 @@ export {
    OurServices,
    ReasonsWhy,
    Elitka,
+   Novostroika,
+   Houses,
+   Commerce,
 }

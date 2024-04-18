@@ -5,7 +5,7 @@ import {AntdTabs} from "../../../shared/ui";
 const AboutUs = () => {
     return (
         <div className={cls.aboutUs}>
-            <div className="container">
+            <div className="wrapper">
                 <p>О нашем агентстве недвижимости
                 </p>
                 <p>Мы поможем вам продать, купить квартиру, дом, участок, офис и другую <br/> коммерческую недвижимость. А также

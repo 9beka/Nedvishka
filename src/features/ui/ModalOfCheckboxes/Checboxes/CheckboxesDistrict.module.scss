@@ -3,6 +3,10 @@
    flex-direction: column;
    overflow:auto;
    height: 50vh;
+      .CheckboxesDistrict__Label{
+         color: #0073E1;
+         font-size: 18px;
+      }
 }
 :global{
    .ant-modal-content{

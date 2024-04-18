@@ -7,8 +7,6 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import { classNames } from "../../../shared/helpers";
 const Header = () => {
-  const [size, setSize] = useState("middle");
-
   return (
     <div className={classNames("header")}>
       <div className={classNames("header__wrapp")}>
