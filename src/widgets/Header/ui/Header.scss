@@ -1,57 +1,205 @@
-.header{
-   height: 10vh;
-   padding-top:5px ;
-   position: sticky;
-   top: 0;
-   background-color: #fff;
-   width: 100%;
-   z-index: 1000;
-   .header__wrapp{
+.header {
+  position: sticky;
+  top: 0;
+  background-color: var(--white-color);
+  width: 100%;
+  z-index: 1000;
+  box-shadow: 0 0 10px 1px black;
+
+  .header__wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--light-black-color);
+    font-size: 15px;
+    font-weight: 700;
+
+    .mobile-btn{
+      display: none;
+      align-items: center;
+      width: 55px;
+      height: 30px;
+      z-index: 3;
+    }
+
+    .mobile-btn span{
+      width: 100%;
+      height: 3px;
+      background-color: black;
+      position: relative;
+    }
+
+    .mobile-btn span::before,
+    .mobile-btn span::after{
+      content: '';
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-color: black;
+      transition: .3s;
+    }
+    .mobile-btn span::before{
+      top: -13px;
+
+    }
+    .mobile-btn span::after{
+      top: 13px;
+    }
+
+    /* //////////// */
+    .show-mobile-btn span::before,
+    .show-mobile-btn span::after{
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
+    .show-mobile-btn span::before{
+      rotate: 45deg;
+    }
+    .show-mobile-btn span::after{
+      rotate: -45deg;
+    }
+    .show-mobile-btn span{
+      background: transparent ;
+    }
+    /* //////////// */
+    .backdrop{
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      bottom: 0;
+      backdrop-filter: blur(10px);
+      z-index: -1;
+      opacity: 0;
+      visibility: hidden;
+      transition: .3s ease-in-out;
+    }
+    .show-backdrop{
+      opacity: 1;
+      visibility: visible;
+    }
+
+    ul {
+      display: flex;
+      column-gap: 50px;
+      margin: 0;
+
+      a {
+        transition: color 0.1s linear;
+        color: var(--light-black-color);
+        text-decoration: none;
+      }
+
+      a:hover {
+        color: var(--light-blue-color);
+      }
+    }
+
+    img {
+      width: 6%;
+    }
+
+    .header__right {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      color: #333333;
-      font-size: 15px;
-      font-weight: 700;
-      max-width: 90%;
-	   margin: 0 auto;
-      ul{
-         display: flex;
-         li{
-              padding-left: 30px; 
-         }
-         
-         a{
-            color: #333333;
-            text-decoration: none;
-         }
-         a:hover{
-            color: #1DA9DD;
-         }
+      justify-content: center;
+      column-gap: 10px;
+
+      .header__favorite-icon {
+        color: red;
       }
-      .header__logo{
-         img{
-            height: 8vh;
-            width: 160px;
-         }
+
+      .header__phone-icon {
+        color: var(--blue-color);
       }
-      .header__right {
-         display: flex;
-         align-items: center; /* Выравнивание дочерних элементов по центру по вертикали */
-         justify-content: center; /* Выравнивание дочерних элементов по центру по горизонтали */
-            .header__favorite{
-               padding-right: 10px;
-            }
+
+      .header__right-phone {
+        display: flex;
+        flex-direction: column;
       }
-       .header__phone {
-         display: flex;
-         align-items: center; /* Это выравнивает иконку и номер телефона по центру по вертикали */
-         margin-right: 20px; /* Добавьте некоторый отступ справа, если хотите отделить этот блок от следующего элемента */
-       }
-       
-       /* Дополнительно: стилизация номера телефона для лучшей визуализации */
-       .header__phone span {
-         margin-left: 10px; /* Добавляет небольшой отступ слева от иконки до текста */
-       }
-   }
+    }
+
+
+
+  }
 }
+
+@media screen and (max-width:992px) {
+  .header {
+    padding: 10px 0;
+    .header__wrap {
+      ul {
+        column-gap: 30px;
+        margin: 0;
+
+      }
+
+      img {
+        width: 6%;
+      }
+
+      .header__right {
+        column-gap: 10px;
+
+        .header__favorite-icon {
+          color: red;
+        }
+
+        .header__phone-icon {
+          color: var(--blue-color);
+        }
+
+        .header__right-phone {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+
+
+    }
+  }
+}
+
+@media screen and (max-width:768px) {
+  .header {
+    padding: 10px 0;
+    .header__wrap {
+
+
+      ul {
+        column-gap: 30px;
+        margin: 0;
+
+      }
+
+      img {
+        width: 6%;
+        order: 2;
+      }
+
+      .header__right {
+        order: 3;
+        column-gap: 10px;
+
+        .header__favorite-icon {
+          color: red;
+        }
+
+        .header__phone-icon {
+          color: var(--blue-color);
+        }
+
+        .header__right-phone {
+          display: flex;
+          flex-direction: column;
+        }
+      }
+
+
+
+    }
+  }
+}
+
