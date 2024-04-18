@@ -6,7 +6,7 @@ import DomainIcon from "@mui/icons-material/Domain";
 import HouseIcon from "@mui/icons-material/House";
 import MapsHomeWorkIcon from "@mui/icons-material/MapsHomeWork";
 import ApartmentIcon from "@mui/icons-material/Apartment";
-import { AboutUsTab, Elitka, Vtorichka } from "../index";
+import { AboutUsTab, Commerce, Elitka, Houses, Novostroika, Vtorichka } from "../index";
 
 //check
 
@@ -28,19 +28,19 @@ const FilterForm = () => {
       key: "3",
       label: "Новостройки",
       icon: <MapsHomeWorkIcon />,
-      children: <AboutUsTab />,
+      children: <Novostroika />,
     },
     {
       key: "4",
       label: "Дома и Участки",
       icon: <HouseIcon />,
-      children: <AboutUsTab />,
+      children: <Houses />,
     },
     {
       key: "5",
       label: "Коммерческая",
       icon: <ApartmentIcon />,
-      children: <AboutUsTab />,
+      children: <Commerce />,
     },
   ];
   console.log(optionArr);

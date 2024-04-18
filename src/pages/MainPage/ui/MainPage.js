@@ -1,6 +1,5 @@
 import React from "react";
 import "./MainPage.scss";
-import { Options } from "../../../shared/ui";
 import { FilterForm, Sell } from "../../../features/ui";
 import { AboutUs, Contacts, OurAgency ,Footer } from "../../../widgets";
 
@@ -16,7 +15,6 @@ const MainPage = () => {
         <OurAgency />
         <AboutUs />
         <Contacts />
-        <Footer/>
       </div>
     </>
   );
