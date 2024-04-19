@@ -18,3 +18,52 @@
 
   }
 }
+
+@media screen and (max-width: 992px) {
+  .aboutUs {
+    padding: 80px 0;
+
+    p {
+      text-align: center;
+    }
+
+    p:first-child {
+      font-weight: bold;
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+
+    p:nth-child(2) {
+      color: #83959D;
+      font-size: 16px;
+      margin-bottom: 25px;
+      text-align: left;
+
+    }
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .aboutUs {
+    padding: 60px 0;
+
+    p {
+      text-align: center;
+    }
+
+    p:first-child {
+      font-weight: bold;
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+
+    p:nth-child(2) {
+      color: #83959D;
+      font-size: 16px;
+      margin-bottom: 25px;
+      text-align: left;
+
+    }
+  }
+}

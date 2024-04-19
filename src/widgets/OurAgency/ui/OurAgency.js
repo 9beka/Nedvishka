@@ -1,6 +1,7 @@
 import React from 'react';
 import cls from './OurAgency.module.scss'
 import {Card} from "../../../shared/ui";
+import {classNames} from "../../../shared/helpers";
 
 const OurAgency = () => {
     const renderApiBuilding = [
@@ -29,10 +30,9 @@ const OurAgency = () => {
                 <p>У нас есть многолетний опыт в сфере недвижимости и вы получите <br/> полный пакет услуг, чтобы наилучшим
                     образом продать купить <br/> квартиру, дом, участок, коммерческую недвижимость в Бишкеке.
                 </p>
-                <div className="row">
+                <div className={classNames(cls.ourAgency__cards)}>
                     {renderApiBuilding.map((card , index) => (
-                        <Card key={index} card={card} col='col-3' style={'ourAgencyCard'}/>
-
+                        <Card key={index} card={card} style={'ourAgencyCard'}/>
                     ))}
                 </div>
             </div>

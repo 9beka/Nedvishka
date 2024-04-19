@@ -137,6 +137,68 @@
 
 }
 
+@media screen and (max-width: 768px) {
+  .sell__block {
+    .sell__p {
+      font-size: 30px;
+      margin-bottom: 50px;
+    }
+
+    .sell__wrapper {
+      display: grid;
+      grid-template-columns: repeat(1,1fr);
+      grid-auto-rows: auto;
+      grid-row-gap: 40px;
+    }
+    .card {
+      padding: 20px;
+
+
+      p {
+        font-size: 18px;
+      }
+
+      .geo__p {
+        color: cornflowerblue;
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      .price__p {
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      .footer__slide {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+
+        span {
+          font-size: 20px;
+        }
+
+        p {
+          margin: 0;
+          font-size: 14px;
+        }
+      }
+    }
+
+    .btn__wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+    }
+
+
+  }
+
+}
+
+
 
 
 
