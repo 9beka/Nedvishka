@@ -93,29 +93,31 @@ const FilterForm = () => {
         },
     ];
     return (
-        <section className={classNames(cls.filter)}>
-
-
-            <MediaQuery minWidth={768}>
-                <div className={classNames(cls.filter__wrap)}>
-                    <Tabs
-                        defaultActiveKey="1"
-                        items={optionArr}
-                        centered
-                    />
-                </div>
-            </MediaQuery>
-
-            <MediaQuery maxWidth={768}>
-                <div className={classNames(cls.filter__wrap)}>
-                    <Tabs
-                        defaultActiveKey="1"
-                        items={optionArr}
-                        left
-                    />
-                </div>
-            </MediaQuery>
-        </section>
+      <div className="wrapper">
+            <section className={classNames(cls.filter)}>
+    
+    
+                <MediaQuery minWidth={768}>
+                    <div className={classNames(cls.filter__wrap)}>
+                        <Tabs
+                            defaultActiveKey="1"
+                            items={optionArr}
+                            centered
+                        />
+                    </div>
+                </MediaQuery>
+    
+                <MediaQuery maxWidth={768}>
+                    <div className={classNames(cls.filter__wrap)}>
+                        <Tabs
+                            defaultActiveKey="1"
+                            items={optionArr}
+                            left
+                        />
+                    </div>
+                </MediaQuery>
+            </section>
+      </div>
     );
 };
 export default FilterForm;

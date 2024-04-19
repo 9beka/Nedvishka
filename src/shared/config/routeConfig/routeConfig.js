@@ -1,14 +1,16 @@
-import {AboutPage, MainPage} from "../../../pages"
+import {AboutPage, MainPage ,AdsPage} from "../../../pages"
 
 
 export const AppRoutes = {
     MAIN: "main",
-    ABOUT: 'about'
+    ABOUT: 'about',
+    ADS:"ads" ,
 }
 
 export const RoutePath = {
     [AppRoutes.MAIN]: "/",
-    [AppRoutes.ABOUT]: '/about'
+    [AppRoutes.ABOUT]: '/about' ,
+    [AppRoutes.ADS]: '/ads'
 }
 
 export const routeConfig = {
@@ -19,6 +21,10 @@ export const routeConfig = {
     [AppRoutes.ABOUT]: {
         path: RoutePath.about,
         element: <AboutPage/>
+    },
+    [AppRoutes.ADS]: {
+        path: RoutePath.ads,
+        element: <AdsPage/>
     },
 
 }
