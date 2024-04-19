@@ -1,9 +1,13 @@
-import React, { useState } from "react";
+import React, {useLayoutEffect, useState} from "react";
 import { Input } from "antd";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import s from "./CheckboxesDistrict.module.scss";
 import HocWrapperCheckbox from "./HocWrapperCheckbox";
+
+import {gsap} from "gsap";
+
+
 export default function CheckboxesDistrict({ data }) {
   const [filtredData, setFiltredData] = useState([]);
   const [checked, setChecked] = useState(
@@ -41,6 +45,7 @@ export default function CheckboxesDistrict({ data }) {
   };
   const handleChange2 = (event) => {
     const searchValue = event.target.value.toLowerCase(); // Преобразуем в нижний регистр один раз
+    gsap.fromTo('.form-checkbox', {opacity: 0, x: 25}, {opacity: 1, x: 0})
 
     // Фильтруем каждый элемент в массиве nameOfMainDistrict
     const searchData = data.flatMap(item => {
@@ -55,6 +60,13 @@ export default function CheckboxesDistrict({ data }) {
     console.log(searchData);
     setFiltredData(searchData);
 };
+
+  useLayoutEffect(() => {
+
+
+  }, []);
+
+
   return (
     <>
       <div className={s.CheckboxesDistrict__wrapper}>
@@ -63,10 +75,10 @@ export default function CheckboxesDistrict({ data }) {
         {(filtredData.length === 0 ? data : filtredData).map(
           (el, mainIndex) => {
             return (
-              <>
+              <div className={'form-checkbox'}>
                 <FormControlLabel
                   label={el.mainProps}
-                  className={s.CheckboxesDistrict__Label}
+                  className={`${s.CheckboxesDistrict__Label} form-checkbox` }
                   control={
                     <Checkbox
                       checked={checked[mainIndex][0]}
@@ -91,7 +103,7 @@ export default function CheckboxesDistrict({ data }) {
                     );
                   })}
                 </HocWrapperCheckbox>
-              </>
+              </div>
             );
           }
         )}
