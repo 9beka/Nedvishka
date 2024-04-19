@@ -4,7 +4,9 @@ const AdsPage = () => {
   return (
     <div className={cls.AdsPage__background}>
       <div className="wrapper">
-      
+          <div className="AdsPage__inner__bg">
+            
+          </div>
       </div>
     </div>
   );

@@ -31,6 +31,8 @@ const Header = () => {
     ]
 
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    
+    const [isOpen, setOpen] = useState(false)
 
     const handleResize = () => {
         setWindowWidth(window.innerWidth);
@@ -60,7 +62,7 @@ const Header = () => {
                     {windowWidth <= 768 ? (
 
                         <>
-                            <Menu right>
+                            <Menu isOpen={ true } right>
 
                                 <div className='bm-item-links'>
                                     {renderLinks.map(el => (
@@ -68,10 +70,12 @@ const Header = () => {
                                     ))}
                                 </div>
 
+                                <div className={classNames('header__right-add-btn')}>
+                                    <button><span><PlusOutlined/></span><Link to={"/ads"}>Добавить объявление</Link></button>
+                                </div>
+
 
                                 <div className='bm-item-info'>
-
-
                                     <LocalPhoneIcon className={classNames('header__phone-icon')}/>
 
                                     <div className={classNames('header__right-phone')}>
