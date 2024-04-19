@@ -118,6 +118,26 @@
         display: flex;
         flex-direction: column;
       }
+      .header__right-add-btn{
+        button{
+          color: var(--white-color) ;
+          background-color: var(--blue-color);
+          padding: 6px;
+          margin-bottom: 5px;
+          border-radius: 15px;
+          font-family: "Nunito Sans", sans-serif;
+          font-weight: 600 !important;
+          text-transform: none !important;
+        }
+        span{
+          margin-right:2px;
+        }
+        a {
+          transition: color 0.1s linear;
+          color: var(--white-color);
+          text-decoration: none;
+        }
+      }
     }
 
 

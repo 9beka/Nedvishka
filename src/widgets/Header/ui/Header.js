@@ -6,8 +6,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import {classNames} from "../../../shared/helpers";
 import {slide as Menu} from 'react-burger-menu';
-
-
+import { PlusOutlined } from "@ant-design/icons";
 const Header = () => {
 
     const renderLinks = [
@@ -42,11 +41,6 @@ const Header = () => {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
-
-    const showSettings = (event) => {
-        event.preventDefault();
-    };
-
 
     return (
         <div className={classNames("header")}>
@@ -101,13 +95,18 @@ const Header = () => {
                                 <div className={classNames('header__right-phone')}>
                                     <span>+996 507 688 388</span>
                                 </div>
+                                <div className={classNames('header__right-add-btn')}>
+                                    <button><span><PlusOutlined/></span><Link to={"/ads"}>Добавить объявление</Link></button>
+                                </div>
                             </div>
                         </>
-                    )}
+                    }
+
                 </div>
             </div>
+
         </div>
-    );
+    )
 };
 
 export default Header;
