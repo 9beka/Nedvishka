@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useLayoutEffect, useState} from "react";
 import logoIcon from '../../../shared/assets/svg/logo.svg'
 import "./Header.scss";
 import {Link} from "react-router-dom";
@@ -6,9 +6,13 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import {classNames} from "../../../shared/helpers";
 import {slide as Menu} from 'react-burger-menu';
-
+import gsap from 'gsap'
 
 const Header = () => {
+
+    useLayoutEffect(() => {
+        gsap.fromTo('.header', {y:-50,opacity:0},{y:0,opacity:1})
+    })
 
     const renderLinks = [
         {
