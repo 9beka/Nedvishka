@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import s from "./FilterForm.module.scss";
 import { Tabs } from "antd";
 import { HomeOutlined } from "@ant-design/icons";
@@ -6,7 +6,7 @@ import DomainIcon from "@mui/icons-material/Domain";
 import HouseIcon from "@mui/icons-material/House";
 import MapsHomeWorkIcon from "@mui/icons-material/MapsHomeWork";
 import ApartmentIcon from "@mui/icons-material/Apartment";
-import { AboutUsTab, Commerce, Elitka, Houses, Novostroika, Vtorichka } from "../index";
+import {  Commerce, Elitka, Houses, Novostroika, Vtorichka } from "../index";
 
 const FilterForm = () => {
   const optionArr = [
