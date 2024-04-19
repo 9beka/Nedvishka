@@ -1,77 +1,148 @@
-.sell__p {
-  font-size: 50px;
-  margin-bottom: 70px;
-}
+.sell__block {
+  padding: 100px 0;
 
-.card:hover {
-  transform: translateY(-10px);
-}
-
-.card {
-  padding: 20px;
-  margin: 0 50px;
-  background: whitesmoke;
-  transition: all 0.3s;
-
-  img {
-    width: 100%;
+  .sell__p {
+    font-size: 60px;
+    margin-bottom: 70px;
   }
 
-  .image__house {
-    height: 150px;
+  .card:hover {
+    transform: translateY(-10px);
   }
 
-  p {
-    font-size: 20px;
-  }
+  .card {
+    padding: 20px;
+    margin:0;
+    background: whitesmoke;
+    transition: all 0.3s;
 
-  .geo__p {
-    color: cornflowerblue;
-    font-weight: bold;
-    font-size: 1.1em;
-  }
+    img {
+      width: 100%;
+    }
 
-  .price__p {
-    font-weight: bold;
-    font-size: 1.325em;
-  }
-
-  .footer__slide {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 2rem;
-
-    .contact__icons {
-      width: 10%;
-      cursor: pointer;
+    .image__house {
+      height: 150px;
     }
 
     p {
-      margin: 0;
+      font-size: 20px;
+    }
+
+    .geo__p {
+      color: cornflowerblue;
+      font-weight: bold;
       font-size: 1.1em;
     }
 
-    img {
-      width: 20%;
+    .price__p {
+      font-weight: bold;
+      font-size: 1.325em;
+    }
+
+    .footer__slide {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+
+      .contact__icons {
+        width: 10%;
+        cursor: pointer;
+      }
+
+      p {
+        margin: 0;
+        font-size: 1.1em;
+      }
+
+      img {
+        width: 20%;
+      }
     }
   }
+
+  .btn__wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sell__wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-auto-rows: auto;
+    gap: 20px;
+  }
+
 }
 
-.btn__wrap {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@media screen and (max-width: 992px) {
+  .sell__block {
+    .sell__p {
+      font-size: 50px;
+      margin-bottom: 50px;
+    }
+
+    .sell__wrapper {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      grid-auto-rows: auto;
+      grid-row-gap: 40px;
+    }
+    .card {
+      padding: 20px;
+
+
+      p {
+        font-size: 18px;
+      }
+
+      .geo__p {
+        color: cornflowerblue;
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      .price__p {
+        font-weight: bold;
+        font-size: 14px;
+      }
+
+      .footer__slide {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+
+        span {
+            font-size: 20px;
+        }
+
+        p {
+          margin: 0;
+          font-size: 14px;
+        }
+      }
+    }
+
+    .btn__wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+    }
+
+
+  }
+
 }
 
-.swiper {
-  padding-bottom: 50px;
-}
 
-.swiper__wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-auto-rows: auto;
-  grid-row-gap: 50px;
-}
+
+
+
+
+
+
+
 
