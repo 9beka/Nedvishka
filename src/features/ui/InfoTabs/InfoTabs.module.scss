@@ -27,3 +27,39 @@
   }
 
 }
+
+
+@media screen and (max-width: 992px) {
+  .aboutUsTab {
+
+
+    .box {
+      img {
+        width: 100%;
+      }
+      p {
+        text-align: left;
+      }
+    }
+  }
+
+  .serviceImg {
+    height: 335px;
+  }
+
+  .reasonsWhy {
+    p:nth-child(1){
+      text-align: left;
+    }
+    .box {
+      p{
+        font-size: 16px !important;
+        color: #83959D;
+        font-weight: normal !important;
+      }
+
+    }
+
+  }
+
+}

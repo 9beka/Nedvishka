@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button, Modal, Input } from "antd";
-import "./ModalOfCheckboxes.scss";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import CheckboxesDistrict from "./Checboxes/CheckboxesDistrict";
 const ModalOfCheckboxes = ({data , label}) => {
@@ -8,7 +7,7 @@ const ModalOfCheckboxes = ({data , label}) => {
   return (
       <>
       <h5>{label}</h5>
-        <Button  style={{ border:"2px solid #6CA5DC" }} onClick={() => setOpen(true)}>
+        <Button  style={{width:'100%', border:"2px solid #6CA5DC" }} onClick={() => setOpen(true)}>
           Выбрать
           <KeyboardArrowDownIcon />
         </Button>
@@ -25,7 +24,6 @@ const ModalOfCheckboxes = ({data , label}) => {
               type="primary"
               onClick={() => setOpen(false)}
               style={{ width: "100%" }}
-
             >
               ОК
             </Button>
