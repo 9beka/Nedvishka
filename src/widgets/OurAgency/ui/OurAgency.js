@@ -34,10 +34,6 @@ const OurAgency = () => {
                 start: 'top 80%',
                 end: 'bottom 40%',
                 // scrub: true,
-                markers: {
-                    startColor: 'white',
-                    endColor: 'white'
-                }
             }
         });
 
