@@ -5,6 +5,7 @@ import { AppRouter } from "./providers/router";
 import {Footer, Header} from "../widgets";
 
 const App = () => {
+    //check
   return (
     <>
       <Header/>
