@@ -9,28 +9,29 @@ import {
   ShowButton,
   SliderFilter,
 } from "../../../shared/ui";
-import { stateData, SelectData } from "../../../shared/constants";
-const Vtorichka = () => {
+import {
+  stateData,
+  SelectData,
+  nameOfMainDistrict,
+} from "../../../shared/constants";
+const Vtorichka = ({ children = <SelectChecboxes data={SelectData} label={"Серия"}/> }) => {
   return (
     <div className={s.filterButtons}>
       <div className="container">
         <div className="row">
           <div className="col-3">
-          <h5>Количество комнат</h5>
+            <h5>Количество комнат</h5>
             <RoomButton />
           </div>
           <div className="col-3">
             <h5>Район</h5>
-            <ModalOfCheckboxes />
+            <ModalOfCheckboxes data={nameOfMainDistrict} />
           </div>
           <div className="col-3">
             <h5>Стоимость в USD</h5>
-            <InputMinMax/>
+            <InputMinMax  min={"мин..."} max={"макс..."}/>
           </div>
-          <div className="col-3">
-            <h5>Серия</h5>
-            <SelectChecboxes data={SelectData} />
-          </div>
+          <div className="col-3">{children}</div>
         </div>
         <div className="row">
           <div className="col-3">

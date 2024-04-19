@@ -7,7 +7,7 @@ import HouseIcon from "@mui/icons-material/House";
 import MapsHomeWorkIcon from "@mui/icons-material/MapsHomeWork";
 import ApartmentIcon from "@mui/icons-material/Apartment";
 import { AboutUsTab, Elitka, Vtorichka } from "../index";
-//sda
+
 const FilterForm = () => {
   const optionArr = [
     {
