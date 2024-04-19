@@ -2,14 +2,15 @@ import React from 'react';
 import cls from './Sell.module.scss'
 import {Button} from "../../../shared/ui";
 import { renderApiSlides } from '../../../shared/constants';
+import {HeartOutlined, ShareAltOutlined, WhatsAppOutlined} from "@ant-design/icons";
 
 const Sell = () => {
     return (
-        <div className={cls.swiper}>
+        <div className={cls.sell__block}>
             <div className='wrapper'>
                 <h1 className={cls.sell__p}>Срочная продажа</h1>
                 <div
-                    className={cls.swiper__wrapper}
+                    className={cls.sell__wrapper}
                 >
                     {renderApiSlides.map(slide => (
                         <div className={cls.card}>
@@ -25,13 +26,9 @@ const Sell = () => {
                                 <p className={cls.phone__p}>{slide.phone}</p>
                             </div>
                             <div className={cls.footer__slide}>
-                                <img className={cls.contact__icons}
-                                     src="https://cdn-icons-png.flaticon.com/128/1077/1077055.png" alt=""/>
-                                <img className={cls.contact__icons}
-                                     src="https://cdn-icons-png.flaticon.com/128/1077/1077064.png" alt=""/>
-                                <img className={cls.contact__icons}
-                                     src="https://cdn-icons-png.flaticon.com/128/1077/1077035.png"
-                                     alt=""/>
+                                <WhatsAppOutlined />
+                                <ShareAltOutlined />
+                                <HeartOutlined />
                             </div>
 
                         </div>

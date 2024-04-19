@@ -30,3 +30,33 @@
     }
   }
 }
+
+@media screen and (max-width: 768px) {
+  .contacts {
+    padding: 100px 0;
+
+    .contacts__wrap {
+      display: grid;
+      grid-template-columns: repeat(1,1fr);
+      grid-template-rows: repeat(3,1fr);
+      gap: 20px;
+
+      p {
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        letter-spacing: 1.2px;
+      }
+
+      input {
+        width: 100%;
+        border-radius: 5px;
+        padding: 10px 40px;
+      }
+
+      button {
+        margin: 0;
+      }
+    }
+  }
+}
