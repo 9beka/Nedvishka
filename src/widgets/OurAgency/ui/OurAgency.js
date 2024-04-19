@@ -1,8 +1,9 @@
-import React from 'react';
+import React, {useLayoutEffect} from 'react';
 import cls from './OurAgency.module.scss'
 import {Card} from "../../../shared/ui";
 import {classNames} from "../../../shared/helpers";
-
+import gsap from "gsap";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
 const OurAgency = () => {
     const renderApiBuilding = [
         {
@@ -22,6 +23,37 @@ const OurAgency = () => {
             text: 'Продажа Вашей недвижимости​'
         },
     ]
+
+    gsap.registerPlugin(ScrollTrigger)
+
+
+    useLayoutEffect(() => {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.card-gsap',
+                start: 'top 80%',
+                end: 'bottom 40%',
+                // scrub: true,
+                markers: {
+                    startColor: 'white',
+                    endColor: 'white'
+                }
+            }
+        });
+
+        gsap.from('.title', {
+            opacity: 0,
+            x: -500
+        });
+
+        tl.from('.card-gsap', {
+            opacity: 0,
+            y: 500
+        }).to('.card-gsap', {
+            opacity: 1,
+            y: 0
+        });
+    });
 
     return (
         <div className={cls.ourAgency}>
