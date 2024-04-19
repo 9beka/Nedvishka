@@ -56,6 +56,31 @@ Note: Beware of modifying this element as it can break the animations - you shou
   display: flex;
   flex-direction: column;
 
+  .header__right-add-btn{
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    button{
+      width: 100%;
+      color: var(--white-color) ;
+      background-color: var(--blue-color);
+      margin-bottom: 5px;
+      border-radius: 4rem;
+      height: 5rem;
+      font-family: "Nunito Sans", sans-serif;
+      font-weight: 600 !important;
+      text-transform: none !important;
+    }
+    span{
+      margin-right:2px;
+    }
+    a {
+      transition: color 0.1s linear;
+      color: var(--white-color);
+      text-decoration: none;
+    }
+  }
+
   .bm-item-info {
     display: flex !important;
     justify-content: center;
@@ -94,3 +119,5 @@ Note: Beware of modifying this element as it can break the animations - you shou
   top: 0;
   left: 0;
 }
+
+

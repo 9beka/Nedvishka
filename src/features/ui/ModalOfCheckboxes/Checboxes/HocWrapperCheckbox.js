@@ -8,6 +8,7 @@ const HocWrapperCheckbox = ({children}) => {
         flexDirection: "row",
         ml: 3,
         flexWrap: "wrap",
+          // flexDirection:"column",
         justifyContent: "space-between",
       }}
     >

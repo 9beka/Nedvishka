@@ -68,10 +68,12 @@ const Header = () => {
                                     ))}
                                 </div>
 
+                                <div className={classNames('header__right-add-btn')}>
+                                    <button><span><PlusOutlined/></span><Link to={"/ads"}>Добавить объявление</Link></button>
+                                </div>
+
 
                                 <div className='bm-item-info'>
-
-
                                     <LocalPhoneIcon className={classNames('header__phone-icon')}/>
 
                                     <div className={classNames('header__right-phone')}>
