@@ -10,7 +10,7 @@ import {ScrollTrigger} from "gsap/ScrollTrigger";
 const Sell = () => {
 
     gsap.registerPlugin(ScrollTrigger)
-
+//gsap
 
     useLayoutEffect(() => {
 
