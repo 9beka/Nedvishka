@@ -1,6 +1,6 @@
 import React from "react";
 import cls from './FilterForm.module.scss'
-import {Collapse, Tabs} from "antd";
+import {Tabs} from "antd";
 import {HomeOutlined} from "@ant-design/icons";
 import DomainIcon from "@mui/icons-material/Domain";
 import HouseIcon from "@mui/icons-material/House";
@@ -43,42 +43,6 @@ const FilterForm = () => {
             children: <Commerce/>,
         },
     ];
-
-    const firstOption = [
-        {
-            key: "1",
-            label: "Вторичная",
-            icon: <DomainIcon/>,
-            children: <Vtorichka/>,
-        },
-        {
-            key: "2",
-            label: "Элитка",
-            icon: <HomeOutlined/>,
-            children: <Elitka/>,
-        },
-        {
-            key: "3",
-            label: "Новостройки",
-            icon: <MapsHomeWorkIcon/>,
-            children: <Novostroika/>,
-        },
-    ]
-
-    const secondOption = [
-        {
-            key: "4",
-            label: "Дома и Участки",
-            icon: <HouseIcon/>,
-            children: <Houses/>,
-        },
-        {
-            key: "5",
-            label: "Коммерческая",
-            icon: <ApartmentIcon/>,
-            children: <Commerce/>,
-        },
-    ]
     return (
         <section className={classNames(cls.filter)}>
 

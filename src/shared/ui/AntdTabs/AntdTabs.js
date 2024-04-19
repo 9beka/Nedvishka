@@ -1,7 +1,6 @@
 import React from "react";
 import { Tabs } from "antd";
 import { AboutUsTab, OurServices, ReasonsWhy } from "../../../features/ui";
-import { EllipsisOutlined } from "@ant-design/icons";
 
 const AntdTabs = ({}) => {
   const onChange = (key) => {
