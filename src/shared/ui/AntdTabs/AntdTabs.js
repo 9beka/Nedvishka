@@ -2,7 +2,7 @@ import React from "react";
 import { Tabs } from "antd";
 import { AboutUsTab, OurServices, ReasonsWhy } from "../../../features/ui";
 
-const AntdTabs = ({}) => {
+const AntdTabs = () => {
   const onChange = (key) => {
     console.log(key);
   };
