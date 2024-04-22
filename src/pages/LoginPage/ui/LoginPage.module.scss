@@ -1,0 +1,22 @@
+.login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+
+
+  .login__form {
+    background: rgba(255, 255, 255, 0.04);
+    padding: 20px;
+    border-radius: 1rem;
+    backdrop-filter: blur(3px);
+    box-shadow: 0 0 10px 1px lightblue;
+    width: 30rem;
+  }
+
+  .login__title {
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+  }
+}

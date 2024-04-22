@@ -10,7 +10,7 @@ export const AppRoutes = {
 export const RoutePath = {
     [AppRoutes.MAIN]: "/",
     [AppRoutes.ABOUT]: '/about' ,
-    [AppRoutes.ADS]: '/ads'
+    [AppRoutes.ADS]: '/ads',
 }
 
 export const routeConfig = {
@@ -26,5 +26,4 @@ export const routeConfig = {
         path: RoutePath.ads,
         element: <AdsPage/>
     },
-
 }
