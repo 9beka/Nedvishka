@@ -95,7 +95,7 @@ const Header = () => {
                         <>
                             <ul>
                                 {renderLinks.map(el => (
-                                    <Link to={el.to}>{el.name}</Link>
+                                    <Link className={classNames('header__links')} to={el.to}>{el.name}</Link>
                                 ))}
                             </ul>
                             <div className={classNames("header__right")}>
@@ -108,7 +108,9 @@ const Header = () => {
                                     <span>+996 507 688 388</span>
                                 </div>
                                 <div className={classNames('header__right-add-btn')}>
-                                    <button><span><PlusOutlined/></span><Link to={"/ads"}>Добавить объявление</Link></button>
+                                    {windowWidth <= 992
+                                        ? <button><Link to={"/ads"}><PlusOutlined/></Link></button>
+                                        : <button><span><PlusOutlined/></span><Link to={"/ads"}>Добавить объявление</Link></button>}
                                 </div>
                             </div>
                         </>
