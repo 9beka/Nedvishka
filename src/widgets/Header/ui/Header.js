@@ -29,7 +29,9 @@ const Header = () => {
   ];
 
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
   const [open, setOpen] = useState(false);
+
   const handleResize = () => {
     setWindowWidth(window.innerWidth);
   };
@@ -41,18 +43,6 @@ const Header = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
-
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const showSettings = (event) => {
-    event.preventDefault();
-  };
 
   console.log(open);
 
@@ -101,7 +91,9 @@ const Header = () => {
             <>
               <ul>
                 {renderLinks.map((el) => (
-                  <Link to={el.to}>{el.name}</Link>
+                  <Link className={classNames("header__links")} to={el.to}>
+                    {el.name}
+                  </Link>
                 ))}
               </ul>
               <div className={classNames("header__right")}>
@@ -113,72 +105,20 @@ const Header = () => {
                   <span>+996 507 688 388</span>
                 </div>
                 <div className={classNames("header__right-add-btn")}>
-                  <button>
-                    <span>
-                      <PlusOutlined />
-                    </span>
-                    <Link to={"/ads"}>Добавить объявление</Link>
-                  </button>
-                </div>
-              </div>
-            </>
-          )}
-
-          {windowWidth <= 768 ? (
-            <>
-              <Menu isOpen={true} right>
-                <div className="bm-item-links">
-                  {renderLinks.map((el) => (
-                    <Link to={el.to}>{el.name}</Link>
-                  ))}
-                </div>
-
-                <div className={classNames("header__right-add-btn")}>
-                  <button>
-                    <span>
-                      <PlusOutlined />
-                    </span>
-                    <Link to={"/ads"}>Добавить объявление</Link>
-                  </button>
-                </div>
-
-                <div className="bm-item-info">
-                  <LocalPhoneIcon
-                    className={classNames("header__phone-icon")}
-                  />
-
-                  <div className={classNames("header__right-phone")}>
-                    <span>+996 507 688 388</span>
-                  </div>
-                </div>
-              </Menu>
-
-              <div className={classNames("header__right")}>
-                <FavoriteIcon className={classNames("header__favorite-icon")} />
-              </div>
-            </>
-          ) : (
-            <>
-              <ul>
-                {renderLinks.map((el) => (
-                  <Link to={el.to}>{el.name}</Link>
-                ))}
-              </ul>
-              <div className={classNames("header__right")}>
-                <FavoriteIcon className={classNames("header__favorite-icon")} />
-
-                <LocalPhoneIcon className={classNames("header__phone-icon")} />
-
-                <div className={classNames("header__right-phone")}>
-                  <span>+996 507 688 388</span>
-                </div>
-                <div className={classNames("header__right-add-btn")}>
-                  <button>
-                    <span>
-                      <PlusOutlined />
-                    </span>
-                    <Link to={"/ads"}>Добавить объявление</Link>
-                  </button>
+                  {windowWidth <= 992 ? (
+                    <button>
+                      <Link to={"/ads"}>
+                        <PlusOutlined />
+                      </Link>
+                    </button>
+                  ) : (
+                    <button>
+                      <span>
+                        <PlusOutlined />
+                      </span>
+                      <Link to={"/ads"}>Добавить объявление</Link>
+                    </button>
+                  )}
                 </div>
               </div>
             </>
