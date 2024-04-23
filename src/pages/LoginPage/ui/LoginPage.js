@@ -1,20 +1,32 @@
-import React, {useState} from 'react';
+import React, { useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Button, Checkbox, Form} from 'antd';
 import {renderItemFormLogin} from "../../../shared/constants";
 import cls from './LoginPage.module.scss'
 import background from '../../../shared/assets/video/register-background.mp4'
 import {LOGIN_ASYNC} from "../../../app/providers/Redux/actions/actions";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 const LoginPage = () => {
     const [checked, setChecked] = useState(false)
     const dispatch = useDispatch();
+    const navigate = useNavigate()
     const {loading} = useSelector(state => state.auth)
 
-    const onFinish = (values) => {
+    const onFinish = async (values) => {
         const {confirmPassword, remember, ...newObject} = values;
-        dispatch(LOGIN_ASYNC(newObject))
+        await dispatch(LOGIN_ASYNC(newObject));
+        const token = localStorage.getItem('token');
+
+        const checkToken = () => {
+            if (token) {
+                navigate('/');
+                window.location.reload();
+            } else {
+                setTimeout(checkToken, 1000);
+            }
+        }
+        checkToken();
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -26,6 +38,7 @@ const LoginPage = () => {
 
         <div className={cls.login}>
             <video
+                preload='metadata'
                 autoPlay
                 loop
                 muted
@@ -81,6 +94,7 @@ const LoginPage = () => {
                         disabled={!checked || loading}
                         type="primary"
                         htmlType="submit"
+                        // onClick={()=>navigate('/')}
                     >
                         Войти
                     </Button>

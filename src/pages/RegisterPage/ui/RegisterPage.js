@@ -1,5 +1,3 @@
-// noinspection JSCheckFunctionSignatures
-
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Button, Checkbox, Form, Input} from 'antd';
@@ -7,17 +5,27 @@ import {renderItemForm} from "../../../shared/constants";
 import cls from './RegisterPage.module.scss'
 import background from '../../../shared/assets/video/register-background.mp4'
 import {REGISTER_ASYNC} from "../../../app/providers/Redux/actions/actions";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 const RegisterPage = () => {
     const [checked, setChecked] = useState(false)
     const dispatch = useDispatch();
+    const navigate = useNavigate()
     const {loading} = useSelector(state => state.auth)
 
-    const onFinish = (values) => {
+    const onFinish = async(values) => {
         const {confirmPassword, remember, ...newObject} = values;
-        dispatch(REGISTER_ASYNC(newObject))
-
+        await dispatch(REGISTER_ASYNC(newObject))
+        const token = localStorage.getItem('token');
+        const checkToken = () => {
+            if (token) {
+                navigate('/');
+                window.location.reload();
+            } else {
+                setTimeout(checkToken, 1000);
+            }
+        }
+        checkToken();
     };
 
     const onFinishFailed = (errorInfo) => {

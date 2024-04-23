@@ -17,6 +17,10 @@
   .login__title {
     font-size: 30px;
     font-weight: bold;
-    color: white;
+    color: black;
+    background: var(--white-color);
+    padding: 10px;
+    border-radius: 1rem;
+    width: 30%;
   }
 }
