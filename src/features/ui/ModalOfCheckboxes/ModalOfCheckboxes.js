@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Button, Modal, Input } from "antd";
+import { Button, Modal } from "antd";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import CheckboxesDistrict from "./Checboxes/CheckboxesDistrict";
+import cls from './ModalOfCheckboxes.scss'
 const ModalOfCheckboxes = ({data , label}) => {
   const [open, setOpen] = useState(false);
   return (
@@ -16,8 +17,8 @@ const ModalOfCheckboxes = ({data , label}) => {
           open={open}
           onOk={() => setOpen(false)}
           onCancel={() => setOpen(false)}
-          width={800}
           closable={false}
+          width={1000}
           footer={[
             <Button
               key="submit"

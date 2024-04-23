@@ -31,8 +31,8 @@ const Header = () => {
     ]
 
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-    
-    const [isOpen, setOpen] = useState(false)
+
+    const [open, setOpen] = useState(false)
 
     const handleResize = () => {
         setWindowWidth(window.innerWidth);
@@ -50,6 +50,7 @@ const Header = () => {
         event.preventDefault();
     };
 
+    console.log(open)
 
     return (
         <div className={classNames("header")}>
@@ -62,16 +63,16 @@ const Header = () => {
                     {windowWidth <= 768 ? (
 
                         <>
-                            <Menu isOpen={ true } right>
+                            <Menu onOpen={()=>setOpen(true)} isOpen={ open } right>
 
                                 <div className='bm-item-links'>
                                     {renderLinks.map(el => (
-                                        <Link to={el.to}>{el.name}</Link>
+                                        <Link onClick={()=>setOpen(false)} to={el.to}>{el.name}</Link>
                                     ))}
                                 </div>
 
                                 <div className={classNames('header__right-add-btn')}>
-                                    <button><span><PlusOutlined/></span><Link to={"/ads"}>Добавить объявление</Link></button>
+                                    <button onClick={()=>setOpen(false)}><span><PlusOutlined/></span><Link to={"/ads"}>Добавить объявление</Link></button>
                                 </div>
 
 

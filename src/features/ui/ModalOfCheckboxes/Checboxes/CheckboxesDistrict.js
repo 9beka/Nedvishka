@@ -86,12 +86,13 @@ export default function CheckboxesDistrict({ data }) {
                     />
                   }
                 />
-                <HocWrapperCheckbox>
+                {/*<HocWrapperCheckbox>*/}
+                <div className="row gy-4 row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
                   {el.childProps.map((child, idx) => {
                     return (
                       <FormControlLabel
                         key={idx}
-                        className="col-3"
+                        className="col"
                         label={child.name}
                         control={
                           <Checkbox
@@ -102,7 +103,8 @@ export default function CheckboxesDistrict({ data }) {
                       />
                     );
                   })}
-                </HocWrapperCheckbox>
+                </div>
+                {/*</HocWrapperCheckbox>*/}
               </div>
             );
           }
