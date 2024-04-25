@@ -11,9 +11,9 @@ const SliderFilter = () => {
 
   return (
     <>
-      <h5>
+      <h5 >
         Цена<span> {rangePrice[0].toLocaleString("ru-RU")}</span> $ до{" "}
-        <span>{rangePrice[1].toLocaleString("ru-RU")}</span> $
+        <span>{rangePrice[1].toLocaleString("ru-RU")}$</span> 
       </h5>
       <Slider
         range={{ draggableTrack: true }}

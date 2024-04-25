@@ -482,6 +482,33 @@ export const typeNedvishki = [
     name: "Парковка",
   },
 ];
+const numbersOfFloor = [];
+for (let i = 1; i <= 25; i++) {
+  numbersOfFloor.push(i);
+}
+export const floorsArray = [
+  {
+    value: "podval",
+    name: "Подвал",
+  },
+  {
+    value: "Cokolniy",
+    name: "Цокольный этаж",
+  },
+  ...Array.from({ length: 25 }, (_, i) => ({
+    value: i + 1,
+    name: i + 1}
+  )),
+  {
+    value: "Mansart",
+    name: "Мансарт",
+  },
+  {
+    value: "Penthous",
+    name: "Пентхаус",
+  },
+]
+console.log(floorsArray);
 export const renderApiSlides = [
   {
       id: 1,

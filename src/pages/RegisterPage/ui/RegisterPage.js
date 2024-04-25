@@ -15,7 +15,7 @@ const RegisterPage = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate()
     const {loading} = useSelector(state => state.auth)
-
+    
     const onFinish = async(values) => {
         const {confirmPassword, remember, ...newObject} = values;
         await dispatch(REGISTER_ASYNC(newObject))
