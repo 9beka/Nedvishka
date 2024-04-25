@@ -6,6 +6,11 @@ const   SelectChecboxes = ({ data ,label}) => {
     value: el.value,
     label: el.name,
   }));
+
+  const handleValue = (e) => {
+      console.log(e)
+  }
+
   return (
   <>
       <h5 style={{
@@ -23,6 +28,7 @@ const   SelectChecboxes = ({ data ,label}) => {
             maxTagCount={"responsive"}
             className={s.customSelect}
             options={options}
+            onChange={handleValue}
           />
         </Flex>
       </Flex>
