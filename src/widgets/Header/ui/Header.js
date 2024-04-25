@@ -61,6 +61,14 @@ const Header = () => {
         setTimeout(() => dispatch(setAlert(false)), 5000)
     }
 
+    const bmButton = document.querySelector('.bm-cross-button');
+
+    bmButton?.addEventListener('click', () => {
+        setOpen(false);
+    });
+
+
+
     return (
         <div className={classNames("header")}>
             <div className="container">
@@ -89,7 +97,7 @@ const Header = () => {
                                     </div>
 
                                     <div className={classNames('header__right-add-btn')}>
-                                        <button onClick={() => {
+                                        <button className={classNames('header__btn')} onClick={() => {
                                             handleClick();
                                             setOpen(false);
                                         }}
@@ -117,7 +125,14 @@ const Header = () => {
                         <>
                             <ul>
                                 {renderLinks.map(el => (
-                                    <Link className={classNames('header__links')} to={el.to}>{el.name}</Link>
+                                    <Link className={classNames('header__links')} onClick={() => {
+                                        if (el.name === 'О компании') {
+                                            handleClick();
+                                            setOpen(false);
+                                        } else {
+                                            setOpen(false);
+                                        }
+                                    }} to={el.to}>{el.name}</Link>
                                 ))}
                             </ul>
                             <div className={classNames("header__right")}>
@@ -130,11 +145,12 @@ const Header = () => {
                                     <span>+996 507 688 388</span>
                                 </div>
                                 <div className={classNames('header__right-add-btn')}>
+
                                     {windowWidth <= 992
-                                        ? <button onClick={handleClick}><Link
+                                        ? <button className={classNames('header__btn')} onClick={handleClick}><Link
                                             to={`${token ? '/ads' : '/register'}`}><PlusOutlined/></Link>
                                         </button>
-                                        : <button onClick={handleClick}><span><PlusOutlined/></span><Link
+                                        : <button className={classNames('header__btn')} onClick={handleClick}><span><PlusOutlined/></span><Link
                                             to={`${token ? '/ads' : '/register'}`}>Добавить объявление</Link></button>}
                                 </div>
                             </div>

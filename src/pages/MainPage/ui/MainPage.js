@@ -12,6 +12,7 @@ const MainPage = () => {
     gsap.fromTo('.main__wrapper__fon', {x:-500,opacity:0},{x:0,opacity:1})
   })
 
+
   return (
     <>
       <Header/>
