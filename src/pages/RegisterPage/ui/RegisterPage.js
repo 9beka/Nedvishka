@@ -1,14 +1,16 @@
+// noinspection JSCheckFunctionSignatures
+
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {Button, Checkbox, Form, Input} from 'antd';
+import {Button, Checkbox, Form} from 'antd';
 import {renderItemForm} from "../../../shared/constants";
 import cls from './RegisterPage.module.scss'
-import background from '../../../shared/assets/video/register-background.mp4'
 import {REGISTER_ASYNC} from "../../../app/providers/Redux/actions/actions";
 import {Link, useNavigate} from "react-router-dom";
-import {MyLoader} from "../../../shared/ui";
+import {MyAlert, MyLoader} from "../../../shared/ui";
 
 const RegisterPage = () => {
+    const {showAlert} = useSelector(state => state.alert)
     const [checked, setChecked] = useState(false)
     const dispatch = useDispatch();
     const navigate = useNavigate()
@@ -33,27 +35,15 @@ const RegisterPage = () => {
         console.log('Failed:', errorInfo);
     };
 
+    console.log(showAlert)
 
     return (
         <>
             {loading && <MyLoader/>}
+            {showAlert && <MyAlert message={'Чтобы добавить объявление, пожалуйста зарегистрируйтесь!'} type={'info'}/>}
+
 
             <div className={cls.register}>
-                <video
-                    autoPlay
-                    loop
-                    muted
-                    style={{
-                        position: 'absolute',
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        zIndex: '-1',
-                    }}
-                >
-                    <source src={background} type="video/mp4"/>
-                </video>
-
 
                 <Form
                     name="register"

@@ -6,10 +6,15 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import {classNames} from "../../../shared/helpers";
 import {slide as Menu} from 'react-burger-menu';
-import { PlusOutlined } from "@ant-design/icons";
+import {PlusOutlined} from "@ant-design/icons";
+import {useDispatch} from "react-redux";
+import {setAlert} from "../../../app/providers/Redux/Slices/alertSlicer";
 
 
 const Header = () => {
+
+    const dispatch = useDispatch()
+    const token = localStorage.getItem('token')
 
     const renderLinks = [
         {
@@ -34,6 +39,7 @@ const Header = () => {
 
     const [open, setOpen] = useState(false)
 
+
     const handleResize = () => {
         setWindowWidth(window.innerWidth);
     };
@@ -46,11 +52,14 @@ const Header = () => {
         };
     }, []);
 
-    const showSettings = (event) => {
-        event.preventDefault();
-    };
+    // const showSettings = (event) => {
+    //     event.preventDefault();
+    // };
 
-    console.log(open)
+    const handleClick = () => {
+        dispatch(setAlert(true))
+        setTimeout(() => dispatch(setAlert(false)), 5000)
+    }
 
     return (
         <div className={classNames("header")}>
@@ -62,34 +71,47 @@ const Header = () => {
 
                     {windowWidth <= 768 ? (
 
-                        <>
-                            <Menu onOpen={()=>setOpen(true)} isOpen={ open } right>
+                            <>
+                                <Menu onOpen={() => setOpen(true)} isOpen={open} right>
 
-                                <div className='bm-item-links'>
-                                    {renderLinks.map(el => (
-                                        <Link onClick={()=>setOpen(false)} to={el.to}>{el.name}</Link>
-                                    ))}
-                                </div>
-
-                                <div className={classNames('header__right-add-btn')}>
-                                    <button onClick={()=>setOpen(false)}><span><PlusOutlined/></span><Link to={"/ads"}>Добавить объявление</Link></button>
-                                </div>
-
-
-                                <div className='bm-item-info'>
-                                    <LocalPhoneIcon className={classNames('header__phone-icon')}/>
-
-                                    <div className={classNames('header__right-phone')}>
-                                        <span>+996 507 688 388</span>
+                                    <div className='bm-item-links'>
+                                        {renderLinks.map(el => (
+                                            <Link onClick={() => {
+                                                if (el.name === 'О компании') {
+                                                    handleClick();
+                                                    setOpen(false);
+                                                } else {
+                                                    setOpen(false);
+                                                }
+                                            }}
+                                                  to={el.to}>{el.name}</Link>
+                                        ))}
                                     </div>
+
+                                    <div className={classNames('header__right-add-btn')}>
+                                        <button onClick={() => {
+                                            handleClick();
+                                            setOpen(false);
+                                        }}
+                                        ><span><PlusOutlined/></span><Link
+                                            to={`${token ? '/ads' : '/register'}`}>Добавить объявление</Link></button>
+                                    </div>
+
+
+                                    <div className='bm-item-info'>
+                                        <LocalPhoneIcon className={classNames('header__phone-icon')}/>
+
+                                        <div className={classNames('header__right-phone')}>
+                                            <span>+996 507 688 388</span>
+                                        </div>
+                                    </div>
+
+                                </Menu>
+
+                                <div className={classNames("header__right")}>
+                                    <FavoriteIcon className={classNames('header__favorite-icon')}/>
                                 </div>
-
-                            </Menu>
-
-                            <div className={classNames("header__right")}>
-                                <FavoriteIcon className={classNames('header__favorite-icon')}/>
-                            </div>
-                        </>
+                            </>
 
                         ) :
                         <>
@@ -109,8 +131,11 @@ const Header = () => {
                                 </div>
                                 <div className={classNames('header__right-add-btn')}>
                                     {windowWidth <= 992
-                                        ? <button><Link to={"/ads"}><PlusOutlined/></Link></button>
-                                        : <button><span><PlusOutlined/></span><Link to={"/ads"}>Добавить объявление</Link></button>}
+                                        ? <button onClick={handleClick}><Link
+                                            to={`${token ? '/ads' : '/register'}`}><PlusOutlined/></Link>
+                                        </button>
+                                        : <button onClick={handleClick}><span><PlusOutlined/></span><Link
+                                            to={`${token ? '/ads' : '/register'}`}>Добавить объявление</Link></button>}
                                 </div>
                             </div>
                         </>

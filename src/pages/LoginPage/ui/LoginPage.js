@@ -1,9 +1,8 @@
-import React, { useState} from 'react';
+import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Button, Checkbox, Form} from 'antd';
 import {renderItemFormLogin} from "../../../shared/constants";
 import cls from './LoginPage.module.scss'
-import background from '../../../shared/assets/video/register-background.mp4'
 import {LOGIN_ASYNC} from "../../../app/providers/Redux/actions/actions";
 import {Link, useNavigate} from "react-router-dom";
 import {MyLoader} from "../../../shared/ui";
@@ -42,21 +41,7 @@ const LoginPage = () => {
             {loading && <MyLoader/>}
 
             <div className={cls.login}>
-                <video
-                    preload='metadata'
-                    autoPlay
-                    loop
-                    muted
-                    style={{
-                        position: 'absolute',
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        zIndex: '-1',
-                    }}
-                >
-                    <source src={background} type="video/mp4"/>
-                </video>
+
 
                 <Form
                     name="login"
