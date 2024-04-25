@@ -7,7 +7,9 @@ const ModalOfCheckboxes = ({data , label}) => {
   const [open, setOpen] = useState(false);
   return (
       <>
-      <h5>{label}</h5>
+      <h5 style={{
+          margin:0
+      }}>{label}</h5>
         <Button  style={{width:'100%', border:"2px solid #6CA5DC" }} onClick={() => setOpen(true)}>
           Выбрать
           <KeyboardArrowDownIcon />

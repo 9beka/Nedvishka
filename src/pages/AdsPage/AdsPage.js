@@ -6,18 +6,19 @@ import {
   Select,
 } from 'antd';
 import cls from "./AdsPage.module.scss";
+import {AntdForm} from "../../widgets";
+
 const AdsPage = () => {
-  return (
-    <div className={cls.AdsPage__background}>
-      <div className="wrapper">
-            <form action="">
-            <div className={cls.AdsPage__inner__bg}>
-              
+    return (
+        <section className={cls.AdsPage__background}>
+            <div className="container">
+                <p>Разместите своё объявление!</p>
+                <div className={cls.adsPage__form}>
+                    <AntdForm/>
+                </div>
             </div>
-            </form>
-      </div>
-    </div>
-  );
+        </section>
+    );
 };
 
 export default AdsPage;

@@ -1,3 +1,6 @@
+import {Input} from "antd";
+import React from "react";
+
 export const southDistricts = [
   {
     value: "3",
@@ -479,6 +482,33 @@ export const typeNedvishki = [
     name: "Парковка",
   },
 ];
+const numbersOfFloor = [];
+for (let i = 1; i <= 25; i++) {
+  numbersOfFloor.push(i);
+}
+export const floorsArray = [
+  {
+    value: "podval",
+    name: "Подвал",
+  },
+  {
+    value: "Cokolniy",
+    name: "Цокольный этаж",
+  },
+  ...Array.from({ length: 25 }, (_, i) => ({
+    value: i + 1,
+    name: i + 1}
+  )),
+  {
+    value: "Mansart",
+    name: "Мансарт",
+  },
+  {
+    value: "Penthous",
+    name: "Пентхаус",
+  },
+]
+console.log(floorsArray);
 export const renderApiSlides = [
   {
       id: 12345,
@@ -1805,3 +1835,163 @@ export const allComplexNames = [
   childProps: []
 }
 ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const PasswordValidator = (rule, value, callback) => {
+  const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+  if (value && !passwordRegex.test(value)) {
+    callback('Пароль должен содержать минимум 8 символов, как минимум одну заглавную букву, одну цифру и один из следующих символов: @$!%*?&');
+  } else {
+    callback();
+  }
+};
+
+const validateUsername = (_, value) => {
+  const regex = /^[a-zA-Z]+$/;
+  if (value && !regex.test(value)) {
+    return Promise.reject('Имя пользователя должно состоять только из букв!');
+  } else {
+    return Promise.resolve();
+  }
+};
+
+export const renderItemForm = [
+  {
+    label: 'Имя пользователя',
+    name: 'name',
+    rules: [
+      {
+        required: true,
+        message: 'Пожалуйста введите имя пользователя!',
+      },
+      {
+        min: 3,
+        message: 'Имя пользователя должно состоять минимум из 3 символов!'
+      },
+      {
+        validator:validateUsername
+      }
+
+    ],
+    children: <Input/>
+  },
+  {
+    label: 'Email',
+    name: 'email',
+    rules: [
+      {
+        type: 'email',
+        message: 'Email невалидный',
+      },
+      {
+        required: true,
+        message: 'Пожалуйста введите email!',
+      },
+    ],
+    children: <Input/>
+  },
+  {
+    label: 'Пароль',
+    name: 'password',
+    rules: [
+      {
+        required: true,
+        message: 'Пожалуйста введите пароль!',
+      },
+      {
+        validator: PasswordValidator,
+      },
+    ],
+    children: <Input.Password/>
+  },
+  {
+    label: 'Подтвердите пароль',
+    name: 'confirmPassword',
+    rules: [
+      {
+        required: true,
+        message: 'Пожалуйста, подтвердите пароль!',
+      },
+      ({getFieldValue}) => ({
+        validator(_, value) {
+          if (!value || getFieldValue('password') === value) {
+            return Promise.resolve();
+          }
+          return Promise.reject('Пароли не совпадают!');
+        },
+      }),
+    ],
+    children: <Input.Password/>
+  },
+]
+
+
+export const renderItemFormLogin = [
+
+  {
+    label: 'Email',
+    name: 'email',
+    rules: [
+      {
+        type: 'email',
+        message: 'Email невалидный',
+      },
+      {
+        required: true,
+        message: 'Пожалуйста введите email!',
+      },
+    ],
+    children: <Input/>
+  },
+  {
+    label: 'Пароль',
+    name: 'password',
+    rules: [
+      {
+        required: true,
+        message: 'Пожалуйста введите пароль!',
+      },
+      {
+        validator: PasswordValidator,
+      },
+    ],
+    children: <Input.Password/>
+  },
+  {
+    label: 'Подтвердите пароль',
+    name: 'confirmPassword',
+    rules: [
+      {
+        required: true,
+        message: 'Пожалуйста, подтвердите пароль!',
+      },
+      ({getFieldValue}) => ({
+        validator(_, value) {
+          if (!value || getFieldValue('password') === value) {
+            return Promise.resolve();
+          }
+          return Promise.reject('Пароли не совпадают!');
+        },
+      }),
+    ],
+    children: <Input.Password/>
+  },
+]

@@ -8,7 +8,9 @@ const   SelectChecboxes = ({ data ,label}) => {
   }));
   return (
   <>
-      <h5>{label}</h5>
+      <h5 style={{
+          margin:0
+      }}>{label}</h5>
       <Flex gap={12} vertical>
         <Flex gap={8}>
           <Select

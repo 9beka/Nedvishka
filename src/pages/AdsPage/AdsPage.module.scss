@@ -1,12 +1,72 @@
-.AdsPage__background{
-   background-image: url("https://bogatyr.club/uploads/posts/2024-03/1710183575_bogatyr-club-12nq-p-fon-dlya-prezentatsii-nedvizhimost-3.jpg");
-   background-repeat: no-repeat;
-   background-size: cover;
-   height: 90vh;
-      .AdsPage__inner__bg{
-         background-color: #fff;
-         width: 100%;
-         height: 90vh;
-         box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
-      }
+.AdsPage__background {
+  background-image: url("https://bogatyr.club/uploads/posts/2024-03/1710183575_bogatyr-club-12nq-p-fon-dlya-prezentatsii-nedvizhimost-3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: auto;
+  padding: 50px 0;
+  text-align: center;
+
+  p {
+    color: var(--white-color);
+    font-weight: bold;
+  }
+
+  p:first-child {
+    font-size: 50px;
+  }
+
+  p:nth-child(2) {
+    font-size: 20px;
+    margin-bottom: 50px;
+  }
+
+  .adsPage__form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .AdsPage__background {
+    padding: 80px 0;
+
+    p:first-child {
+      font-size: 40px;
+    }
+
+    p:nth-child(2) {
+      font-size: 18px;
+      margin-bottom: 40px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .AdsPage__background {
+    text-align: left;
+    padding: 60px 0;
+
+    p:first-child {
+      font-size: 30px;
+    }
+
+    p:nth-child(2) {
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .AdsPage__background {
+    p:first-child {
+      font-size: 20px;
+    }
+
+    p:nth-child(2) {
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+  }
 }

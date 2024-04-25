@@ -3,8 +3,6 @@ import { Input } from "antd";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import s from "./CheckboxesDistrict.module.scss";
-import HocWrapperCheckbox from "./HocWrapperCheckbox";
-
 import {gsap} from "gsap";
 
 
