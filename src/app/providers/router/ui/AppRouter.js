@@ -8,6 +8,8 @@ import { MyLoader } from "../../../../shared/ui";
 const LoginPage = lazy(() => import("../../../../pages/LoginPage/ui/LoginPage"));
 const RegisterPage = lazy(() => import("../../../../pages/RegisterPage/ui/RegisterPage"));
 const MainPage = lazy(() => import('../../../../pages/MainPage/ui/MainPage'))
+const NotFoundPage = lazy(() => import('../../../../pages/NotFoundPage/NotFoundPage'))
+
 
 const AppRouter = () => {
     const { token } = useSelector((state) => state.auth);
@@ -23,6 +25,7 @@ const AppRouter = () => {
 
             <Route path={'/login'} element={!token ? <Suspense fallback={<MyLoader/>}><LoginPage/></Suspense> : <Navigate to="/" replace/>} />
             <Route path={'/register'} element={!token ? <Suspense fallback={<MyLoader/>}><RegisterPage/></Suspense> : <Navigate to="/" replace/>} />
+            <Route path={'*'} element={<NotFoundPage/>}/>
         </Routes>
 
     );

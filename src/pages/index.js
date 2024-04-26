@@ -1,4 +1,5 @@
 import MainPage from "./MainPage/ui/MainPage";
 import AboutPage from './AboutPage/AboutPage'
 import AdsPage from "./AdsPage/AdsPage";
-export {MainPage, AboutPage ,AdsPage}
+import NotFoundPage from "./NotFoundPage/NotFoundPage";
+export {MainPage, AboutPage ,AdsPage, NotFoundPage}
