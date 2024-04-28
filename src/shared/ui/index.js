@@ -7,6 +7,7 @@ import {ShowButton, Button, RoomButton} from "./Button";
 import InputMinMax from "./InputMinMax/InputMinMax";
 import MyLoader from './MyLoader/MyLoader'
 import MyAlert from "./MyAlert/MyAlert";
+import UploadComponent from './Upload/UploadComponent';
 
 export {
     Button,
@@ -19,5 +20,6 @@ export {
     SliderFilter,
     ShowButton,
     MyLoader,
-    MyAlert
+    MyAlert ,
+    UploadComponent
 }

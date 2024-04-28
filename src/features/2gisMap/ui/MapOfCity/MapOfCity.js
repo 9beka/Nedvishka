@@ -3,7 +3,6 @@ import { load } from '@2gis/mapgl';
 
 const MapOfCity = () => {
     const mapContainer = useRef(null);
-
     useEffect(() => {
         let localMap, localMarker;
 
@@ -21,6 +20,7 @@ const MapOfCity = () => {
 
             localMap.on('click', (e) => {
                 const [ lng, lat ] = e.lngLat;
+
 
                 console.log(lng, lat)
 

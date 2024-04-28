@@ -475,13 +475,125 @@ export const typeNedvishki = [
   },
   {
     value: "elitka",
-    name: "Элетки",
+    name: "Элитки",
   },
   {
     value: "parking",
     name: "Парковка",
   },
 ];
+export const ownersOfHouse = [
+  {
+    value: "Posredmik",
+    name: "Посредник(Родственник ,Знакомый)",
+  },
+  {
+    value: "Rieltor",
+    name: "Риэлтор(Агенство недвижимости)",
+  },
+  {
+    value: "Podrydchik",
+    name: "Подрядчик(Барторщик)",
+  },
+  {
+    value: "owner",
+    name: "Собственник(Хозяин)",
+  },
+  
+]
+export const furnitures = [
+  {
+      value: "witTech&furnitures",
+      name: "С мебелью и техникой",
+  },
+  {
+      value: "withoutFurniture",
+      name: "Без мебели",
+  },
+  {
+      value: "withFurniture",
+      name: "С мебелью",
+  },
+  {
+      value: "partFurniture",
+      name: "Частично с мебелью",
+  },
+]
+export const paymentOption = [
+  {
+    value: "partPayment",
+    name: "Возможно рассрочка",
+  },
+  {
+    value: "changeHouse",
+    name: "Бартер на дом",
+  },
+  {
+    value: "changeApartment",
+    name: "Бартер на квартиру",
+  },
+  {
+    value: "changeCar",
+    name: "Бартер на машину",
+  },
+  {
+    value: "Cash",
+    name: "Наличка",
+  },
+  {
+    value: "ipoteka",
+    name: "Ипотека",
+  },
+]
+export const statusObject = [
+  {
+    value: "SellFast",
+    name: "Срочная продажа",
+  },
+  {
+    value: "Exclusive offer",
+    name: "Эксклюзивный договор",
+  },
+  {
+    value: "NeedToBuy",
+    name: "Выкупной вариант",
+  },
+  {
+    value: "Alternative",
+    name: "Альтернативный договор",
+  },
+  {
+    value: "Deposit",
+    name: "Приняли задаток",
+  },
+  {
+    value: "Not for Sale",
+    name: "Временно не предлогать",
+  },
+] 
+export const documents = [
+  {
+    value: "DDU",
+    name: "Договоро делового участия (ДДУ)",
+  },
+  {
+    value: "TechPasport",
+    name: "Тех.паспорт",
+  },
+  {
+    value: "Red book",
+    name: "Красная книга",
+  },
+  {
+    value: "GenDoverinnost",
+    name: "Генеральная доверенность",
+  },
+  {
+    value: "GreenBook",
+    name: "Зеленая книга",
+  },
+]
+ 
 const numbersOfFloor = [];
 for (let i = 1; i <= 25; i++) {
   numbersOfFloor.push(i);
@@ -508,7 +620,28 @@ export const floorsArray = [
     name: "Пентхаус",
   },
 ]
-console.log(floorsArray);
+export const communications = [
+  {
+      value: "",
+      name: "Автономное отопление",
+  },
+  {
+      value: "",
+      name: "Электрическое отопление",
+  },
+  {
+      value: "",
+      name: "Все коммуникации центральные",
+  },
+  {
+      value: "",
+      name: "Газ",
+  },
+  {
+      value: "",
+      name: "Центральная канализация",
+  },
+]
 export const renderApiSlides = [
   {
       id: 1,
