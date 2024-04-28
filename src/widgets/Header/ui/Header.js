@@ -137,7 +137,12 @@ const Header = () => {
                             </ul>
                             <div className={classNames("header__right")}>
 
-                                <FavoriteIcon className={classNames('header__favorite-icon')}/>
+                                <Link to={'/favoties'}>
+                                    <FavoriteIcon style={{
+                                        cursor:'pointer'
+                                    }} className={classNames('header__favorite-icon')}/>
+                                </Link>
+
 
                                 <LocalPhoneIcon className={classNames('header__phone-icon')}/>
 

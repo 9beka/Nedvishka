@@ -22,6 +22,7 @@
     "react": "^18.2.0",
     "react-burger-menu": "^3.0.9",
     "react-dom": "^18.2.0",
+    "react-parallax": "^3.5.1",
     "react-redux": "^9.0.2",
     "react-responsive": "^10.0.0",
     "react-router-dom": "^6.20.1",

@@ -9,18 +9,22 @@ const MapOfCity = () => {
         const initMap = async () => {
             const mapglAPI = await load();
             localMap = new mapglAPI.Map(mapContainer.current, {
-                center: [74.5698, 42.8746], // Начальные координаты для Бишкека
+                center: [74.5698, 42.8746],
                 zoom: 13,
                 key: process.env.REACT_APP_NEDVISHKAKEY,
             });
 
             localMarker = new mapglAPI.Marker(localMap, {
-                coordinates: [74.5698, 42.8746], // Начальные координаты маркера
+                coordinates: [74.5698, 42.8746],
             });
 
             localMap.on('click', (e) => {
                 const [ lng, lat ] = e.lngLat;
-                localMarker.setCoordinates([lng, lat]); // Обновление координат маркера
+
+
+                console.log(lng, lat)
+
+                localMarker.setCoordinates([lng, lat]);
             });
         };
 
