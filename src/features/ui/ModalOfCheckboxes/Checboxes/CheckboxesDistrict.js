@@ -3,6 +3,7 @@ import { Input } from "antd";
 import Checkbox from "@mui/material/Checkbox";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import s from "./CheckboxesDistrict.module.scss";
+
 import {gsap} from "gsap";
 
 
@@ -15,7 +16,8 @@ export default function CheckboxesDistrict({ data }) {
     ])
   );
 
-  const handleChange1 = (mainIndex, childIndex = null) => {
+  const handleChange1 = (mainIndex, childIndex = null, name) => {
+    console.log(name)
     const newChecked = [...checked];
     if (childIndex === null) {
       // Если изменение для главного чекбокса, переключаем все дочерние
@@ -41,7 +43,7 @@ export default function CheckboxesDistrict({ data }) {
     }
     setChecked(newChecked);
   };
-  const handleChange2 = (event) => {
+  const handleInput = (event) => {
     const searchValue = event.target.value.toLowerCase(); // Преобразуем в нижний регистр один раз
     gsap.fromTo('.form-checkbox', {opacity: 0, x: 25}, {opacity: 1, x: 0})
 
@@ -55,7 +57,6 @@ export default function CheckboxesDistrict({ data }) {
         return filteredChildren.length > 0 ? [{...item, childProps: filteredChildren}] : [];
     });
 
-    console.log(searchData);
     setFiltredData(searchData);
 };
 
@@ -68,7 +69,7 @@ export default function CheckboxesDistrict({ data }) {
   return (
     <>
       <div className={s.CheckboxesDistrict__wrapper}>
-        <Input onChange={handleChange2} placeholder="Искать" variant="filled" />
+        <Input onChange={handleInput} placeholder="Искать" variant="filled" />
 
         {(filtredData.length === 0 ? data : filtredData).map(
           (el, mainIndex) => {
@@ -80,11 +81,10 @@ export default function CheckboxesDistrict({ data }) {
                   control={
                     <Checkbox
                       checked={checked[mainIndex][0]}
-                      onChange={() => handleChange1(mainIndex)}
+                      onChange={() => handleChange1(mainIndex,undefined,el.mainProps)}
                     />
                   }
                 />
-                {/*<HocWrapperCheckbox>*/}
                 <div className="row gy-4 row-cols-xl-5 row-cols-lg-4 row-cols-md-3 row-cols-sm-2 row-cols-1">
                   {el.childProps.map((child, idx) => {
                     return (
@@ -95,14 +95,13 @@ export default function CheckboxesDistrict({ data }) {
                         control={
                           <Checkbox
                             checked={checked[mainIndex][idx + 1]}
-                            onChange={() => handleChange1(mainIndex, idx)}
+                            onChange={() => handleChange1(mainIndex, idx,child.name)}
                           />
                         }
                       />
                     );
                   })}
                 </div>
-                {/*</HocWrapperCheckbox>*/}
               </div>
             );
           }

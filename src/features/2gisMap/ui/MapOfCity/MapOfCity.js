@@ -3,7 +3,6 @@ import { load } from '@2gis/mapgl';
 
 const MapOfCity = () => {
     const mapContainer = useRef(null);
-
     useEffect(() => {
         let localMap, localMarker;
 
@@ -20,7 +19,7 @@ const MapOfCity = () => {
             });
 
             localMap.on('click', (e) => {
-                const { lng, lat } = e.lngLat;
+                const [ lng, lat ] = e.lngLat;
                 localMarker.setCoordinates([lng, lat]); // Обновление координат маркера
             });
         };

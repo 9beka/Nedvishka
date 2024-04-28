@@ -2,13 +2,16 @@ import React from 'react';
 import { Button } from 'antd';
 import s from "./RoomButton.module.scss"
 const RoomButton = () => {
+
+    const renderBtns = [1,2,3,4,'5+']
+
+    const handleResult = (e) => {
+        console.log(e.target.value)
+    }
+
    return (
      <div className={s.RoomButtons}>
-         <Button> 1</Button>
-         <Button> 2</Button>
-         <Button> 3</Button>
-         <Button> 4</Button>
-         <Button> 5+</Button>
+         {renderBtns.map(el => <Button value={el} onClick={handleResult}>{el}</Button>)}
      </div>
    );
 };

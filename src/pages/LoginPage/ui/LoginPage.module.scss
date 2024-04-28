@@ -3,24 +3,22 @@
   align-items: center;
   justify-content: center;
   height: 100vh;
-
+  background-image: url('../../../shared/assets/img/auth-background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
 
   .login__form {
     background: rgba(255, 255, 255, 0.04);
     padding: 20px;
     border-radius: 1rem;
     backdrop-filter: blur(3px);
-    box-shadow: 0 0 10px 1px lightblue;
     width: 30rem;
+    border: 1px solid black;
   }
 
   .login__title {
     font-size: 30px;
     font-weight: bold;
     color: black;
-    background: var(--white-color);
-    padding: 10px;
-    border-radius: 1rem;
-    width: 30%;
   }
 }

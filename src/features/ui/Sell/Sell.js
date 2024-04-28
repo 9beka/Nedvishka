@@ -12,7 +12,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 const Sell = () => {
   gsap.registerPlugin(ScrollTrigger);
-  //gsap
 
   useLayoutEffect(() => {
     gsap.fromTo(".button-gsap", { opacity: 0, x: -500 }, { opacity: 1, x: 0 });
@@ -22,7 +21,6 @@ const Sell = () => {
         trigger: ".card-gsap",
         start: "top 90%",
         end: "bottom 100%",
-        // scrub: true,
       },
     });
 
@@ -42,7 +40,7 @@ const Sell = () => {
         <div className={cls.sell__wrapper}>
           {renderApiSlides.map((slide) => (
             <div className={`${cls.card} card-gsap`}>
-              <img className={cls.image__house} src={slide.img} alt="" />
+              <img className={cls.image__house} src={slide.img} alt="image of card" />
               <p className={cls.apartment__p}>{slide.apartment}</p>
               <p className={cls.geo__p}>{slide.geo}</p>
               <p className={cls.price__p}>{slide.price}</p>
