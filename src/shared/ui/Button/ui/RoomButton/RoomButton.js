@@ -1,19 +1,20 @@
 import React from 'react';
-import { Button } from 'antd';
+import {Button} from 'antd';
 import s from "./RoomButton.module.scss"
-const RoomButton = () => {
 
-    const renderBtns = [1,2,3,4,'5+']
+const RoomButton = ({handleValueRooms}) => {
 
-    const handleResult = (e) => {
-        console.log(e.target.value)
-    }
+    const renderBtns = [1, 2, 3, 4]
 
-   return (
-     <div className={s.RoomButtons}>
-         {renderBtns.map(el => <Button key={el} value={el} onClick={handleResult}>{el}</Button>)}
-     </div>
-   );
+    return (
+        <div className={s.RoomButtons}>
+            {renderBtns.map(el => <Button className={`${s['room-button']}`} key={el} value={el}
+                                          onClick={handleValueRooms}>{el}</Button>)}
+            <Button className={`${s['room-button']}`} key={5} value={5}
+                    onClick={handleValueRooms}>5<label>+</label></Button>
+
+        </div>
+    );
 };
 
 export default RoomButton;

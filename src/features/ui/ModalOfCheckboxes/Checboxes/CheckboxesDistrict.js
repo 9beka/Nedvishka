@@ -6,7 +6,7 @@ import s from "./CheckboxesDistrict.module.scss";
 import {gsap} from "gsap";
 
 
-export default function CheckboxesDistrict({ data }) {
+export default function CheckboxesDistrict({ data,handleValueDistrict }) {
   const [filtredData, setFiltredData] = useState([]);
   const [checked, setChecked] = useState(
     data.map((district) => [
@@ -16,7 +16,7 @@ export default function CheckboxesDistrict({ data }) {
   );
 
   const handleChange1 = (mainIndex, childIndex = null, name) => {
-    console.log(name)
+    handleValueDistrict(name)
     const newChecked = [...checked];
     if (childIndex === null) {
       // Если изменение для главного чекбокса, переключаем все дочерние
@@ -73,7 +73,7 @@ export default function CheckboxesDistrict({ data }) {
         {(filtredData.length === 0 ? data : filtredData).map(
           (el, mainIndex) => {
             return (
-              <div className={'form-checkbox'}>
+              <div className={'form-checkbox'} key={mainIndex}>
                 <FormControlLabel
                   label={el.mainProps}
                   className={`${s.CheckboxesDistrict__Label} form-checkbox` }

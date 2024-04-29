@@ -622,26 +622,27 @@ export const floorsArray = [
 ]
 export const communications = [
   {
-      value: "",
-      name: "Автономное отопление",
+    value: "HeatingSystem",
+    name: "Автономное отопление",
   },
   {
-      value: "",
-      name: "Электрическое отопление",
+    value: "ElectricHeating",
+    name: "Электрическое отопление",
   },
   {
-      value: "",
-      name: "Все коммуникации центральные",
+    value: "AllCentralCommunications",
+    name: "Все коммуникации центральные",
   },
   {
-      value: "",
-      name: "Газ",
+    value: "Gas",
+    name: "Газ",
   },
   {
-      value: "",
-      name: "Центральная канализация",
+    value: "CentralSewerage",
+    name: "Центральная канализация",
   },
-]
+];
+
 export const renderApiSlides = [
   {
       id: 1,

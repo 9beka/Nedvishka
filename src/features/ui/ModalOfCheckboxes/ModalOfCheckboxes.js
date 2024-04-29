@@ -3,7 +3,7 @@ import { Button, Modal } from "antd";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import CheckboxesDistrict from "./Checboxes/CheckboxesDistrict";
 // import cls from './ModalOfCheckboxes.scss'
-const ModalOfCheckboxes = ({data , label}) => {
+const ModalOfCheckboxes = ({data , label,handleValueDistrict}) => {
   const [open, setOpen] = useState(false);
 
   return (
@@ -33,7 +33,7 @@ const ModalOfCheckboxes = ({data , label}) => {
             </Button>
           ]}
         >
-          <CheckboxesDistrict data={data} />
+          <CheckboxesDistrict handleValueDistrict={handleValueDistrict} data={data} />
         </Modal>
       </>
   );
