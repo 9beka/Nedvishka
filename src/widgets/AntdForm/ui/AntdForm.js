@@ -18,13 +18,18 @@ import {floorsArray} from "../../../shared/constants";
 import {MapOfCity} from "../../../features/2gisMap/ui";
 import TextArea from "antd/es/input/TextArea";
 import HocAdaptiveWrapper from "./HocAdaptiveWrapper";
+import {useDispatch} from "react-redux";
+import {ADS_POST_ASYNC} from "../../../app/providers/Redux/actions/actions";
 
 const AntdForm = () => {
     const {Option} = Select;
     const [form] = Form.useForm();
 
+    const dispatch = useDispatch()
+
     const onFinish = (values) => {
         console.log(values);
+        dispatch(ADS_POST_ASYNC(values))
     };
 
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
