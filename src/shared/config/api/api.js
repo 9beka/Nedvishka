@@ -1,5 +1,5 @@
-// const API = 'http://localhost:5000/'
-const API = 'https://nedvishka-server.onrender.com/'
+const API = 'http://localhost:5000/'
+// const API = 'https://nedvishka-server.onrender.com/'
 
 export const AUTH_API = API + 'auth/'
 

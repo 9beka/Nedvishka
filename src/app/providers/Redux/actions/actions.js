@@ -34,9 +34,14 @@ export const LOGIN_ASYNC = createAsyncThunk(
 
 export const ADS_POST_ASYNC = createAsyncThunk(
     'ads/ADS_POST_ASYNC',
-    async (adsData, { rejectWithValue }) => {
+    async (adsData, { rejectWithValue,getState  }) => {
         try {
-            const response = await axios.post(ADS_POST_API, adsData)
+            const token = getState().auth.token;
+            const response = await axios.post(ADS_POST_API, adsData,{
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
             return response.data
         } catch (e) {
             return rejectWithValue(e.message)
