@@ -1,11 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
-
 import {LOGIN_API, REGISTER_API} from "../../../../shared/config/api/api";
-import {useNavigate} from "react-router-dom";
-
-
-
 export const REGISTER_ASYNC = createAsyncThunk(
     'auth/REGISTER_ASYNC',
     async (userData, { rejectWithValue }) => {

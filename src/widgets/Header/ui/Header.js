@@ -84,7 +84,7 @@ const Header = () => {
 
                                     <div className='bm-item-links'>
                                         {renderLinks.map(el => (
-                                            <Link onClick={() => {
+                                            <Link key={el.name} onClick={() => {
                                                 if (el.name === 'О компании') {
                                                     handleClick();
                                                     setOpen(false);
@@ -125,7 +125,7 @@ const Header = () => {
                         <>
                             <ul>
                                 {renderLinks.map(el => (
-                                    <Link className={classNames('header__links')} onClick={() => {
+                                    <Link key={el.name} className={classNames('header__links')} onClick={() => {
                                         if (el.name === 'О компании') {
                                             handleClick();
                                             setOpen(false);

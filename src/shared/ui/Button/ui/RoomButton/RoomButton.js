@@ -11,7 +11,7 @@ const RoomButton = () => {
 
    return (
      <div className={s.RoomButtons}>
-         {renderBtns.map(el => <Button value={el} onClick={handleResult}>{el}</Button>)}
+         {renderBtns.map(el => <Button key={el} value={el} onClick={handleResult}>{el}</Button>)}
      </div>
    );
 };

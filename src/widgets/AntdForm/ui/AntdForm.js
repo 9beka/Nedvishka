@@ -63,7 +63,7 @@ const AntdForm = () => {
             <label className={cls.label__form}>Тип недвижимости</label>
             <Select placeholder="Выберите" allowClear>
               {typeNedvishki.map((el) => (
-                <Option value={el.value}>{el.name}</Option>
+                <Option key={el.name} value={el.value}>{el.name}</Option>
               ))}
             </Select>
           </Form.Item>
@@ -86,7 +86,7 @@ const AntdForm = () => {
             <label className={cls.label__form}>Этаж</label>
             <Select placeholder="Выберите" allowClear>
               {floorsArray.map((el) => (
-                <Option value={el.value}>{el.name}</Option>
+                <Option key={el.name} value={el.value}>{el.name}</Option>
               ))}
             </Select>
           </Form.Item>
@@ -148,7 +148,7 @@ const AntdForm = () => {
             <label className={cls.label__form}>Состояние</label>
             <Select placeholder="Выберите" allowClear>
               {stateData.map((el) => (
-                <Option value={el.value}>{el.name}</Option>
+                <Option key={el.name} value={el.value}>{el.name}</Option>
               ))}
             </Select>
           </Form.Item>
@@ -156,7 +156,7 @@ const AntdForm = () => {
             <label className={cls.label__form}>Документы</label>
             <Select placeholder="Выберите" allowClear>
               {documents.map((el) => (
-                <Option value={el.value}>{el.name}</Option>
+                <Option key={el.name} value={el.value}>{el.name}</Option>
               ))}
             </Select>
           </Form.Item>
@@ -164,7 +164,7 @@ const AntdForm = () => {
             <label className={cls.label__form}>Коммуникации</label>
             <Select placeholder="Коммуникации" allowClear>
               {communications.map((el) => (
-                <Option value={el.value}>{el.name}</Option>
+                <Option key={el.name} value={el.value}>{el.name}</Option>
               ))}
             </Select>
           </Form.Item>
@@ -172,7 +172,7 @@ const AntdForm = () => {
             <label className={cls.label__form}>Тип предложения</label>
             <Select placeholder="Выберите" allowClear>
               {ownersOfHouse.map((el) => {
-                return <Option value={el.value}>{el.name}</Option>;
+                return <Option key={el.name} value={el.value}>{el.name}</Option>;
               })}
             </Select>
           </Form.Item>
@@ -180,7 +180,7 @@ const AntdForm = () => {
             <label className={cls.label__form}>Мебель</label>
             <Select placeholder="Выберите" allowClear>
               {furnitures.map((el) => {
-                return <Option value={el.value}>{el.name}</Option>;
+                return <Option key={el.name} value={el.value}>{el.name}</Option>;
               })}
             </Select>
           </Form.Item>
@@ -188,7 +188,7 @@ const AntdForm = () => {
             <label className={cls.label__form}>Вид платежа</label>
             <Select placeholder="Выбрать" allowClear>
               {paymentOption.map((el) => {
-                return <Option value={el.value}>{el.name}</Option>;
+                return <Option key={el.name} value={el.value}>{el.name}</Option>;
               })}
             </Select>
           </Form.Item>
@@ -196,7 +196,7 @@ const AntdForm = () => {
             <label className={cls.label__form}>Статус объекта</label>
             <Select placeholder="Выбрать" allowClear>
               {statusObject.map((el) => {
-                return <Option value={el.value}>{el.name}</Option>;
+                return <Option key={el.name} value={el.value}>{el.name}</Option>;
               })}
             </Select>
           </Form.Item>

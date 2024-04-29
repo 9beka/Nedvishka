@@ -23,6 +23,8 @@ const AntdTabs = () => {
       children: <ReasonsWhy />,
     },
   ];
-  return <Tabs centered defaultActiveKey="1" items={items} onChange={onChange} />;
+  return (
+    <Tabs centered defaultActiveKey="1" items={items} onChange={onChange} />
+  );
 };
 export default AntdTabs;
