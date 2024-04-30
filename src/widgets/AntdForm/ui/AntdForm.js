@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import cls from "./AntdForm.module.scss";
 import {Button, Form, Select, InputNumber, Input, Switch} from "antd";
-import {RoomButton, UploadComponent} from "../../../shared/ui";
+import {MyLoader, RoomButton, UploadComponent} from "../../../shared/ui";
 import {
     documents,
     furnitures,
@@ -18,18 +18,26 @@ import {floorsArray} from "../../../shared/constants";
 import {MapOfCity} from "../../../features/2gisMap/ui";
 import TextArea from "antd/es/input/TextArea";
 import HocAdaptiveWrapper from "./HocAdaptiveWrapper";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {ADS_POST_ASYNC} from "../../../app/providers/Redux/actions/actions";
+import {toast, ToastContainer} from "react-toastify";
 
 const AntdForm = () => {
     const {Option} = Select;
     const [form] = Form.useForm();
 
+    const notify = (title) => toast.success(title);
+    const {loading} = useSelector(state => state.ads)
+
     const dispatch = useDispatch()
 
     const onFinish = (values) => {
-        console.log(values);
         dispatch(ADS_POST_ASYNC(values))
+        form.resetFields();
+        setFileList([])
+        if (!loading) {
+            notify('Вы успешно добавили объявление!')
+        }
     };
 
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -65,7 +73,7 @@ const AntdForm = () => {
     };
 
     const validatePhoneNumber = (rule, value, callback) => {
-        const phoneNumberRegex = /^996\d{9}$/; // Регулярное выражение для формата номера телефона
+        const phoneNumberRegex = /^996\d{9}$/;
         if (!phoneNumberRegex.test(value)) {
             callback('Пожалуйста, введите номер телефона в формате: 996XXXXXXXXX');
         } else {
@@ -75,6 +83,8 @@ const AntdForm = () => {
 
     return (
         <>
+            {loading && <MyLoader/>}
+            <ToastContainer/>
             <Form
                 form={form}
                 name="min 992"
@@ -447,17 +457,22 @@ const AntdForm = () => {
                         />
                     </Form.Item>
                 </HocAdaptiveWrapper>
-                <label className={cls.label__form}>
-                    Примечание от владельца / агента (* не отображается в интерфейсе
-                    гостей)
-                </label>
-                <TextArea/>
+                <Form.Item
+                    name="agentNote"
+                >
+                    <label className={cls.label__form}>
+                        Примечание от владельца / агента (* не отображается в интерфейсе
+                        гостей)
+                    </label>
+                    <TextArea/>
+                </Form.Item>
                 <Form.Item
                     name="Upload"
                     rules={[{required: true, message: "Загрузите фото"}]}
                 >
                     <label className={cls.label__form}> Фото</label>
-                    <UploadComponent handleValueUpload={handleValueUpload} fileList={fileList} setFileList={setFileList}/>
+                    <UploadComponent handleValueUpload={handleValueUpload} fileList={fileList}
+                                     setFileList={setFileList}/>
                 </Form.Item>
                 <Form.Item>
                     <Button style={{width: "100%"}} type="primary" htmlType="submit">

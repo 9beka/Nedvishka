@@ -8,6 +8,7 @@ import cls from './RegisterPage.module.scss'
 import {REGISTER_ASYNC} from "../../../app/providers/Redux/actions/actions";
 import {Link, useNavigate} from "react-router-dom";
 import {MyAlert, MyLoader} from "../../../shared/ui";
+import {ToastContainer} from "react-toastify";
 
 const RegisterPage = () => {
     const {showAlert} = useSelector(state => state.alert)
@@ -41,6 +42,8 @@ const RegisterPage = () => {
         <>
             {loading && <MyLoader/>}
             {showAlert && <MyAlert message={'Чтобы добавить объявление, пожалуйста зарегистрируйтесь!'} type={'info'}/>}
+
+            <ToastContainer/>
 
 
             <div className={cls.register}>

@@ -1,28 +1,28 @@
 import {lazy} from "react";
+import {MyAdsPage} from "../../../pages";
 
-// const MainPage = lazy(() => import("../../../pages/MainPage/ui/MainPage"));
 const AboutPage = lazy(() => import("../../../pages/AboutPage/AboutPage"));
 const AdsPage = lazy(() => import("../../../pages/AdsPage/AdsPage"));
 
 
 
 export const AppRoutes = {
-    // MAIN: "main",
+    MYADS: "myAds",
     ABOUT: 'about',
     ADS:"ads" ,
 }
 
 export const RoutePath = {
-    // [AppRoutes.MAIN]: "/",
+    [AppRoutes.MYADS]: "/myAds",
     [AppRoutes.ABOUT]: '/about' ,
     [AppRoutes.ADS]: '/ads',
 }
 
 export const routeConfig = {
-   /* [AppRoutes.MAIN]: {
-        path: RoutePath.main,
-        element: <MainPage/>
-    },*/
+   [AppRoutes.MYADS]: {
+        path: RoutePath.myAds,
+        element: <MyAdsPage/>
+    },
     [AppRoutes.ABOUT]: {
         path: RoutePath.about,
         element: <AboutPage/>

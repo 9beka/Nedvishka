@@ -7,13 +7,12 @@ import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import {classNames} from "../../../shared/helpers";
 import {slide as Menu} from 'react-burger-menu';
 import {PlusOutlined} from "@ant-design/icons";
-import {useDispatch} from "react-redux";
-import {setAlert} from "../../../app/providers/Redux/Slices/alertSlicer";
+import { toast } from 'react-toastify';
+
 
 
 const Header = () => {
 
-    const dispatch = useDispatch()
     const token = localStorage.getItem('token')
 
     const renderLinks = [
@@ -26,8 +25,8 @@ const Header = () => {
             to: '/about'
         },
         {
-            name: 'Услуги',
-            to: ''
+            name: 'Мои объявления',
+            to: '/myAds'
         },
         {
             name: 'Контакты',
@@ -52,20 +51,13 @@ const Header = () => {
         };
     }, []);
 
-    // const showSettings = (event) => {
-    //     event.preventDefault();
-    // };
-
-    const handleClick = () => {
-        dispatch(setAlert(true))
-        setTimeout(() => dispatch(setAlert(false)), 5000)
-    }
-
     const bmButton = document.querySelector('.bm-cross-button');
 
     bmButton?.addEventListener('click', () => {
         setOpen(false);
     });
+
+    const notify = (title) => toast.info(title);
 
 
 
@@ -86,8 +78,8 @@ const Header = () => {
                                         {renderLinks.map(el => (
                                             <Link key={el.name} onClick={() => {
                                                 if (el.name === 'О компании') {
-                                                    handleClick();
                                                     setOpen(false);
+                                                    notify("Пожалуйства зарегистрируйтесь, чтобы посмотреть вкладку 'О компании'!")
                                                 } else {
                                                     setOpen(false);
                                                 }
@@ -98,8 +90,8 @@ const Header = () => {
 
                                     <div className={classNames('header__right-add-btn')}>
                                         <button className={classNames('header__btn')} onClick={() => {
-                                            handleClick();
                                             setOpen(false);
+                                            notify('Пожалуйста зарегистрируйтесь, чтобы добавить объявление!')
                                         }}
                                         ><span><PlusOutlined/></span><Link
                                             to={`${token ? '/ads' : '/register'}`}>Добавить объявление</Link></button>
@@ -127,8 +119,8 @@ const Header = () => {
                                 {renderLinks.map(el => (
                                     <Link key={el.name} className={classNames('header__links')} onClick={() => {
                                         if (el.name === 'О компании') {
-                                            handleClick();
                                             setOpen(false);
+                                            notify("Пожалуйства зарегистрируйтесь, чтобы посмотреть вкладку 'О компании'!")
                                         } else {
                                             setOpen(false);
                                         }
@@ -152,10 +144,10 @@ const Header = () => {
                                 <div className={classNames('header__right-add-btn')}>
 
                                     {windowWidth <= 992
-                                        ? <button className={classNames('header__btn')} onClick={handleClick}><Link
+                                        ? <button className={classNames('header__btn')} onClick={()=>notify('Пожалуйста зарегистрируйтесь, чтобы добавить объявление!')}><Link
                                             to={`${token ? '/ads' : '/register'}`}><PlusOutlined/></Link>
                                         </button>
-                                        : <button className={classNames('header__btn')} onClick={handleClick}><span><PlusOutlined/></span><Link
+                                        : <button className={classNames('header__btn')} onClick={()=>notify('Пожалуйста зарегистрируйтесь, чтобы добавить объявление!')}><span><PlusOutlined/></span><Link
                                             to={`${token ? '/ads' : '/register'}`}>Добавить объявление</Link></button>}
                                 </div>
                             </div>

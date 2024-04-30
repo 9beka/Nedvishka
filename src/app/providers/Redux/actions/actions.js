@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
-import {ADS_POST_API, LOGIN_API, REGISTER_API} from "../../../../shared/config/api/api";
+import {ADS_GET_OWNERS_API, ADS_POST_API, LOGIN_API, REGISTER_API} from "../../../../shared/config/api/api";
 export const REGISTER_ASYNC = createAsyncThunk(
     'auth/REGISTER_ASYNC',
     async (userData, { rejectWithValue }) => {
@@ -38,6 +38,23 @@ export const ADS_POST_ASYNC = createAsyncThunk(
         try {
             const token = getState().auth.token;
             const response = await axios.post(ADS_POST_API, adsData,{
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
+            return response.data
+        } catch (e) {
+            return rejectWithValue(e.message)
+        }
+    },
+)
+
+export const ADS_GET_OWNERS_ASYNC = createAsyncThunk(
+    'ads/ADS_GET_OWNERS_ASYNC',
+    async (_, { rejectWithValue,getState  }) => {
+        try {
+            const token = getState().auth.token;
+            const response = await axios.get(ADS_GET_OWNERS_API,{
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }
