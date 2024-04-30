@@ -57,7 +57,9 @@ const Header = () => {
         setOpen(false);
     });
 
-    const notify = (title) => toast.info(title);
+
+
+    const notifyCheckToken = (title) => toast.info(title,{ containerId: 'check-token' });
 
 
 
@@ -79,7 +81,7 @@ const Header = () => {
                                             <Link key={el.name} onClick={() => {
                                                 if (el.name === 'О компании') {
                                                     setOpen(false);
-                                                    notify("Пожалуйства зарегистрируйтесь, чтобы посмотреть вкладку 'О компании'!")
+                                                    notifyCheckToken("Пожалуйства зарегистрируйтесь, чтобы посмотреть вкладку 'О компании'!")
                                                 } else {
                                                     setOpen(false);
                                                 }
@@ -91,7 +93,7 @@ const Header = () => {
                                     <div className={classNames('header__right-add-btn')}>
                                         <button className={classNames('header__btn')} onClick={() => {
                                             setOpen(false);
-                                            notify('Пожалуйста зарегистрируйтесь, чтобы добавить объявление!')
+                                            notifyCheckToken('Пожалуйста зарегистрируйтесь, чтобы добавить объявление!')
                                         }}
                                         ><span><PlusOutlined/></span><Link
                                             to={`${token ? '/ads' : '/register'}`}>Добавить объявление</Link></button>
@@ -120,7 +122,7 @@ const Header = () => {
                                     <Link key={el.name} className={classNames('header__links')} onClick={() => {
                                         if (el.name === 'О компании') {
                                             setOpen(false);
-                                            notify("Пожалуйства зарегистрируйтесь, чтобы посмотреть вкладку 'О компании'!")
+                                            notifyCheckToken("Пожалуйства зарегистрируйтесь, чтобы посмотреть вкладку 'О компании'!")
                                         } else {
                                             setOpen(false);
                                         }
@@ -144,10 +146,10 @@ const Header = () => {
                                 <div className={classNames('header__right-add-btn')}>
 
                                     {windowWidth <= 992
-                                        ? <button className={classNames('header__btn')} onClick={()=>notify('Пожалуйста зарегистрируйтесь, чтобы добавить объявление!')}><Link
+                                        ? <button className={classNames('header__btn')} onClick={()=>notifyCheckToken('Пожалуйста зарегистрируйтесь, чтобы добавить объявление!')}><Link
                                             to={`${token ? '/ads' : '/register'}`}><PlusOutlined/></Link>
                                         </button>
-                                        : <button className={classNames('header__btn')} onClick={()=>notify('Пожалуйста зарегистрируйтесь, чтобы добавить объявление!')}><span><PlusOutlined/></span><Link
+                                        : <button className={classNames('header__btn')} onClick={()=>notifyCheckToken('Пожалуйста зарегистрируйтесь, чтобы добавить объявление!')}><span><PlusOutlined/></span><Link
                                             to={`${token ? '/ads' : '/register'}`}>Добавить объявление</Link></button>}
                                 </div>
                             </div>

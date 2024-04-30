@@ -26,18 +26,17 @@ const AntdForm = () => {
     const {Option} = Select;
     const [form] = Form.useForm();
 
-    const notify = (title) => toast.success(title);
+    const notifySuccessAddAds = (title) => toast.success(title);
     const {loading} = useSelector(state => state.ads)
 
     const dispatch = useDispatch()
 
     const onFinish = (values) => {
+        console.log(values)
         dispatch(ADS_POST_ASYNC(values))
         form.resetFields();
         setFileList([])
-        if (!loading) {
-            notify('Вы успешно добавили объявление!')
-        }
+        notifySuccessAddAds('Вы успешно добавили объявление!',{ containerId: 'success-add-ads' })
     };
 
     const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -53,7 +52,6 @@ const AntdForm = () => {
     }, []);
 
     const handleValueRooms = (e) => {
-        console.log(e?.target?.value);
         form.setFieldsValue({Rooms: e?.target?.value});
     };
 
@@ -81,10 +79,12 @@ const AntdForm = () => {
         }
     };
 
+
+
     return (
         <>
             {loading && <MyLoader/>}
-            <ToastContainer/>
+            <ToastContainer enableMultiContainer containerId={'success-add-ads'}/>
             <Form
                 form={form}
                 name="min 992"
