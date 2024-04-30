@@ -111,8 +111,8 @@ const AntdForm = () => {
                             allowClear
                             onChange={(value) => form.setFieldsValue({typeOfDeal: value})}
                         >
-                            <Option value="secondary">Продажа</Option>
-                            <Option value="houses">Аренда</Option>
+                            <Option value="Продажа">Продажа</Option>
+                            <Option value="Аренда">Аренда</Option>
                         </Select>
                     </Form.Item>
                     <Form.Item
@@ -126,7 +126,7 @@ const AntdForm = () => {
                             onChange={(value) => form.setFieldsValue({TipNedvishki: value})}
                         >
                             {typeNedvishki.map((el) => (
-                                <Option key={el.name} value={el.value}>
+                                <Option key={el.name} value={el.name}>
                                     {el.name}
                                 </Option>
                             ))}
@@ -168,7 +168,7 @@ const AntdForm = () => {
                             allowClear
                         >
                             {floorsArray.map((el) => (
-                                <Option key={el.name} value={el.value}>
+                                <Option key={el.name} value={el.name}>
                                     {el.name}
                                 </Option>
                             ))}
@@ -297,7 +297,7 @@ const AntdForm = () => {
                             onChange={(value) => form.setFieldsValue({Sostoyanie: value})}
                         >
                             {stateData.map((el) => (
-                                <Option key={el.name} value={el.value}>
+                                <Option key={el.name} value={el.name}>
                                     {el.name}
                                 </Option>
                             ))}
@@ -314,7 +314,7 @@ const AntdForm = () => {
                             onChange={(value) => form.setFieldsValue({Documents: value})}
                         >
                             {documents.map((el) => (
-                                <Option key={el.name} value={el.value}>
+                                <Option key={el.name} value={el.name}>
                                     {el.name}
                                 </Option>
                             ))}
@@ -337,7 +337,7 @@ const AntdForm = () => {
                             onChange={(value) => form.setFieldsValue({communication: value})}
                         >
                             {communications.map((el) => (
-                                <Option key={el.name} value={el.value}>
+                                <Option key={el.name} value={el.name}>
                                     {el.name}
                                 </Option>
                             ))}
@@ -354,7 +354,7 @@ const AntdForm = () => {
                             onChange={(value) => form.setFieldsValue({TypeOffer: value})}
                         >
                             {ownersOfHouse.map((el) => (
-                                <Option key={el.name} value={el.value}>
+                                <Option key={el.name} value={el.name}>
                                     {el.name}
                                 </Option>
                             ))}
@@ -371,7 +371,7 @@ const AntdForm = () => {
                             onChange={(value) => form.setFieldsValue({furniture: value})}
                         >
                             {furnitures.map((el) => (
-                                <Option key={el.name} value={el.value}>
+                                <Option key={el.name} value={el.name}>
                                     {el.name}
                                 </Option>
                             ))}
@@ -388,7 +388,7 @@ const AntdForm = () => {
                             onChange={(value) => form.setFieldsValue({Payment: value})}
                         >
                             {paymentOption.map((el) => (
-                                <Option key={el.name} value={el.value}>
+                                <Option key={el.name} value={el.name}>
                                     {el.name}
                                 </Option>
                             ))}
@@ -405,7 +405,7 @@ const AntdForm = () => {
                             onChange={(value) => form.setFieldsValue({StatusObject: value})}
                         >
                             {statusObject.map((el) => (
-                                <Option key={el.name} value={el.value}>
+                                <Option key={el.name} value={el.name}>
                                     {el.name}
                                 </Option>
                             ))}
