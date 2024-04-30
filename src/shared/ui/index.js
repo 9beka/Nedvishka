@@ -8,6 +8,7 @@ import InputMinMax from "./InputMinMax/InputMinMax";
 import MyLoader from './MyLoader/MyLoader'
 import MyAlert from "./MyAlert/MyAlert";
 import UploadComponent from './Upload/UploadComponent';
+import MyAdsCard from "./MyAdsCard/MyAdsCard";
 
 export {
     Button,
@@ -21,5 +22,6 @@ export {
     ShowButton,
     MyLoader,
     MyAlert ,
-    UploadComponent
+    UploadComponent,
+    MyAdsCard
 }

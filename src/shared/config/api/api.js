@@ -10,3 +10,5 @@ export const REGISTER_API = AUTH_API + 'register'
 export const LOGIN_API = AUTH_API + 'login'
 
 export const ADS_POST_API = ADS_API + 'post'
+
+export const ADS_GET_OWNERS_API = ADS_API + 'getOwners'

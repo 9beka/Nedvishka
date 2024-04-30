@@ -1,4 +1,3 @@
-// noinspection JSCheckFunctionSignatures
 
 import React, {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
@@ -7,7 +6,8 @@ import {renderItemForm} from "../../../shared/constants";
 import cls from './RegisterPage.module.scss'
 import {REGISTER_ASYNC} from "../../../app/providers/Redux/actions/actions";
 import {Link, useNavigate} from "react-router-dom";
-import {MyAlert, MyLoader} from "../../../shared/ui";
+import {MyLoader} from "../../../shared/ui";
+import {ToastContainer} from "react-toastify";
 
 const RegisterPage = () => {
     const {showAlert} = useSelector(state => state.alert)
@@ -40,7 +40,9 @@ const RegisterPage = () => {
     return (
         <>
             {loading && <MyLoader/>}
-            {showAlert && <MyAlert message={'Чтобы добавить объявление, пожалуйста зарегистрируйтесь!'} type={'info'}/>}
+
+            <ToastContainer enableMultiContainer containerId={'check-token'}/>
+
 
 
             <div className={cls.register}>
