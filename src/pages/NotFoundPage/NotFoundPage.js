@@ -1,7 +1,7 @@
 import React from 'react';
 import { Parallax } from 'react-parallax';
 import styles from './NotFoundPage.module.scss';
-
+import {Link} from "react-router-dom";
 const NotFoundPage = () => {
     return (
         <Parallax>
@@ -45,7 +45,7 @@ const NotFoundPage = () => {
                     <div className={styles.text}>
                         <article>
                             <p>Uh oh! Looks like you got lost. <br/>Go back to the homepage if you dare!</p>
-                            <button>i dare!</button>
+                            <button><Link to={"/"}>i dare!</Link></button>
                         </article>
                     </div>
                 </div>

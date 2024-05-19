@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
-import {ADS_GET_OWNERS_API, ADS_POST_API, LOGIN_API, REGISTER_API} from "../../../../shared/config/api/api";
+import {ADS_GET_OWNERS_API, ADS_POST_API, LOGIN_API, REGISTER_API ,ADS_DELETE_OWNERS_API} from "../../../../shared/config/api/api";
 export const REGISTER_ASYNC = createAsyncThunk(
     'auth/REGISTER_ASYNC',
     async (userData, { rejectWithValue }) => {
@@ -64,4 +64,25 @@ export const ADS_GET_OWNERS_ASYNC = createAsyncThunk(
             return rejectWithValue(e.message)
         }
     },
+)
+export const ADS_DELETE_ASYNC = createAsyncThunk(
+    'ads/ADS_DELETE_ASYNC' ,
+    async({id ,userId ,card_Id} , {rejectWithValue ,dispatch, getState  }) =>{
+        try {
+            console.log('ID:', id);
+            console.log('Owner ID:', userId);
+            console.log('card_Id:', card_Id);
+            const token = getState().auth.token;
+            const response = await axios.delete(`${ADS_DELETE_OWNERS_API}${id}`,{
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }, 
+                data:{userId , card_Id}
+            })
+            dispatch(ADS_GET_OWNERS_ASYNC())
+            return response.data
+        } catch (e) {
+            return rejectWithValue(e.message)
+        }
+    }
 )

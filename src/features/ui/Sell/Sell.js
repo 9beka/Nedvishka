@@ -39,7 +39,7 @@ const Sell = () => {
         <h1 className={`${cls.sell__p} title`}>Срочная продажа</h1>
         <div className={cls.sell__wrapper}>
           {renderApiSlides.map((slide) => (
-            <div className={`${cls.card} card-gsap`}>
+            <div key={slide.id} className={`${cls.card} card-gsap`}>
               <img className={cls.image__house} src={slide.img} alt="image of card" />
               <p className={cls.apartment__p}>{slide.apartment}</p>
               <p className={cls.geo__p}>{slide.geo}</p>

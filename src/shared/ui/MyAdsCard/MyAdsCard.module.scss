@@ -5,13 +5,10 @@
     padding: 20px;
     border: 2px solid teal;
   }
-  .myAdsCard-image-wrapper {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
-    align-items: center;
-    height: 200px;
-    img {
-      width: 100%;
-    }
-  }
+  // .myAdsCard-image-wrapper {
+  //   display: grid;
+  //   grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
+  //   align-items: center;
+  //   height: 200px;
+  // }
 }

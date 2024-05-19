@@ -8,7 +8,7 @@ function MyAdsPage() {
 
     const dispatch = useDispatch()
     const {myAdsCart,loading} = useSelector(state => state.ads)
-    console.log(myAdsCart)
+    console.log(myAdsCart.userId)
 
     useEffect(() => {
         dispatch(ADS_GET_OWNERS_ASYNC())
@@ -17,7 +17,7 @@ function MyAdsPage() {
 
 
     const renderCards = myAdsCart && myAdsCart.items
-        ? myAdsCart.items.map(item => <MyAdsCard key={item._id} item={item} />)
+        ? myAdsCart.items.map(item => <MyAdsCard key={item._id} item={item} userId={myAdsCart.userId} />)
         : null;    return (
         <>
             {loading && <MyLoader/>}
