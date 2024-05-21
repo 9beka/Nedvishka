@@ -3,10 +3,12 @@ import {
   ADS_POST_ASYNC,
   ADS_GET_OWNERS_ASYNC,
   GET_CONVERTER,
+  ADS_GET_CARTS_ASYNC
 } from "../actions/actions";
 
 const initialState = {
   myAdsCart: {},
+  dataOfAds: [] ,
   loading: false,
   error: null,
   converter: {},
@@ -45,6 +47,20 @@ const adsSlicer = createSlice({
         state.error = action.payload
           ? action.payload.message
           : "Card add failed";
+      })
+      .addCase(ADS_GET_CARTS_ASYNC.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(ADS_GET_CARTS_ASYNC.fulfilled, (state, action) => {
+        state.loading = false;
+        state.dataOfAds = action.payload;
+      })
+      .addCase(ADS_GET_CARTS_ASYNC.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload
+          ? action.payload.message
+          : "Card get failed";
       })
 
       .addCase(GET_CONVERTER.pending, (state) => {

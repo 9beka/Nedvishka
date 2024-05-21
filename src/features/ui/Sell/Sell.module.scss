@@ -69,8 +69,7 @@
 
   .sell__wrapper {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-auto-rows: auto;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 300px));
     gap: 20px;
   }
 

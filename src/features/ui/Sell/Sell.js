@@ -1,6 +1,6 @@
-import React, { useLayoutEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import cls from "./Sell.module.scss";
-import { Button } from "../../../shared/ui";
+import { Button, MyAdsCard } from "../../../shared/ui";
 import { renderApiSlides } from "../../../shared/constants";
 import {
   HeartOutlined,
@@ -9,8 +9,18 @@ import {
 } from "@ant-design/icons";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useSelector ,useDispatch } from "react-redux";
+import { ADS_GET_CARTS_ASYNC, GET_CONVERTER } from "../../../app/providers/Redux/actions/actions";
 
 const Sell = () => {
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    dispatch(ADS_GET_CARTS_ASYNC())
+    dispatch(GET_CONVERTER())
+  },[dispatch])
+  const {dataOfAds,converter} = useSelector(state=>state.ads)
+
+console.log(converter);
   gsap.registerPlugin(ScrollTrigger);
 
   useLayoutEffect(() => {
@@ -38,26 +48,8 @@ const Sell = () => {
       <div className="wrapper">
         <h1 className={`${cls.sell__p} title`}>Срочная продажа</h1>
         <div className={cls.sell__wrapper}>
-          {renderApiSlides.map((slide) => (
-            <div key={slide.id} className={`${cls.card} card-gsap`}>
-              <img
-                className={cls.image__house}
-                src={slide.img}
-                alt="image of card"
-              />
-              <p className={cls.apartment__p}>{slide.apartment}</p>
-              <p className={cls.geo__p}>{slide.geo}</p>
-              <p className={cls.price__p}>{slide.price}</p>
-              <div className={cls.footer__slide}>
-                <img src={slide.avatar} alt="" />
-                <p className={cls.phone__p}>{slide.phone}</p>
-              </div>
-              <div className={cls.footer__slide}>
-                <WhatsAppOutlined />
-                <ShareAltOutlined />
-                <HeartOutlined />
-              </div>
-            </div>
+          {dataOfAds.map((item) => (
+           <MyAdsCard converter={converter} item={item}/>
           ))}
         </div>
 

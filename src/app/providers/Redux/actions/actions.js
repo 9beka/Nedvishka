@@ -6,6 +6,7 @@ import {
   LOGIN_API,
   REGISTER_API,
   ADS_DELETE_OWNERS_API,
+  ADS_GET_API,
 } from "../../../../shared/config/api/api";
 export const REGISTER_ASYNC = createAsyncThunk(
   "auth/REGISTER_ASYNC",
@@ -37,10 +38,11 @@ export const LOGIN_ASYNC = createAsyncThunk(
 
 export const ADS_POST_ASYNC = createAsyncThunk(
   "ads/ADS_POST_ASYNC",
-  async (adsData, { rejectWithValue, getState }) => {
+  async (formData, { rejectWithValue, getState }) => {
+    console.log(formData);
     try {
       const token = getState().auth.token;
-      const response = await axios.post(ADS_POST_API, adsData, {
+      const response = await axios.post(ADS_POST_API, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -89,6 +91,18 @@ export const ADS_DELETE_ASYNC = createAsyncThunk(
     }
   }
 );
+export const ADS_GET_CARTS_ASYNC = createAsyncThunk(
+  "ads/ADS_GET_CARTS_ASYNC" ,
+  async(_, {rejectWithValue, dispatch}) =>{
+    try {
+      const response = await axios.get(ADS_GET_API)
+      console.log(response.data.card);
+      return response.data.card
+    } catch (e) {
+      return rejectWithValue(e.message);
+    }
+  }
+)
 export const GET_CONVERTER = createAsyncThunk(
   "ads/GET_CONVERTER",
   async (_, { rejectWithValue }) => {
