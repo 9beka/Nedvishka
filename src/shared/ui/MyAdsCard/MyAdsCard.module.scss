@@ -1,14 +1,54 @@
-
-.myAdsCard {
-  border: 2px solid teal;
-  .myAdsCard-content {
-    padding: 20px;
-    border: 2px solid teal;
+  .card:hover {
+    transform: translateY(-10px);
   }
-  // .myAdsCard-image-wrapper {
-  //   display: grid;
-  //   grid-template-columns: repeat(auto-fit, minmax(10px, 1fr));
-  //   align-items: center;
-  //   height: 200px;
-  // }
-}
+
+  .card {
+    padding: 20px;
+    margin:0;
+    background: whitesmoke;
+    transition: all 0.3s;
+
+    img {
+      width: 100%;
+    }
+
+    .image__house {
+      height: 150px;
+    }
+
+    p {
+      font-size: 20px;
+    }
+
+    .geo__p {
+      color: cornflowerblue;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    .price__p {
+      font-weight: bold;
+      font-size: 1.325em;
+    }
+
+    .footer__slide {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+
+      .contact__icons {
+        width: 10%;
+        cursor: pointer;
+      }
+
+      p {
+        margin: 0;
+        font-size: 1.1em;
+      }
+
+      img {
+        width: 20%;
+      }
+    }
+  }

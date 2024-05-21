@@ -26,19 +26,71 @@ const AntdForm = () => {
   const { Option } = Select;
   const [form] = Form.useForm();
 
-  const notifySuccessAddAds = (title) => toast.success(title);
+  const [textAreaValue, setTextAreaValue] = useState("");
+  const [transactionType, setTransactionType] = useState("");
+  const [propertyType, setPropertyType] = useState("");
+  const [rooms, setRooms] = useState(null);
+  const [area, setArea] = useState("");
+  const [floor, setFloor] = useState("");
+  const [totalFloor, setTotalFloor] = useState("");
+  const [yourName, setYourName] = useState("");
+  const [ownersPhoneNumber, setOwnersPhoneNumber] = useState("");
+  const [districts, setDistricts] = useState([]);
+  const [streetCrossing, setStreetCrossing] = useState("");
+  const [state, setState] = useState("");
+  const [documentation, setDocumentation] = useState("");
+  const [communicationsState, setCommunicationsState] = useState([]);
+  const [typeOfSentence, setTypeOfSentence] = useState("");
+  const [furniture, setFurniture] = useState("");
+  const [paymentType, setPaymentType] = useState("");
+  const [objectStatus, setObjectStatus] = useState("");
+  const [priceSom, setPriceSom] = useState("");
+
+  console.log(rooms);
+
+  const handleTextAreaChange = (e) => {
+    setTextAreaValue(e.target.value);
+  };
+
+  const handleButtonClick = () => {
+    const newText = `
+    Тип сделки: ${transactionType}
+    Тип недвижимости: ${propertyType}
+    Комнаты: ${rooms}
+    Площадь: ${area} м2
+    Этаж: ${floor} / ${totalFloor}
+    Ваше имя: ${yourName}
+    Телефон владельца: +${ownersPhoneNumber}
+    Районы: ${districts}
+    Пересечение улиц: ${streetCrossing}
+    Состояние: ${state}
+    Документы: ${documentation}
+    Коммуникации: ${communicationsState}
+    Тип предложения: ${typeOfSentence}
+    Мебель: ${furniture}
+    Вид платежа: ${paymentType}
+    Статус объекта: ${objectStatus}
+    Цена: ${priceSom} сом`;
+    setTextAreaValue(textAreaValue + newText);
+  };
+
+  const notifySuccessAddAds = (title) =>
+    toast.success(title, {
+      containerId: "success-add-ads",
+    });
+
   const { loading } = useSelector((state) => state.ads);
 
   const dispatch = useDispatch();
 
   const onFinish = (values) => {
-    console.log(values);
     dispatch(ADS_POST_ASYNC(values));
     form.resetFields();
     setFileList([]);
-    notifySuccessAddAds("Вы успешно добавили объявление!", {
-      containerId: "success-add-ads",
-    });
+    setYourName("");
+    setTextAreaValue("");
+    notifySuccessAddAds("Вы успешно добавили объявление!");
+    console.log(values);
   };
 
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
@@ -54,17 +106,19 @@ const AntdForm = () => {
   }, []);
 
   const handleValueRooms = (e) => {
-    form.setFieldsValue({ Rooms: e?.target?.value });
+    console.log(e.target.value);
+    const value = e?.target?.value;
+    form.setFieldsValue({ Rooms: value });
+    setRooms(value);
   };
 
   const [fileList, setFileList] = useState([]);
 
-  const districtArray = [];
-
   const handleValueDistrict = (name) => {
-    if (!districtArray.includes(name)) {
-      districtArray.push(name);
+    if (!districts.includes(name)) {
+      const districtArray = [...districts, name];
       form.setFieldsValue({ Districts: districtArray });
+      setDistricts(districtArray);
     }
   };
 
@@ -81,10 +135,93 @@ const AntdForm = () => {
     }
   };
 
+  const transactionTypeFunction = (value) => {
+    form.setFieldsValue({ typeOfDeal: value });
+    setTransactionType(value);
+  };
+
+  const propertyTypeFunction = (value) => {
+    form.setFieldsValue({ TipNedvishki: value });
+    setPropertyType(value);
+  };
+
+  const areaFunction = (value) => {
+    form.setFieldsValue({ PloshadM2: value });
+    setArea(value);
+  };
+
+  const floorFunction = (value) => {
+    console.log(value);
+    form.setFieldsValue({ Floor: value });
+    setFloor(value);
+  };
+
+  const totalFloorFunction = (value) => {
+    form.setFieldsValue({ TotalFloor: value });
+    setTotalFloor(value);
+  };
+
+  const yourNameFunction = (e) => {
+    const value = e.target.value;
+    form.setFieldsValue({ ownerName: value });
+    setYourName(value);
+  };
+
+  const ownersPhoneNumberFunction = (value) => {
+    form.setFieldsValue({ TelNumber: value });
+    setOwnersPhoneNumber(value);
+  };
+
+  const streetCrossingFunction = (e) => {
+    const value = e.target.value;
+    form.setFieldsValue({ StreetAround: value });
+    setStreetCrossing(value);
+  };
+
+  const stateFunction = (value) => {
+    form.setFieldsValue({ Sostoyanie: value });
+    setState(value);
+  };
+
+  const documentationFunction = (value) => {
+    form.setFieldsValue({ Documents: value });
+    setDocumentation(value);
+  };
+
+  const communicationsStateFunction = (value) => {
+    form.setFieldsValue({ communication: value });
+    setCommunicationsState(value);
+  };
+
+  const typeOfSentenceFunction = (value) => {
+    form.setFieldsValue({ TypeOffer: value });
+    setTypeOfSentence(value);
+  };
+
+  const furnitureFunction = (value) => {
+    form.setFieldsValue({ furniture: value });
+    setFurniture(value);
+  };
+
+  const paymentTypeFunction = (value) => {
+    form.setFieldsValue({ Payment: value });
+    setPaymentType(value);
+  };
+
+  const objectStatusFunction = (value) => {
+    form.setFieldsValue({ StatusObject: value });
+    setObjectStatus(value);
+  };
+
+  const priceSomFunction = (value) => {
+    form.setFieldsValue({ PriceForm: value });
+    setPriceSom(value);
+  };
+
   return (
     <>
       {loading && <MyLoader />}
-      <ToastContainer enableMultiContainer containerId={"success-add-ads"} />
+      <ToastContainer containerId="success-add-ads" />
       <Form
         form={form}
         name="min 992"
@@ -105,12 +242,13 @@ const AntdForm = () => {
             <Select
               placeholder="Выберите из списка"
               allowClear
-              onChange={(value) => form.setFieldsValue({ typeOfDeal: value })}
+              onChange={(value) => transactionTypeFunction(value)}
             >
               <Option value="Продажа">Продажа</Option>
               <Option value="Аренда">Аренда</Option>
             </Select>
           </Form.Item>
+
           <Form.Item
             name="TipNedvishki"
             rules={[{ required: true, message: "Выберите тип недвижимости" }]}
@@ -119,7 +257,7 @@ const AntdForm = () => {
             <Select
               placeholder="Выберите"
               allowClear
-              onChange={(value) => form.setFieldsValue({ TipNedvishki: value })}
+              onChange={(value) => propertyTypeFunction(value)}
             >
               {typeNedvishki.map((el) => (
                 <Option key={el.name} value={el.name}>
@@ -128,13 +266,15 @@ const AntdForm = () => {
               ))}
             </Select>
           </Form.Item>
+
           <Form.Item
             name="Rooms"
             rules={[{ required: true, message: "Выберите количество комнат" }]}
           >
             <label className={cls.label__form}>Комнаты</label>
-            <RoomButton handleValueRooms={handleValueRooms} />
+            <RoomButton rooms={rooms} handleValueRooms={handleValueRooms} />
           </Form.Item>
+
           <Form.Item
             name="PloshadM2"
             rules={[
@@ -150,16 +290,17 @@ const AntdForm = () => {
               name="PloshadM2"
               placeholder="0"
               className={cls.AntdForm__InputNumber}
-              onChange={(value) => form.setFieldsValue({ PloshadM2: value })}
+              onChange={(value) => areaFunction(value)}
             />
           </Form.Item>
+
           <Form.Item
             name="Floor"
             rules={[{ required: true, message: "Выберите этаж" }]}
           >
             <label className={cls.label__form}>Этаж</label>
             <Select
-              onChange={(value) => form.setFieldsValue({ Floor: value })}
+              onChange={(value) => floorFunction(value)}
               placeholder="Выберите"
               allowClear
             >
@@ -170,6 +311,7 @@ const AntdForm = () => {
               ))}
             </Select>
           </Form.Item>
+
           <Form.Item
             name="TotalFloor"
             rules={[
@@ -185,7 +327,7 @@ const AntdForm = () => {
               name="TotalFloor"
               placeholder="0"
               className={cls.AntdForm__InputNumber}
-              onChange={(value) => form.setFieldsValue({ TotalFloor: value })}
+              onChange={(value) => totalFloorFunction(value)}
             />
           </Form.Item>
         </HocAdaptiveWrapper>
@@ -198,11 +340,11 @@ const AntdForm = () => {
           <Input
             style={{ border: "2px solid #6CA5DC" }}
             placeholder="Ваше имя"
-            onChange={(e) =>
-              form.setFieldsValue({ ownerName: e.target.defaultValue })
-            }
+            value={yourName}
+            onChange={(e) => yourNameFunction(e)}
           />
         </Form.Item>
+
         <HocAdaptiveWrapper screenWidth={screenWidth}>
           <Form.Item
             name="TelNumber"
@@ -224,9 +366,10 @@ const AntdForm = () => {
             <InputNumber
               placeholder="Введите номер владельца"
               className={cls.AntdForm__InputNumber}
-              onChange={(value) => form.setFieldsValue({ TelNumber: value })}
+              onChange={(value) => ownersPhoneNumberFunction(value)}
             />
           </Form.Item>
+
           <Form.Item
             name="additionTelNumber"
             rules={[
@@ -251,6 +394,7 @@ const AntdForm = () => {
               }}
             />
           </Form.Item>
+
           <Form.Item
             name="Districts"
             rules={[{ required: true, message: "Выберите район(ы)" }]}
@@ -261,6 +405,7 @@ const AntdForm = () => {
               data={nameOfMainDistrict}
             />
           </Form.Item>
+
           <Form.Item
             name="StreetAround"
             rules={[{ required: true, message: "Введите пересечение улиц" }]}
@@ -269,18 +414,19 @@ const AntdForm = () => {
             <Input
               placeholder="Введите пересечение улиц"
               className={cls.AntdForm__InputNumber}
-              onChange={(e) =>
-                form.setFieldsValue({ StreetAround: e.target.value })
-              }
+              onChange={(e) => streetCrossingFunction(e)}
             />
           </Form.Item>
         </HocAdaptiveWrapper>
+
         <Form.Item name="TagCoordination">
           <Button className={cls.AntdForm__marker__btn}>
             Разместите Маркер и адрес собственности
           </Button>
         </Form.Item>
+
         <MapOfCity />
+
         <HocAdaptiveWrapper screenWidth={screenWidth}>
           <Form.Item
             name="Sostoyanie"
@@ -290,7 +436,7 @@ const AntdForm = () => {
             <Select
               placeholder="Выберите"
               allowClear
-              onChange={(value) => form.setFieldsValue({ Sostoyanie: value })}
+              onChange={(value) => stateFunction(value)}
             >
               {stateData.map((el) => (
                 <Option key={el.name} value={el.name}>
@@ -299,6 +445,7 @@ const AntdForm = () => {
               ))}
             </Select>
           </Form.Item>
+
           <Form.Item
             name="Documents"
             rules={[{ required: true, message: "Выберите документы" }]}
@@ -307,7 +454,7 @@ const AntdForm = () => {
             <Select
               placeholder="Выберите"
               allowClear
-              onChange={(value) => form.setFieldsValue({ Documents: value })}
+              onChange={(value) => documentationFunction(value)}
             >
               {documents.map((el) => (
                 <Option key={el.name} value={el.name}>
@@ -316,6 +463,7 @@ const AntdForm = () => {
               ))}
             </Select>
           </Form.Item>
+
           <Form.Item
             name="communication"
             rules={[
@@ -330,9 +478,7 @@ const AntdForm = () => {
               mode={"multiple"}
               placeholder="Коммуникации"
               allowClear
-              onChange={(value) =>
-                form.setFieldsValue({ communication: value })
-              }
+              onChange={(value) => communicationsStateFunction(value)}
             >
               {communications.map((el) => (
                 <Option key={el.name} value={el.name}>
@@ -341,6 +487,7 @@ const AntdForm = () => {
               ))}
             </Select>
           </Form.Item>
+
           <Form.Item
             name="TypeOffer"
             rules={[{ required: true, message: "Выберите тип предложения" }]}
@@ -349,7 +496,7 @@ const AntdForm = () => {
             <Select
               placeholder="Выберите"
               allowClear
-              onChange={(value) => form.setFieldsValue({ TypeOffer: value })}
+              onChange={(value) => typeOfSentenceFunction(value)}
             >
               {ownersOfHouse.map((el) => (
                 <Option key={el.name} value={el.name}>
@@ -358,6 +505,7 @@ const AntdForm = () => {
               ))}
             </Select>
           </Form.Item>
+
           <Form.Item
             name="furniture"
             rules={[{ required: true, message: "Выберите наличие мебели" }]}
@@ -366,7 +514,7 @@ const AntdForm = () => {
             <Select
               placeholder="Выберите"
               allowClear
-              onChange={(value) => form.setFieldsValue({ furniture: value })}
+              onChange={(value) => furnitureFunction(value)}
             >
               {furnitures.map((el) => (
                 <Option key={el.name} value={el.name}>
@@ -375,6 +523,7 @@ const AntdForm = () => {
               ))}
             </Select>
           </Form.Item>
+
           <Form.Item
             name="Payment"
             rules={[{ required: true, message: "Выберите вид платежа" }]}
@@ -383,7 +532,7 @@ const AntdForm = () => {
             <Select
               placeholder="Выбрать"
               allowClear
-              onChange={(value) => form.setFieldsValue({ Payment: value })}
+              onChange={(value) => paymentTypeFunction(value)}
             >
               {paymentOption.map((el) => (
                 <Option key={el.name} value={el.name}>
@@ -392,6 +541,7 @@ const AntdForm = () => {
               ))}
             </Select>
           </Form.Item>
+
           <Form.Item
             name="StatusObject"
             rules={[{ required: true, message: "Выберите статус объекта" }]}
@@ -400,7 +550,7 @@ const AntdForm = () => {
             <Select
               placeholder="Выбрать"
               allowClear
-              onChange={(value) => form.setFieldsValue({ StatusObject: value })}
+              onChange={(value) => objectStatusFunction(value)}
             >
               {statusObject.map((el) => (
                 <Option key={el.name} value={el.name}>
@@ -410,37 +560,35 @@ const AntdForm = () => {
             </Select>
           </Form.Item>
         </HocAdaptiveWrapper>
+
         <label className={cls.label__form}>Описание</label>
         <Form.Item
           name="Texteditor"
           rules={[{ required: true, message: "Введите описание" }]}
         >
           <div className={cls.AntdForm__textArea__Wrapper}>
-            <Button className={cls.AntdForm__btn}>СОЗДАТЬ И ОПИСАНИЕ</Button>
-            <TextArea />
+            <Button className={cls.AntdForm__btn} onClick={handleButtonClick}>
+              СОЗДАТЬ ИИ ОПИСАНИЕ
+            </Button>
+            <TextArea value={textAreaValue} onChange={handleTextAreaChange} />
           </div>
         </Form.Item>
+
         <HocAdaptiveWrapper screenWidth={screenWidth}>
           <Form.Item
             name="PriceForm"
             rules={[{ required: true, message: "Введите цену" }]}
           >
-            <label className={cls.label__form}>
-              Цена в <span> </span>
-              <Switch
-                checkedChildren="СОМ"
-                unCheckedChildren="$"
-                defaultChecked
-              />
-            </label>
+            <label className={cls.label__form}>Цена</label>
             <InputNumber
               min={1}
               name="Price Form"
               placeholder="0"
               className={cls.AntdForm__InputNumber}
-              onChange={(value) => form.setFieldsValue({ PriceForm: value })}
+              onChange={(value) => priceSomFunction(value)}
             />
           </Form.Item>
+
           <Form.Item
             name="PriceOnHands"
             rules={[{ required: true, message: "Введите цену руки" }]}
@@ -455,6 +603,7 @@ const AntdForm = () => {
             />
           </Form.Item>
         </HocAdaptiveWrapper>
+
         <Form.Item name="agentNote">
           <label className={cls.label__form}>
             Примечание от владельца / агента (* не отображается в интерфейсе
@@ -462,6 +611,7 @@ const AntdForm = () => {
           </label>
           <TextArea />
         </Form.Item>
+
         <Form.Item
           name="Upload"
           rules={[{ required: true, message: "Загрузите фото" }]}
@@ -473,6 +623,7 @@ const AntdForm = () => {
             setFileList={setFileList}
           />
         </Form.Item>
+
         <Form.Item>
           <Button style={{ width: "100%" }} type="primary" htmlType="submit">
             Добавить объявление

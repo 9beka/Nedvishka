@@ -40,7 +40,11 @@ const Sell = () => {
         <div className={cls.sell__wrapper}>
           {renderApiSlides.map((slide) => (
             <div key={slide.id} className={`${cls.card} card-gsap`}>
-              <img className={cls.image__house} src={slide.img} alt="image of card" />
+              <img
+                className={cls.image__house}
+                src={slide.img}
+                alt="image of card"
+              />
               <p className={cls.apartment__p}>{slide.apartment}</p>
               <p className={cls.geo__p}>{slide.geo}</p>
               <p className={cls.price__p}>{slide.price}</p>
@@ -58,7 +62,7 @@ const Sell = () => {
         </div>
 
         <div className={`${cls.btn__wrap} button-gsap`}>
-          {<Button text="Посмотреть все" style="viewAll" />}
+          <Button text="Посмотреть все" style="viewAll" />
         </div>
       </div>
     </div>

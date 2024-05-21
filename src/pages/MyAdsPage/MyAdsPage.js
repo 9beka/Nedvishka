@@ -1,35 +1,51 @@
-import React, {useEffect} from 'react';
-import cls from './MyAdsPage.module.scss'
-import {useDispatch, useSelector} from "react-redux";
-import { MyLoader,MyAdsCard} from "../../shared/ui";
-import {ADS_GET_OWNERS_ASYNC} from "../../app/providers/Redux/actions/actions";
+import React, { useEffect } from "react";
+import cls from "./MyAdsPage.module.scss";
+import { useDispatch, useSelector } from "react-redux";
+import { MyLoader, MyAdsCard, AntdEmpty } from "../../shared/ui";
+import {
+  ADS_GET_OWNERS_ASYNC,
+  GET_CONVERTER,
+} from "../../app/providers/Redux/actions/actions";
 
 function MyAdsPage() {
+  const dispatch = useDispatch();
+  const { myAdsCart, loading, converter } = useSelector((state) => state.ads);
 
-    const dispatch = useDispatch()
-    const {myAdsCart,loading} = useSelector(state => state.ads)
-    console.log(myAdsCart.userId)
+  useEffect(() => {
+    dispatch(ADS_GET_OWNERS_ASYNC());
+    dispatch(GET_CONVERTER());
+  }, [dispatch]);
 
-    useEffect(() => {
-        dispatch(ADS_GET_OWNERS_ASYNC())
-    },[])
-
-
-
-    const renderCards = myAdsCart && myAdsCart.items
-        ? myAdsCart.items.map(item => <MyAdsCard key={item._id} item={item} userId={myAdsCart.userId} />)
-        : null;    return (
-        <>
-            {loading && <MyLoader/>}
-            <div className="container">
-                <div className={cls['myAdsPage']}>
-                    <div className={cls['myAdsPage-cardWrapper']}>{renderCards}</div>
-                </div>
-
-            </div>
-
-        </>
-    );
+  const renderCards =
+    myAdsCart && myAdsCart.items
+      ? myAdsCart.items.map((item) => (
+          <MyAdsCard
+            key={item._id}
+            item={item}
+            userId={myAdsCart.userId}
+            converter={converter}
+          />
+        ))
+      : null;
+  return (
+    <>
+      {loading && <MyLoader />}
+      <div className="container">
+        <div className={cls["myAdsPage"]}>
+          <div className={cls["myAdsPage-cardWrapper"]}>
+            {myAdsCart.items?.length === 0 ? (
+              <AntdEmpty
+                description="У Вас нет собственных объявлений!"
+                btn_text="Добавить объявление"
+              />
+            ) : (
+              renderCards
+            )}
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default MyAdsPage;
