@@ -112,8 +112,6 @@ const AntdForm = () => {
     setRooms(value);
   };
 
-  const [fileList, setFileList] = useState([]);
-
   const handleValueDistrict = (name) => {
     if (!districts.includes(name)) {
       const districtArray = [...districts, name];
