@@ -24,24 +24,24 @@ import { toast, ToastContainer } from "react-toastify";
 
 const AntdForm = () => {
   const { Option } = Select;
-  const [form] = Form.useForm();
-
+  const [form] = Form.useForm()
   const notifySuccessAddAds = (title) => toast.success(title);
   const { loading } = useSelector((state) => state.ads);
-
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const dispatch = useDispatch();
+  const [fileList, setFileList] = useState([]);
+  const districtArray = [];
 
   const onFinish = (values) => {
     console.log(values);
     dispatch(ADS_POST_ASYNC(values));
-    form.resetFields();
+    // form.resetFields();
     setFileList([]);
     notifySuccessAddAds("Вы успешно добавили объявление!", {
       containerId: "success-add-ads",
     });
   };
 
-  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   useEffect(() => {
     const handleResize = () => {
@@ -57,9 +57,6 @@ const AntdForm = () => {
     form.setFieldsValue({ Rooms: e?.target?.value });
   };
 
-  const [fileList, setFileList] = useState([]);
-
-  const districtArray = [];
 
   const handleValueDistrict = (name) => {
     if (!districtArray.includes(name)) {

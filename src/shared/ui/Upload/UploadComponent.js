@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {PlusOutlined} from '@ant-design/icons';
 import {Image, Upload} from 'antd';
+import { ADS_POST_API } from '../../config/api/api';
 
 const getBase64 = (file) =>
     new Promise((resolve, reject) => {
@@ -49,6 +50,9 @@ const UploadComponent = ({fileList, setFileList, handleValueUpload}) => {
             <Upload
                 action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
                 listType="picture-card"
+                type="file"
+                multiple
+                accept='image/*'
                 fileList={fileList}
                 onPreview={handlePreview}
                 onChange={handleChange}
