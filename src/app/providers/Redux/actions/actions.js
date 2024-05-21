@@ -7,6 +7,7 @@ import {
   REGISTER_API,
   ADS_DELETE_OWNERS_API,
   ADS_GET_API,
+  GET_PROFILE_API,
 } from "../../../../shared/config/api/api";
 export const REGISTER_ASYNC = createAsyncThunk(
   "auth/REGISTER_ASYNC",
@@ -74,9 +75,6 @@ export const ADS_DELETE_ASYNC = createAsyncThunk(
   "ads/ADS_DELETE_ASYNC",
   async ({ id, userId, card_Id }, { rejectWithValue, dispatch, getState }) => {
     try {
-      console.log("ID:", id);
-      console.log("Owner ID:", userId);
-      console.log("card_Id:", card_Id);
       const token = getState().auth.token;
       const response = await axios.delete(`${ADS_DELETE_OWNERS_API}${id}`, {
         headers: {
@@ -113,6 +111,25 @@ export const GET_CONVERTER = createAsyncThunk(
         },
       });
       return response.data;
+    } catch (e) {
+      return rejectWithValue(e.message);
+    }
+  }
+);
+
+export const GET_PROFILE = createAsyncThunk(
+  "profile/GET_PROFILE",
+  async (_, { rejectWithValue, getState }) => {
+    try {
+      const token = getState().auth.token;
+
+      const response = await axios.get(GET_PROFILE_API, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      return response.data.user;
     } catch (e) {
       return rejectWithValue(e.message);
     }

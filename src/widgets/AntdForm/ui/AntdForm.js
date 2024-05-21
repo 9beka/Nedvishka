@@ -79,11 +79,14 @@ const AntdForm = () => {
       containerId: "success-add-ads",
     });
 
+  const notifyErrorAddAds = (title) =>
+    toast.error(title, {
+      containerId: "error-add-ads",
+    });
   const { loading } = useSelector((state) => state.ads);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const dispatch = useDispatch();
   const [fileList, setFileList] = useState([]);
-  const districtArray = [];
 
   const onFinish = (values) => {
     dispatch(ADS_POST_ASYNC(values));
@@ -220,10 +223,15 @@ const AntdForm = () => {
     <>
       {loading && <MyLoader />}
       <ToastContainer containerId="success-add-ads" />
+      <ToastContainer containerId="error-add-ads" />
+
       <Form
         form={form}
         name="min 992"
         onFinish={onFinish}
+        onError={() =>
+          notifySuccessAddAds("Произошла ошибка при добавлении объявления!")
+        }
         className={cls.AntdForm__form}
         style={{
           maxWidth: `${
@@ -368,19 +376,7 @@ const AntdForm = () => {
             />
           </Form.Item>
 
-          <Form.Item
-            name="additionTelNumber"
-            rules={[
-              {
-                required: true,
-                message: "Введите дополнительный номер владельца",
-              },
-              {
-                type: "number",
-                message: "Введите номер в числовом формате",
-              },
-            ]}
-          >
+          <Form.Item name="additionTelNumber">
             <label className={cls.label__form}>
               Дополнительный телефон владельца
             </label>
@@ -619,6 +615,7 @@ const AntdForm = () => {
             handleValueUpload={handleValueUpload}
             fileList={fileList}
             setFileList={setFileList}
+            maxFiles={10}
           />
         </Form.Item>
 
