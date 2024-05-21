@@ -1,5 +1,5 @@
 import { lazy } from "react";
-import { MyAdsPage } from "../../../pages";
+import { DetailsPage, MyAdsPage } from "../../../pages";
 
 const AboutPage = lazy(() => import("../../../pages/AboutPage/AboutPage"));
 const AdsPage = lazy(() => import("../../../pages/AdsPage/AdsPage"));
@@ -9,6 +9,7 @@ export const AppRoutes = {
   ABOUT: "about",
   ADS: "ads",
   ALLADS: "allAds",
+  DETAILS: "details",
 };
 
 export const RoutePath = {
@@ -16,6 +17,7 @@ export const RoutePath = {
   [AppRoutes.ABOUT]: "/about",
   [AppRoutes.ADS]: "/ads",
   [AppRoutes.ALLADS]: "/allAds",
+  [AppRoutes.DETAILS]: "/details/:id",
 };
 
 export const routeConfig = {
@@ -34,5 +36,9 @@ export const routeConfig = {
   [AppRoutes.ALLADS]: {
     path: RoutePath.allads,
     element: <AdsPage />,
+  },
+  [AppRoutes.DETAILS]: {
+    path: RoutePath.details,
+    element: <DetailsPage />,
   },
 };
