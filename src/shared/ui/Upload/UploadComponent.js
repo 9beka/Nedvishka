@@ -15,6 +15,7 @@ const UploadComponent = ({ fileList, setFileList, handleValueUpload }) => {
   const [previewImage, setPreviewImage] = useState("");
 
   const handlePreview = async (file) => {
+    console.log(fileList);
     if (!file.url && !file.preview) {
       file.preview = await getBase64(file.originFileObj);
     }
