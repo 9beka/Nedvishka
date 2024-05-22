@@ -8,6 +8,8 @@ import {
   ADS_DELETE_OWNERS_API,
   ADS_GET_API,
   GET_PROFILE_API,
+  UPDATE_IMAGE_PROFILE_API,
+  DELETE_IMAGE_PROFILE_API,
 } from "../../../../shared/config/api/api";
 export const REGISTER_ASYNC = createAsyncThunk(
   "auth/REGISTER_ASYNC",
@@ -90,17 +92,17 @@ export const ADS_DELETE_ASYNC = createAsyncThunk(
   }
 );
 export const ADS_GET_CARTS_ASYNC = createAsyncThunk(
-  "ads/ADS_GET_CARTS_ASYNC" ,
-  async(_, {rejectWithValue, dispatch}) =>{
+  "ads/ADS_GET_CARTS_ASYNC",
+  async (_, { rejectWithValue, dispatch }) => {
     try {
-      const response = await axios.get(ADS_GET_API)
+      const response = await axios.get(ADS_GET_API);
       console.log(response.data.card);
-      return response.data.card
+      return response.data.card;
     } catch (e) {
       return rejectWithValue(e.message);
     }
   }
-)
+);
 export const GET_CONVERTER = createAsyncThunk(
   "ads/GET_CONVERTER",
   async (_, { rejectWithValue }) => {
@@ -130,6 +132,55 @@ export const GET_PROFILE = createAsyncThunk(
       });
 
       return response.data.user;
+    } catch (e) {
+      return rejectWithValue(e.message);
+    }
+  }
+);
+
+export const UPDATE_IMAGE_PROFILE = createAsyncThunk(
+  "profile/UPDATE_IMAGE_PROFILE",
+  async (imageUrl, { rejectWithValue, getState }) => {
+    try {
+      const token = getState().auth.token;
+      console.log(imageUrl);
+
+      const response = await axios.patch(
+        UPDATE_IMAGE_PROFILE_API,
+        { imageUrl },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      return response.data;
+    } catch (e) {
+      console.log(imageUrl);
+
+      return rejectWithValue(e.message);
+    }
+  }
+);
+
+export const DELETE_IMAGE_PROFILE = createAsyncThunk(
+  "profile/DELETE_IMAGE_PROFILE",
+  async (_, { rejectWithValue, getState }) => {
+    try {
+      const token = getState().auth.token;
+
+      const response = await axios.delete(
+        DELETE_IMAGE_PROFILE_API,
+
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      return response.data;
     } catch (e) {
       return rejectWithValue(e.message);
     }

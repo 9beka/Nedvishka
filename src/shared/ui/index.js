@@ -10,6 +10,7 @@ import MyAlert from "./MyAlert/MyAlert";
 import UploadComponent from "./Upload/UploadComponent";
 import MyAdsCard from "./MyAdsCard/MyAdsCard";
 import AntdEmpty from "./AntdEmpty/AntdEmpty";
+import AllAdsCard from "./AllAdsCard/AllAdsCard";
 
 export {
   Button,
@@ -26,4 +27,5 @@ export {
   UploadComponent,
   MyAdsCard,
   AntdEmpty,
+  AllAdsCard,
 };

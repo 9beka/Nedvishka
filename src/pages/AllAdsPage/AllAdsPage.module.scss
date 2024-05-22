@@ -1,0 +1,11 @@
+.all-ads-page {
+    padding: 80px;
+
+    &__wrapper {
+         display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    }
+}

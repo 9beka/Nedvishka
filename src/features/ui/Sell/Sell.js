@@ -1,26 +1,27 @@
 import React, { useEffect, useLayoutEffect } from "react";
 import cls from "./Sell.module.scss";
-import { Button, MyAdsCard } from "../../../shared/ui";
-import { renderApiSlides } from "../../../shared/constants";
-import {
-  HeartOutlined,
-  ShareAltOutlined,
-  WhatsAppOutlined,
-} from "@ant-design/icons";
+import { AllAdsCard } from "../../../shared/ui";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useSelector ,useDispatch } from "react-redux";
-import { ADS_GET_CARTS_ASYNC, GET_CONVERTER } from "../../../app/providers/Redux/actions/actions";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  ADS_GET_CARTS_ASYNC,
+  GET_CONVERTER,
+} from "../../../app/providers/Redux/actions/actions";
+import { Button } from "antd";
+import { useNavigate } from "react-router-dom";
 
 const Sell = () => {
-  const dispatch = useDispatch()
-  useEffect(()=>{
-    dispatch(ADS_GET_CARTS_ASYNC())
-    dispatch(GET_CONVERTER())
-  },[dispatch])
-  const {dataOfAds,converter} = useSelector(state=>state.ads)
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-console.log(converter);
+  useEffect(() => {
+    dispatch(ADS_GET_CARTS_ASYNC());
+    dispatch(GET_CONVERTER());
+  }, [dispatch]);
+
+  const { dataOfAds, converter } = useSelector((state) => state.ads);
+
   gsap.registerPlugin(ScrollTrigger);
 
   useLayoutEffect(() => {
@@ -43,18 +44,33 @@ console.log(converter);
     });
   });
 
+  const handleNavigate = () => {
+    navigate("/allAds");
+  };
+
+  const displayedAds = dataOfAds.slice(0, 6);
+
   return (
     <div className={cls.sell__block}>
       <div className="wrapper">
         <h1 className={`${cls.sell__p} title`}>Срочная продажа</h1>
         <div className={cls.sell__wrapper}>
-          {dataOfAds.map((item) => (
-           <MyAdsCard converter={converter} item={item}/>
+          {displayedAds.map((item, index) => (
+            <AllAdsCard key={index} converter={converter} item={item} />
           ))}
         </div>
 
         <div className={`${cls.btn__wrap} button-gsap`}>
-          <Button text="Посмотреть все" style="viewAll" />
+          {/* <Button text="Посмотреть все" style="viewAll" /> */}
+          <Button
+            type="primary"
+            style={{
+              marginTop: "20px",
+            }}
+            onClick={handleNavigate}
+          >
+            Посмортеть все
+          </Button>
         </div>
       </div>
     </div>

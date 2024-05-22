@@ -2,7 +2,9 @@
   padding: 100px 0;
   &-cardWrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 400px));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
+    align-items: center;
+    justify-content: center;
     gap: 20px;
   }
 }

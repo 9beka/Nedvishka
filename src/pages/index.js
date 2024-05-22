@@ -4,5 +4,14 @@ import AdsPage from "./AdsPage/AdsPage";
 import NotFoundPage from "./NotFoundPage/NotFoundPage";
 import MyAdsPage from "./MyAdsPage/MyAdsPage";
 import DetailsPage from "./DetailsPage/DetailsPage";
+import AllAdsPage from "./AllAdsPage/AllAdsPage";
 
-export { MainPage, AboutPage, AdsPage, NotFoundPage, MyAdsPage, DetailsPage };
+export {
+  MainPage,
+  AboutPage,
+  AdsPage,
+  NotFoundPage,
+  MyAdsPage,
+  DetailsPage,
+  AllAdsPage,
+};
