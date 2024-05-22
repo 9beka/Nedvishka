@@ -265,11 +265,9 @@ const Header = () => {
                   width="100%"
                   open={avatarModalOpen}
                   onOk={() => {
-                    if (fileList > 0) {
-                      dispatch(UPDATE_IMAGE_PROFILE(fileList[0].thumbUrl));
-                      setAvatarModalOpen(false);
-                      setFileList([]);
-                    }
+                    dispatch(UPDATE_IMAGE_PROFILE(fileList[0].thumbUrl));
+                    setAvatarModalOpen(false);
+                    setFileList([]);
                   }}
                   onCancel={() => setAvatarModalOpen(false)}
                   centered
