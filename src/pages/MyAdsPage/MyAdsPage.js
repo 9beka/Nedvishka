@@ -16,6 +16,8 @@ function MyAdsPage() {
     dispatch(GET_CONVERTER());
   }, [dispatch]);
 
+  console.log(myAdsCart);
+
   const renderCards =
     myAdsCart && myAdsCart.items
       ? myAdsCart.items.map((item) => (
