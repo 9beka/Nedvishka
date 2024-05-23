@@ -5,5 +5,15 @@ import Contacts from "./Contacts/ui/Contacts";
 import Footer from "./Footer/ui/Footer";
 import AntdForm from "./AntdForm/ui/AntdForm";
 import SwiperImage from "./SwiperImage/SwiperImage";
+import ImageUploadAndCrop from "./ImageUploadAndCrop/ImageUploadAndCrop";
 
-export { Header, OurAgency, AboutUs, Contacts, Footer, AntdForm, SwiperImage };
+export {
+  Header,
+  OurAgency,
+  AboutUs,
+  Contacts,
+  Footer,
+  AntdForm,
+  SwiperImage,
+  ImageUploadAndCrop,
+};
