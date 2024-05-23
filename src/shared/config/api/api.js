@@ -1,6 +1,4 @@
-// const API = "http://localhost:5000/";
-const API = "https://nedvishka-server.onrender.com/";
-
+const API = process.env.REACT_APP_API_BACK;
 export const AUTH_API = API + "auth/";
 
 export const ADS_API = API + "cards/";
