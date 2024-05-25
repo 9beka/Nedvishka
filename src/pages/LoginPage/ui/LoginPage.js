@@ -81,7 +81,7 @@ const LoginPage = () => {
 
                     <Form.Item>
                         <Button
-                            disabled={!checked || loading}
+                            disabled={loading}
                             type="primary"
                             htmlType="submit"
                             // onClick={()=>navigate('/')}
