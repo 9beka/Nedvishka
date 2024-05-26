@@ -1,3 +1,5 @@
 import { classNames } from "./classNames/classNames";
 import WrapperHoc from "./hoc/WrapperHoc";
-export {classNames ,WrapperHoc}
+import { renderLinks } from "./const/header_const";
+
+export { classNames, WrapperHoc, renderLinks };

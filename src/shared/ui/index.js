@@ -11,6 +11,7 @@ import UploadComponent from "./Upload/UploadComponent";
 import MyAdsCard from "./MyAdsCard/MyAdsCard";
 import AntdEmpty from "./AntdEmpty/AntdEmpty";
 import AllAdsCard from "./AllAdsCard/AllAdsCard";
+import AntdTooltip from "./AntdTooltip/AntdTooltip";
 
 export {
   Button,
@@ -28,4 +29,5 @@ export {
   MyAdsCard,
   AntdEmpty,
   AllAdsCard,
+  AntdTooltip,
 };
