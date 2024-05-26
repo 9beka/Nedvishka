@@ -12,7 +12,7 @@ import { UserOutlined } from "@ant-design/icons";
 const AllAdsCard = ({ item, converter }) => {
   const {
     Districts,
-    Floor,
+    Floor, 
     PloshadM2,
     PriceForm,
     Sostoyanie,
