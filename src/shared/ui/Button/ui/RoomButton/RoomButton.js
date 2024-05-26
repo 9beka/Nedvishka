@@ -8,7 +8,6 @@ const RoomButton = ({ handleValueRooms, rooms }) => {
   return (
     <div className={s.RoomButtons}>
       {renderBtns.map((el) => {
-        console.log(typeof rooms);
         return (
           <Button
             className={`${s["room-button"]} ${
