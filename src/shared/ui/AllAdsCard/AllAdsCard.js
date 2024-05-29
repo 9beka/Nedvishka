@@ -3,7 +3,6 @@ import cls from "./AllAdsCard.module.scss";
 import { Avatar } from "antd";
 import {
   WhatsAppOutlined,
-  ShareAltOutlined,
   HeartOutlined,
   HeartFilled,
 } from "@ant-design/icons";
@@ -75,7 +74,6 @@ const AllAdsCard = ({ item, converter }) => {
       </div>
       <div className={cls.footer__slide}>
        <Link to={"https://wa.me/+996507688388"}> <WhatsAppOutlined /></Link>
-        <ShareAltOutlined />
         {isLiked ? (
           <HeartFilled onClick={handleAddFavorite} />
         ) : (
