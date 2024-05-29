@@ -35,34 +35,15 @@ const AntdForm = () => {
     toast.success(title, {
       containerId: "success-add-ads",
     });
-  const onFinish = (values) => {
-    const formData = new FormData();
-    Object.keys(values).forEach(key => {
-      if (key !== 'Upload') {
-        const value = values[key];
-        if (Array.isArray(value)) {
-          value.forEach(item => formData.append(key, item));
-        } else {
-          formData.append(key, value);
-        }
-      }
-    });
-
-    if (values.Upload && values.Upload.fileList) {
-      values.Upload.fileList.forEach(file => {
-        formData.append('files', file.originFileObj);
-      });
-    }
-    dispatch(ADS_POST_ASYNC(formData));
-
-    // form.resetFields();
-    setFileList([]);
-    setYourName("");
-    setTextAreaValue("");
-    notifySuccessAddAds("Вы успешно добавили объявление!");
-    console.log(values);
-  };
-
+    const onFinish = (values) => {
+      dispatch(ADS_POST_ASYNC(values));
+      // form.resetFields();
+      setFileList([]);
+      setYourName("");
+      setTextAreaValue("");
+      notifySuccessAddAds("Вы успешно добавили объявление!");
+      console.log(values);
+    };
   useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
@@ -73,117 +54,7 @@ const AntdForm = () => {
     };
   }, []);
 
-  // const handleValueRooms = (e) => {
-  //   console.log(e.target.value);
-  //   const value = e?.target?.value;
-  //   form.setFieldsValue({ Rooms: value });
-  //   setRooms(value);
-  // };
-
-  // const handleValueDistrict = (name) => {
-  //   if (!districts.includes(name)) {
-  //     const districtArray = [...districts, name];
-  //     form.setFieldsValue({ Districts: districtArray });
-  //     setDistricts(districtArray);
-  //   }
-  // };
-
-  // const handleValueUpload = () => {
-  //   form.setFieldsValue({ Upload: fileList });
-  // };
-
-  // const validatePhoneNumber = (rule, value, callback) => {
-  //   const phoneNumberRegex = /^996\d{9}$/;
-  //   if (!phoneNumberRegex.test(value)) {
-  //     callback("Пожалуйста, введите номер телефона в формате: 996XXXXXXXXX");
-  //   } else {
-  //     callback();
-  //   }
-  // };
-
-  // const transactionTypeFunction = (value) => {
-  //   form.setFieldsValue({ typeOfDeal: value });
-  //   setTransactionType(value);
-  // };
-
-  // const propertyTypeFunction = (value) => {
-  //   form.setFieldsValue({ TipNedvishki: value });
-  //   setPropertyType(value);
-  // };
-
-  // const areaFunction = (value) => {
-  //   form.setFieldsValue({ PloshadM2: value });
-  //   setArea(value);
-  // };
-
-  // const floorFunction = (value) => {
-  //   console.log(value);
-  //   form.setFieldsValue({ Floor: value });
-  //   setFloor(value);
-  // };
-
-  // const totalFloorFunction = (value) => {
-  //   form.setFieldsValue({ TotalFloor: value });
-  //   setTotalFloor(value);
-  // };
-
-  // const yourNameFunction = (e) => {
-  //   const value = e.target.value;
-  //   form.setFieldsValue({ ownerName: value });
-  //   setYourName(value);
-  // };
-
-  // const ownersPhoneNumberFunction = (value) => {
-  //   form.setFieldsValue({ TelNumber: value });
-  //   setOwnersPhoneNumber(value);
-  // };
-
-  // const streetCrossingFunction = (e) => {
-  //   const value = e.target.value;
-  //   form.setFieldsValue({ StreetAround: value });
-  //   setStreetCrossing(value);
-  // };
-
-  // const stateFunction = (value) => {
-  //   form.setFieldsValue({ Sostoyanie: value });
-  //   setState(value);
-  // };
-
-  // const documentationFunction = (value) => {
-  //   form.setFieldsValue({ Documents: value });
-  //   setDocumentation(value);
-  // };
-
-  // const communicationsStateFunction = (value) => {
-  //   form.setFieldsValue({ communication: value });
-  //   setCommunicationsState(value);
-  // };
-
-  // const typeOfSentenceFunction = (value) => {
-  //   form.setFieldsValue({ TypeOffer: value });
-  //   setTypeOfSentence(value);
-  // };
-
-  // const furnitureFunction = (value) => {
-  //   form.setFieldsValue({ furniture: value });
-  //   setFurniture(value);
-  // };
-
-  // const paymentTypeFunction = (value) => {
-  //   form.setFieldsValue({ Payment: value });
-  //   setPaymentType(value);
-  // };
-
-  // const objectStatusFunction = (value) => {
-  //   form.setFieldsValue({ StatusObject: value });
-  //   setObjectStatus(value);
-  // };
-
-  // const priceSomFunction = (value) => {
-  //   form.setFieldsValue({ PriceForm: value });
-  //   setPriceSom(value);
-  // };
-
+  
   return (
     <>
       {loading && <MyLoader />}

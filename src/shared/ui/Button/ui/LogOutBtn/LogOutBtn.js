@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState , useEffect } from "react";
 import { Button } from "antd";
 import { LogoutOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
@@ -17,6 +17,7 @@ const LogOutBtn = () => {
       setLoadings((prevLoadings) => {
         const newLoadings = [...prevLoadings];
         newLoadings[index] = false;
+
         return newLoadings;
       });
     }, 3000);

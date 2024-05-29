@@ -8,7 +8,6 @@ import { MyLoader } from "../../../shared/ui";
 
 const MainPage = () => {
   const { loading } = useSelector((state) => state.ads);
-
   useLayoutEffect(() => {
     gsap.fromTo(
       ".main__wrapper__fon",

@@ -8,6 +8,7 @@ import {
 } from "@ant-design/icons";
 import { SwiperImage } from "../../../widgets/index";
 import { UserOutlined } from "@ant-design/icons";
+import { Link } from "react-router-dom";
 
 const AllAdsCard = ({ item, converter }) => {
   const {
@@ -50,7 +51,7 @@ const AllAdsCard = ({ item, converter }) => {
         <p className={cls.phone__p}>+{TelNumber}</p>
       </div>
       <div className={cls.footer__slide}>
-        <WhatsAppOutlined />
+       <Link to={"https://wa.me/+996507688388"}> <WhatsAppOutlined /></Link>
         <ShareAltOutlined />
         <HeartOutlined />
       </div>

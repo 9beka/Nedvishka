@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from "react";
 import logoIcon from "../../../shared/assets/svg/logo.svg";
 import styles from "./Header.module.scss";
-import { Link } from "react-router-dom";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { UserOutlined } from "@ant-design/icons";
 import { toast, ToastContainer } from "react-toastify";
-import { Avatar, Modal } from "antd";
 import { useDispatch, useSelector } from "react-redux";
 import {
   DELETE_IMAGE_PROFILE,
@@ -13,13 +10,13 @@ import {
   UPDATE_IMAGE_PROFILE,
 } from "../../../app/providers/Redux/actions/actions";
 import { MyLoader } from "../../../shared/ui";
-import ImageUploadAndCrop from "../../ImageUploadAndCrop/ImageUploadAndCrop";
-import { renderLinks } from "../../../shared/helpers";
 import { HeaderMenu } from "../../../features/ui";
 import HeaderNav from "../../../features/ui/Header/HeaderNav/HeaderNav";
+import HeaderLogo from "./HeaderLogo/HeaderLogo";
+import HiddenByTokenHoc from "../../../shared/helpers/hoc/HiddenByTokenHoc";
 
 const Header = () => {
-  const token = localStorage.getItem("token");
+  const {token} = useSelector((state)=>state.auth);
   const dispatch = useDispatch();
 
   const { profile, loading, delete_loading } = useSelector(
@@ -40,7 +37,7 @@ const Header = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, []); 
 
   const bmButton = document.querySelector(".bm-cross-button");
 
@@ -85,56 +82,15 @@ const Header = () => {
                   state={open}
                   notifyFunction={notifyCheckToken}
                 />
-                <Modal
-                  title="Ваш профиль"
-                  width="100%"
-                  open={modalOpen}
-                  onOk={() => setModalOpen(false)}
-                  onCancel={() => setModalOpen(false)}
-                  centered
-                >
-                  <div className={styles["header-modal-wrapper"]}>
-                    <Avatar
-                      style={{
-                        cursor: "pointer",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                      onClick={() => {
-                        setAvatarModalOpen(true);
-                        setModalOpen(false);
-                      }}
-                      size={70}
-                      src={profile.image}
-                      icon={!profile.imageUrl && <UserOutlined />}
-                    />
-                    <p className={styles["header-modal-username"]}>
-                      {profile.name}
-                    </p>
-                    <p className={styles["header-modal-email"]}>
-                      {profile.email}
-                    </p>
-                    <p
-                      className={
-                        profile.verified === false
-                          ? styles["header-modal-verified"]
-                          : styles["header-modal-unverified"]
-                      }
-                    >
-                      {profile.verified === false
-                        ? "Неверифицированный"
-                        : "Верифицированный"}
-                    </p>
-                  </div>
-                </Modal>
-                <ImageUploadAndCrop
-                  visible={avatarModalOpen}
-                  onClose={() => setAvatarModalOpen(false)}
-                  onUpload={handleImageUpload}
+               <HiddenByTokenHoc>
+                 <HeaderLogo
+                  setModalOpen={setModalOpen}
+                  modalOpen={modalOpen}
+                  avatarModalOpen={avatarModalOpen}
+                  handleImageUpload={handleImageUpload}
                   handleDeleteImageProfile={handleDeleteImageProfile}
-                  delete_loading={delete_loading}
-                />
+                  />
+             </HiddenByTokenHoc>
                 <div className={styles["header__right"]}>
                   <FavoriteIcon className={styles["header__favorite-icon"]} />
                 </div>
