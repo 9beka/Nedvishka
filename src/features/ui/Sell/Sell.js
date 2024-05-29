@@ -53,7 +53,7 @@ const Sell = () => {
   return (
     <div className={cls.sell__block}>
       <div className="wrapper">
-        <h1 className={`${cls.sell__p} title`}>Срочная продажа</h1>
+        <h1 className={`${cls.sell__p}`}>Срочная продажа</h1>
         <div className={cls.sell__wrapper}>
           {displayedAds.map((item, index) => (
             <AllAdsCard key={index} converter={converter} item={item} />

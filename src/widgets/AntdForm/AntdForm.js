@@ -399,7 +399,7 @@ const AntdForm = () => {
             </Select>
           </Form.Item>
         </HocAdaptiveWrapper>
-              <AIdescription/>
+        <AIdescription />
         <HocAdaptiveWrapper screenWidth={screenWidth}>
           <Form.Item
             name="PriceForm"

@@ -14,6 +14,7 @@ import { HeaderMenu } from "../../../features/ui";
 import HeaderNav from "../../../features/ui/Header/HeaderNav/HeaderNav";
 import HeaderLogo from "./HeaderLogo/HeaderLogo";
 import HiddenByTokenHoc from "../../../shared/helpers/hoc/HiddenByTokenHoc";
+import { LogOutBtn } from "../../../shared/ui/Button";
 
 const Header = () => {
   const {token} = useSelector((state)=>state.auth);
@@ -82,6 +83,54 @@ const Header = () => {
                   state={open}
                   notifyFunction={notifyCheckToken}
                 />
+                <Modal
+                  title="Ваш профиль"
+                  width="100%"
+                  open={modalOpen}
+                  onOk={() => setModalOpen(false)}
+                  onCancel={() => setModalOpen(false)}
+                  centered
+                >
+                  <div className={styles["header-modal-wrapper"]}>
+                    <Avatar
+                      style={{
+                        cursor: "pointer",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                      onClick={() => {
+                        setAvatarModalOpen(true);
+                        setModalOpen(false);
+                      }}
+                      size={70}
+                      src={profile.image}
+                      icon={!profile.imageUrl && <UserOutlined />}
+                    />
+                    <p className={styles["header-modal-username"]}>
+                      {profile.name}
+                    </p>
+                    <p className={styles["header-modal-email"]}>
+                      {profile.email}
+                    </p>
+                    <p
+                      className={
+                        profile.verified === false
+                          ? styles["header-modal-verified"]
+                          : styles["header-modal-unverified"]
+                      }
+                    >
+                      {profile.verified === false
+                        ? "Неверифицированный"
+                        : "Верифицированный"}
+                    </p>
+                    <LogOutBtn />
+                  </div>
+                </Modal>
+                <ImageUploadAndCrop
+                  visible={avatarModalOpen}
+                  onClose={() => setAvatarModalOpen(false)}
+                  onUpload={handleImageUpload}
                <HiddenByTokenHoc>
                  <HeaderLogo
                   setModalOpen={setModalOpen}

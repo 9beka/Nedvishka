@@ -1,29 +1,33 @@
 import React from "react";
-import {InputNumber} from "antd";
-import {useSelector} from "react-redux";
+import { InputNumber } from "antd";
 
-const InputMinMax = ({min, max}) => {
-    const styleInput = {
-        border: "2px solid #6CA5DC",
-    };
-    const {rangePrice} = useSelector((state) => state.rangeOfPrice);
-    return (
-        <>
-            <InputNumber
-                style={styleInput}
-                min={1}
-                value={rangePrice && rangePrice[0] > 1 ? rangePrice[0] : min}
-            />
-            <InputNumber
-                style={styleInput}
+const InputMinMax = ({ handleValuePrice, priceForm }) => {
+  const styleInput = {
+    border: "2px solid #6CA5DC",
+  };
 
-                max={200000}
-                value={
-                    rangePrice && rangePrice[1] < 200000 ? rangePrice[1] : max
-                }
-            />
-        </>
-    );
+  return (
+    <>
+      <InputNumber
+        style={styleInput}
+        min={1}
+        value={priceForm[0]}
+        placeholder="Мин"
+        onChange={(value) =>
+          handleValuePrice([value, priceForm ? priceForm[1] : priceForm[1]])
+        }
+      />
+      <InputNumber
+        style={styleInput}
+        max={200000}
+        value={priceForm[1]}
+        placeholder="Макс"
+        onChange={(value) =>
+          handleValuePrice([priceForm ? priceForm[0] : priceForm[0], value])
+        }
+      />
+    </>
+  );
 };
 
 export default InputMinMax;

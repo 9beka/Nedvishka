@@ -9,7 +9,13 @@ import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import { useSelector } from "react-redux";
 import HiddenByTokenHoc from "../../../../shared/helpers/hoc/HiddenByTokenHoc";
 
-const HeaderMenu = ({ setState, state, notifyFunction, token }) => {
+const HeaderMenu = ({
+  setOpenModal,
+  setState,
+  state,
+  notifyFunction,
+  token,
+}) => {
   const { profile } = useSelector((state) => state.profile);
 
   const renderItems = renderLinks.map((el) => (

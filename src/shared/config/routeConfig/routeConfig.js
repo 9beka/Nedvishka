@@ -1,5 +1,10 @@
 import { lazy } from "react";
-import { AllAdsPage, DetailsPage, MyAdsPage } from "../../../pages";
+import {
+  AllAdsPage,
+  DetailsPage,
+  FavoritePage,
+  MyAdsPage,
+} from "../../../pages";
 
 const AboutPage = lazy(() => import("../../../pages/AboutPage/AboutPage"));
 const AdsPage = lazy(() => import("../../../pages/AdsPage/AdsPage"));
@@ -10,6 +15,7 @@ export const AppRoutes = {
   ADS: "ads",
   ALLADS: "allAds",
   DETAILS: "details",
+  FAVORITE: "favorite",
 };
 
 export const RoutePath = {
@@ -18,6 +24,7 @@ export const RoutePath = {
   [AppRoutes.ADS]: "/ads",
   [AppRoutes.ALLADS]: "/allAds",
   [AppRoutes.DETAILS]: "/details/:id",
+  [AppRoutes.FAVORITE]: "/favorite",
 };
 
 export const routeConfig = {
@@ -40,5 +47,9 @@ export const routeConfig = {
   [AppRoutes.DETAILS]: {
     path: RoutePath.details,
     element: <DetailsPage />,
+  },
+  [AppRoutes.FAVORITE]: {
+    path: RoutePath.favorite,
+    element: <FavoritePage />,
   },
 };

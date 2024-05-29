@@ -1,19 +1,26 @@
 import React from "react";
 import cls from "./AllAdsCard.module.scss";
-import { Avatar } from "antd";
+import { Avatar, Spin } from "antd";
 import {
   WhatsAppOutlined,
   ShareAltOutlined,
   HeartOutlined,
+  HeartFilled,
 } from "@ant-design/icons";
 import { SwiperImage } from "../../../widgets/index";
 import { UserOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { ADD_FAVORITE_ASYNC } from "../../../app/providers/Redux/actions/actions";
 
 const AllAdsCard = ({ item, converter }) => {
+  const dispatch = useDispatch();
+
+  const { favorite, loading } = useSelector((state) => state.favorite);
+
   const {
     Districts,
-    Floor, 
+    Floor,
     PloshadM2,
     PriceForm,
     Sostoyanie,
@@ -23,12 +30,21 @@ const AllAdsCard = ({ item, converter }) => {
     Upload,
     Rooms,
     createdBy,
+    _id,
   } = item;
 
   const toUsd = PriceForm / converter.sell_usd;
   const imagesList = [];
 
   Upload?.map((image) => imagesList.push(image.thumbUrl));
+
+  const handleAddFavorite = () => {
+    dispatch(ADD_FAVORITE_ASYNC(_id));
+  };
+
+  const isLiked = favorite?.some((item) => item._id === _id);
+
+  console.log(isLiked);
 
   return (
     <div className={cls["card"]}>
@@ -42,6 +58,13 @@ const AllAdsCard = ({ item, converter }) => {
       <p className={cls.price__p}>{`$${toUsd.toFixed(
         2
       )} / ${PriceForm} сом`}</p>
+      <p
+        style={{
+          fontSize: 14,
+        }}
+      >
+        {_id}
+      </p>
       <div className={cls.footer__slide}>
         <Avatar
           size={70}
@@ -53,7 +76,11 @@ const AllAdsCard = ({ item, converter }) => {
       <div className={cls.footer__slide}>
        <Link to={"https://wa.me/+996507688388"}> <WhatsAppOutlined /></Link>
         <ShareAltOutlined />
-        <HeartOutlined />
+        {isLiked ? (
+          <HeartFilled onClick={handleAddFavorite} />
+        ) : (
+          <HeartOutlined onClick={handleAddFavorite} />
+        )}
       </div>
     </div>
   );

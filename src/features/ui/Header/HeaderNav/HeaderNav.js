@@ -10,6 +10,7 @@ import { Avatar, Modal } from "antd";
 import { ImageUploadAndCrop } from "../../../../widgets";
 import { useSelector } from "react-redux";
 import HiddenByTokenHoc from "../../../../shared/helpers/hoc/HiddenByTokenHoc";
+import { LogOutBtn } from "../../../../shared/ui/Button";
 
 const HeaderNav = ({
   avatarModalOpen,
@@ -50,7 +51,7 @@ const HeaderNav = ({
     <>
       <ul>{renderItems}</ul>
       <div className={cls["header__right"]}>
-        <Link to={"/favoties"}>
+        <Link to={"/favorite"}>
           <FavoriteIcon
             style={{ cursor: "pointer" }}
             className={cls["header__favorite-icon"]}
@@ -170,6 +171,58 @@ const HeaderNav = ({
             delete_loading={delete_loading}
           />
         </HiddenByTokenHoc>
+        <Modal
+          title="Ваш профиль"
+          width="20%"
+          style={{ bottom: "20%", right: "-30%" }}
+          open={modalOpen}
+          onCancel={() => setModalOpen(false)}
+          footer={null}
+        >
+          <div className={cls["header-modal-wrapper"]}>
+            <AntdTooltip
+              placement="topLeft"
+              title="Нажмите, чтобы изменить фото профиля"
+            >
+              <Avatar
+                style={{
+                  cursor: "pointer",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+                onClick={() => {
+                  setAvatarModalOpen(true);
+                  setModalOpen(false);
+                }}
+                size={70}
+                src={profile.image}
+                icon={!profile.imageUrl && <UserOutlined />}
+              />
+            </AntdTooltip>
+            <p className={cls["header-modal-username"]}>{profile.name}</p>
+            <p className={cls["header-modal-email"]}>{profile.email}</p>
+            <p
+              className={
+                profile.verified === false
+                  ? cls["header-modal-verified"]
+                  : cls["header-modal-unverified"]
+              }
+            >
+              {profile.verified === false
+                ? "Неверифицированный"
+                : "Верифицированный"}
+            </p>
+            <LogOutBtn />
+          </div>
+        </Modal>
+        <ImageUploadAndCrop
+          visible={avatarModalOpen}
+          onClose={() => setAvatarModalOpen(false)}
+          onUpload={handleImageUpload}
+          handleDeleteImageProfile={handleDeleteImageProfile}
+          delete_loading={delete_loading}
+        />
       </div>
     </>
   );
