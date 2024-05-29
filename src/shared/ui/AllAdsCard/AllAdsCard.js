@@ -11,7 +11,12 @@ import { SwiperImage } from "../../../widgets/index";
 import { UserOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { ADD_FAVORITE_ASYNC } from "../../../app/providers/Redux/actions/actions";
+import {
+  ADD_FAVORITE_ASYNC,
+  CARD_DETAIL_GET_ASYNC,
+} from "../../../app/providers/Redux/actions/actions";
+import { useNavigate } from "react-router-dom";
+import { ADD_DETAILID } from "../../../app/providers/Redux/Slices/detailsSlicer";
 
 const AllAdsCard = ({ item, converter }) => {
   const dispatch = useDispatch();
@@ -43,11 +48,15 @@ const AllAdsCard = ({ item, converter }) => {
   };
 
   const isLiked = favorite?.some((item) => item._id === _id);
+  const navigate = useNavigate();
 
-  console.log(isLiked);
-
+  const handleId = () => {
+    dispatch(ADD_DETAILID(_id));
+    dispatch(CARD_DETAIL_GET_ASYNC(_id));
+    navigate(`/details/${_id}`);
+  };
   return (
-    <div className={cls["card"]}>
+    <div className={cls["card"]} onDoubleClick={handleId}>
       <div className={cls["myAdsCard-image-wrapper"]}>
         <SwiperImage images={imagesList} />
       </div>

@@ -12,6 +12,7 @@ import {
   DELETE_IMAGE_PROFILE_API,
   GET_FAVORITE_API,
   ADD_FAVORITE_API,
+  CARD_DETAIL_GET_API,
 } from "../../../../shared/config/api/api";
 export const REGISTER_ASYNC = createAsyncThunk(
   "auth/REGISTER_ASYNC",
@@ -223,6 +224,19 @@ export const GET_FAVORITE_ASYNC = createAsyncThunk(
       });
 
       return response.data.favoriteItems;
+    } catch (e) {
+      return rejectWithValue(e.message);
+    }
+  }
+);
+
+export const CARD_DETAIL_GET_ASYNC = createAsyncThunk(
+  "ads/CARD_DETAIL_GET_ASYNC",
+  async (_id, { rejectWithValue }) => {
+    try {
+      const response = await axios.get(`${CARD_DETAIL_GET_API}${_id}`);
+      console.log(response.data);
+      return response.data;
     } catch (e) {
       return rejectWithValue(e.message);
     }

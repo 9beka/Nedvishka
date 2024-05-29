@@ -24,3 +24,5 @@ export const DELETE_IMAGE_PROFILE_API = AUTH_API + "delete/user-image";
 export const ADD_FAVORITE_API = FAVORITE_API + "toggle-favorite/";
 
 export const GET_FAVORITE_API = FAVORITE_API + "get-favorites";
+
+export const CARD_DETAIL_GET_API = ADS_API + "getDetails/"

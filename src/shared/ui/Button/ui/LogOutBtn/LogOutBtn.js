@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from "react";
+import React, { useState } from "react";
 import { Button } from "antd";
 import { LogoutOutlined } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
