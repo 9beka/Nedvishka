@@ -1,6 +1,6 @@
 import React from "react";
 import cls from "./AllAdsCard.module.scss";
-import { Avatar } from "antd";
+import { Avatar, Spin } from "antd";
 import {
   WhatsAppOutlined,
   ShareAltOutlined,
@@ -9,11 +9,13 @@ import {
 } from "@ant-design/icons";
 import { SwiperImage } from "../../../widgets/index";
 import { UserOutlined } from "@ant-design/icons";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ADD_FAVORITE_ASYNC } from "../../../app/providers/Redux/actions/actions";
 
 const AllAdsCard = ({ item, converter }) => {
   const dispatch = useDispatch();
+
+  const { favorite, loading } = useSelector((state) => state.favorite);
 
   const {
     Districts,
@@ -36,8 +38,12 @@ const AllAdsCard = ({ item, converter }) => {
   Upload?.map((image) => imagesList.push(image.thumbUrl));
 
   const handleAddFavorite = () => {
-    Promise.all([dispatch(ADD_FAVORITE_ASYNC(_id))]);
+    dispatch(ADD_FAVORITE_ASYNC(_id));
   };
+
+  const isLiked = favorite?.some((item) => item._id === _id);
+
+  console.log(isLiked);
 
   return (
     <div className={cls["card"]}>
@@ -69,7 +75,11 @@ const AllAdsCard = ({ item, converter }) => {
       <div className={cls.footer__slide}>
         <WhatsAppOutlined />
         <ShareAltOutlined />
-        <HeartOutlined onClick={handleAddFavorite} />
+        {isLiked ? (
+          <HeartFilled onClick={handleAddFavorite} />
+        ) : (
+          <HeartOutlined onClick={handleAddFavorite} />
+        )}
       </div>
     </div>
   );

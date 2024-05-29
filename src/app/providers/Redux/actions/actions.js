@@ -97,7 +97,6 @@ export const ADS_GET_CARTS_ASYNC = createAsyncThunk(
   async (_, { rejectWithValue, dispatch }) => {
     try {
       const response = await axios.get(ADS_GET_API);
-      console.log(response.data.card);
       return response.data.card;
     } catch (e) {
       return rejectWithValue(e.message);
@@ -158,8 +157,6 @@ export const UPDATE_IMAGE_PROFILE = createAsyncThunk(
 
       return response.data;
     } catch (e) {
-      console.log(imageUrl);
-
       return rejectWithValue(e.message);
     }
   }
@@ -190,18 +187,21 @@ export const DELETE_IMAGE_PROFILE = createAsyncThunk(
 
 export const ADD_FAVORITE_ASYNC = createAsyncThunk(
   "favorite/ADD_FAVORITE_ASYNC",
-  async (productId, { rejectWithValue, getState }) => {
-    console.log(productId);
+  async (id, { rejectWithValue, getState, dispatch }) => {
+    console.log(id);
     try {
       const token = getState().auth.token;
       const response = await axios.post(
-        `http://localhost:5000/favorite/toggle-favorite/${productId}`,
+        `http://localhost:5000/favorite/toggle-favorite/${id}`,
+        {},
         {
           headers: {
+            "Content-type": "application/json",
             Authorization: `Bearer ${token}`,
           },
         }
       );
+      dispatch(GET_FAVORITE_ASYNC());
       return response.data;
     } catch (e) {
       return rejectWithValue(e.message);
@@ -221,9 +221,7 @@ export const GET_FAVORITE_ASYNC = createAsyncThunk(
         },
       });
 
-      console.log(response.data);
-
-      return response.data;
+      return response.data.favoriteItems;
     } catch (e) {
       return rejectWithValue(e.message);
     }

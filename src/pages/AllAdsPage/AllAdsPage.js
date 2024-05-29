@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import cls from "./AllAdsPage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { AllAdsCard } from "../../shared/ui";
+import { AllAdsCard, MyLoader } from "../../shared/ui";
 import {
   ADS_GET_CARTS_ASYNC,
   GET_CONVERTER,
@@ -10,6 +10,7 @@ import { FilterForm } from "../../features/ui";
 const AllAdsPage = () => {
   const dispatch = useDispatch();
   const { dataOfAds, converter } = useSelector((state) => state.ads);
+  const { loading } = useSelector((state) => state.favorite);
 
   const [tabsValue, setTabsValue] = useState("Все");
   const [rooms, setRooms] = useState("");
@@ -21,7 +22,8 @@ const AllAdsPage = () => {
   const [sotka, setSotka] = useState([0, 50000]);
 
   useEffect(() => {
-    Promise.all([dispatch(ADS_GET_CARTS_ASYNC()), dispatch(GET_CONVERTER())]);
+    dispatch(ADS_GET_CARTS_ASYNC());
+    dispatch(GET_CONVERTER());
   }, [dispatch]);
 
   const renderData = dataOfAds
@@ -201,28 +203,31 @@ const AllAdsPage = () => {
   // };
 
   return (
-    <div className={cls["all-ads-page"]}>
-      <div className="container">
-        <h1>Все объявления</h1>
-        <FilterForm
-          setTabsValue={setTabsValue}
-          handleValueRooms={handleValueRooms}
-          handleValueDistrict={handleValueDistrict}
-          setDistricts={setDistricts}
-          handleValuePrice={handleValuePrice}
-          priceForm={priceForm}
-          handleValueId={handleValueId}
-          handleValueSostoyanie={handleValueSostoyanie}
-          setPriceForm={setPriceForm}
-          setValueId={setValueId}
-          setSostoyanie={setSostoyanie}
-          handleValueTipNedvishki={handleValueTipNedvishki}
-          handleValueSotka={handleValueSotka}
-          sotka={sotka}
-        />
-        <div className={cls["all-ads-page__wrapper"]}>{renderData}</div>
+    <>
+      {loading && <MyLoader />}
+      <div className={cls["all-ads-page"]}>
+        <div className="container">
+          <h1>Все объявления</h1>
+          <FilterForm
+            setTabsValue={setTabsValue}
+            handleValueRooms={handleValueRooms}
+            handleValueDistrict={handleValueDistrict}
+            setDistricts={setDistricts}
+            handleValuePrice={handleValuePrice}
+            priceForm={priceForm}
+            handleValueId={handleValueId}
+            handleValueSostoyanie={handleValueSostoyanie}
+            setPriceForm={setPriceForm}
+            setValueId={setValueId}
+            setSostoyanie={setSostoyanie}
+            handleValueTipNedvishki={handleValueTipNedvishki}
+            handleValueSotka={handleValueSotka}
+            sotka={sotka}
+          />
+          <div className={cls["all-ads-page__wrapper"]}>{renderData}</div>
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

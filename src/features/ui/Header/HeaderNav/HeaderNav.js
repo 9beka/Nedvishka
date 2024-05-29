@@ -50,7 +50,7 @@ const HeaderNav = ({
     <>
       <ul>{renderItems}</ul>
       <div className={cls["header__right"]}>
-        <Link to={"/favoties"}>
+        <Link to={"/favorite"}>
           <FavoriteIcon
             style={{ cursor: "pointer" }}
             className={cls["header__favorite-icon"]}

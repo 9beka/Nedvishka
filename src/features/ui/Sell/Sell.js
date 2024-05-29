@@ -16,7 +16,8 @@ const Sell = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    Promise.all([dispatch(ADS_GET_CARTS_ASYNC()), dispatch(GET_CONVERTER())]);
+    dispatch(ADS_GET_CARTS_ASYNC());
+    dispatch(GET_CONVERTER());
   }, [dispatch]);
 
   const { dataOfAds, converter } = useSelector((state) => state.ads);

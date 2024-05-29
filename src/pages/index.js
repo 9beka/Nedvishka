@@ -5,6 +5,7 @@ import NotFoundPage from "./NotFoundPage/NotFoundPage";
 import MyAdsPage from "./MyAdsPage/MyAdsPage";
 import DetailsPage from "./DetailsPage/DetailsPage";
 import AllAdsPage from "./AllAdsPage/AllAdsPage";
+import FavoritePage from "./FavoritePage/FavoritePage";
 
 export {
   MainPage,
@@ -14,4 +15,5 @@ export {
   MyAdsPage,
   DetailsPage,
   AllAdsPage,
+  FavoritePage,
 };
