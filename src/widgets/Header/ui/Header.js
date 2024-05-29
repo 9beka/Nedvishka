@@ -15,12 +15,15 @@ import HeaderNav from "../../../features/ui/Header/HeaderNav/HeaderNav";
 import HeaderLogo from "./HeaderLogo/HeaderLogo";
 import HiddenByTokenHoc from "../../../shared/helpers/hoc/HiddenByTokenHoc";
 import { LogOutBtn } from "../../../shared/ui/Button";
-import { Modal , Avatar} from "antd";
+import { Modal, Avatar } from "antd";
 import { UserOutlined } from "@ant-design/icons";
 import ImageUploadAndCrop from "../../ImageUploadAndCrop/ImageUploadAndCrop";
+import { useNavigate } from "react-router-dom";
+
 const Header = () => {
-  const {token} = useSelector((state)=>state.auth);
+  const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const { profile, loading, delete_loading } = useSelector(
     (state) => state.profile
@@ -40,7 +43,7 @@ const Header = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []); 
+  }, []);
 
   const bmButton = document.querySelector(".bm-cross-button");
 
@@ -67,6 +70,10 @@ const Header = () => {
     dispatch(DELETE_IMAGE_PROFILE());
   };
 
+  const handleNavigate = () => {
+    navigate("/favorite");
+  };
+
   return (
     <>
       {loading && <MyLoader />}
@@ -85,67 +92,72 @@ const Header = () => {
                   state={open}
                   notifyFunction={notifyCheckToken}
                   setOpenModal={setModalOpen}
+                  token={token}
                 />
-               <HiddenByTokenHoc>
-                 <HeaderLogo   setModalOpen={setModalOpen}
-                  modalOpen={modalOpen}
-                  avatarModalOpen={avatarModalOpen}
-                  handleImageUpload={handleImageUpload}/>
-                
-                <Modal
-                  title="Ваш профиль"
-                  width="100%"
-                  open={modalOpen}
-                  onOk={() => setModalOpen(false)}
-                  onCancel={() => setModalOpen(false)}
-                  centered
-                >
-                  <div className={styles["header-modal-wrapper"]}>
-                    <Avatar
-                      style={{
-                        cursor: "pointer",
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                      }}
-                      onClick={() => {
-                        setAvatarModalOpen(true);
-                        setModalOpen(false);
-                      }}
-                      size={70}
-                      src={profile.image}
-                      icon={!profile.imageUrl && <UserOutlined />}
-                    />
-                    <p className={styles["header-modal-username"]}>
-                      {profile.name}
-                    </p>
-                    <p className={styles["header-modal-email"]}>
-                      {profile.email}
-                    </p>
-                    <p
-                      className={
-                        profile.verified === false
-                          ? styles["header-modal-verified"]
-                          : styles["header-modal-unverified"]
-                      }
-                    >
-                      {profile.verified === false
-                        ? "Неверифицированный"
-                        : "Верифицированный"}
-                    </p>
-                    <LogOutBtn />
-                  </div>
-                </Modal>
-                <ImageUploadAndCrop
-                  visible={avatarModalOpen}
-                  onClose={() => setAvatarModalOpen(false)}
-                  onUpload={handleImageUpload}
-                  handleDeleteImageProfile={handleDeleteImageProfile}
+                <HiddenByTokenHoc>
+                  <HeaderLogo
+                    setModalOpen={setModalOpen}
+                    modalOpen={modalOpen}
+                    avatarModalOpen={avatarModalOpen}
+                    handleImageUpload={handleImageUpload}
                   />
-             </HiddenByTokenHoc>
-                <div className={styles["header__right"]}>
-                  <FavoriteIcon className={styles["header__favorite-icon"]} />
-                </div>
+
+                  <Modal
+                    title="Ваш профиль"
+                    width="100%"
+                    open={modalOpen}
+                    onOk={() => setModalOpen(false)}
+                    onCancel={() => setModalOpen(false)}
+                    centered
+                  >
+                    <div className={styles["header-modal-wrapper"]}>
+                      <Avatar
+                        style={{
+                          cursor: "pointer",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                        }}
+                        onClick={() => {
+                          setAvatarModalOpen(true);
+                          setModalOpen(false);
+                        }}
+                        size={70}
+                        src={profile.image}
+                        icon={!profile.imageUrl && <UserOutlined />}
+                      />
+                      <p className={styles["header-modal-username"]}>
+                        {profile.name}
+                      </p>
+                      <p className={styles["header-modal-email"]}>
+                        {profile.email}
+                      </p>
+                      <p
+                        className={
+                          profile.verified === false
+                            ? styles["header-modal-verified"]
+                            : styles["header-modal-unverified"]
+                        }
+                      >
+                        {profile.verified === false
+                          ? "Неверифицированный"
+                          : "Верифицированный"}
+                      </p>
+                      <LogOutBtn />
+                    </div>
+                  </Modal>
+                  <ImageUploadAndCrop
+                    visible={avatarModalOpen}
+                    onClose={() => setAvatarModalOpen(false)}
+                    onUpload={handleImageUpload}
+                    handleDeleteImageProfile={handleDeleteImageProfile}
+                  />
+                </HiddenByTokenHoc>
+                <FavoriteIcon
+                  style={{ color: "red" }}
+                  className={styles["header__favorite-icon"]}
+                  onClick={handleNavigate}
+                />
               </>
             ) : (
               <>

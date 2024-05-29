@@ -231,14 +231,14 @@ export const GET_FAVORITE_ASYNC = createAsyncThunk(
 );
 
 export const CARD_DETAIL_GET_ASYNC = createAsyncThunk(
-  "ads/CARD_DETAIL_GET_ASYNC", 
-  async (id , {rejectWithValue}) => {
+  "ads/CARD_DETAIL_GET_ASYNC",
+  async (_id, { rejectWithValue }) => {
     try {
-      const response = await axios.get(`${CARD_DETAIL_GET_API}${id}`)
+      const response = await axios.get(`${CARD_DETAIL_GET_API}${_id}`);
       console.log(response.data);
-      return response.data
+      return response.data;
     } catch (e) {
       return rejectWithValue(e.message);
     }
   }
-)
+);
