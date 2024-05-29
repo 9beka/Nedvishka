@@ -128,7 +128,7 @@ const FilterForm = ({
   };
 
   return (
-    <div className="wrapper">
+    <>
       <section className={classNames(cls.filter)}>
         <MediaQuery minWidth={768}>
           <div className={classNames(cls.filter__wrap)}>
@@ -152,7 +152,7 @@ const FilterForm = ({
           </div>
         </MediaQuery>
       </section>
-    </div>
+    </>
   );
 };
 export default FilterForm;

@@ -87,7 +87,6 @@ function MyAdsCard({ item, userId, converter }) {
       <div className={cls.footer__slide}>
         <WhatsAppOutlined />
         <ShareAltOutlined />
-        <HeartOutlined />
       </div>
       <div className={cls["myAdsCard-buttons"]}>
         <Button

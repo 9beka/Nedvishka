@@ -1,4 +1,5 @@
 import React from "react";
+import cls from "./InputMinMax.module.scss";
 import { InputNumber } from "antd";
 
 const InputMinMax = ({ handleValuePrice, priceForm }) => {
@@ -7,7 +8,7 @@ const InputMinMax = ({ handleValuePrice, priceForm }) => {
   };
 
   return (
-    <>
+    <div className={cls.input}>
       <InputNumber
         style={styleInput}
         min={1}
@@ -26,7 +27,7 @@ const InputMinMax = ({ handleValuePrice, priceForm }) => {
           handleValuePrice([priceForm ? priceForm[0] : priceForm[0], value])
         }
       />
-    </>
+    </div>
   );
 };
 

@@ -11,6 +11,7 @@ import {
   UPDATE_IMAGE_PROFILE_API,
   DELETE_IMAGE_PROFILE_API,
   GET_FAVORITE_API,
+  ADD_FAVORITE_API,
 } from "../../../../shared/config/api/api";
 export const REGISTER_ASYNC = createAsyncThunk(
   "auth/REGISTER_ASYNC",
@@ -192,7 +193,7 @@ export const ADD_FAVORITE_ASYNC = createAsyncThunk(
     try {
       const token = getState().auth.token;
       const response = await axios.post(
-        `http://localhost:5000/favorite/toggle-favorite/${id}`,
+        `${ADD_FAVORITE_API}${id}`,
         {},
         {
           headers: {

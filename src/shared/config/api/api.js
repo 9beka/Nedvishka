@@ -21,6 +21,6 @@ export const UPDATE_IMAGE_PROFILE_API = AUTH_API + "update/user-image";
 
 export const DELETE_IMAGE_PROFILE_API = AUTH_API + "delete/user-image";
 
-// export const ADD_FAVORITE_API = FAVORITE_API + "toggle-favorite/:productId";
+export const ADD_FAVORITE_API = FAVORITE_API + "toggle-favorite/";
 
 export const GET_FAVORITE_API = FAVORITE_API + "get-favorites";

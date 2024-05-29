@@ -45,41 +45,42 @@ const HeaderMenu = ({
     <Menu onOpen={handleOpenMenu} isOpen={state} right>
       <div className="bm-item-links">{renderItems}</div>
 
-    <HiddenByTokenHoc>
+      <HiddenByTokenHoc>
         <div style={{ display: "flex", justifyContent: "center" }}>
           <Avatar
             style={{ cursor: "pointer" }}
             onClick={() => {
               setState(false);
               notifyFunction(true);
+              setOpenModal(true);
             }}
             size={100}
             src={profile.image}
             icon={!profile.imageUrl && <UserOutlined />}
           />
         </div>
-  
-      <div className={cls["header__right-add-btn"]}>
-        <div className={cls["header__btn__wrap"]}>
-          <button
-            className={cls["header__btn"]}
-            onClick={() => {
-              setState(false);
-              notifyFunction(
-                "Пожалуйста зарегистрируйтесь, чтобы добавить объявление!"
-              );
-            }}
-          >
-            <span>
-              <PlusOutlined />
-            </span>
 
-            <Link to={`${token ? "/ads" : "/register"}`}>
-              Добавить объявление
-            </Link>
-          </button>
+        <div className={cls["header__right-add-btn"]}>
+          <div className={cls["header__btn__wrap"]}>
+            <button
+              className={cls["header__btn"]}
+              onClick={() => {
+                setState(false);
+                notifyFunction(
+                  "Пожалуйста зарегистрируйтесь, чтобы добавить объявление!"
+                );
+              }}
+            >
+              <span>
+                <PlusOutlined />
+              </span>
+
+              <Link to={`${token ? "/ads" : "/register"}`}>
+                Добавить объявление
+              </Link>
+            </button>
+          </div>
         </div>
-      </div>
       </HiddenByTokenHoc>
 
       <div className="bm-item-info">
