@@ -11,6 +11,8 @@ import {
   UPDATE_IMAGE_PROFILE_API,
   DELETE_IMAGE_PROFILE_API,
   GET_FAVORITE_API,
+  ADD_FAVORITE_API,
+  CARD_DETAIL_GET_API,
 } from "../../../../shared/config/api/api";
 export const REGISTER_ASYNC = createAsyncThunk(
   "auth/REGISTER_ASYNC",
@@ -192,7 +194,7 @@ export const ADD_FAVORITE_ASYNC = createAsyncThunk(
     try {
       const token = getState().auth.token;
       const response = await axios.post(
-        `http://localhost:5000/favorite/toggle-favorite/${id}`,
+        `${ADD_FAVORITE_API}${id}`,
         {},
         {
           headers: {
@@ -227,3 +229,16 @@ export const GET_FAVORITE_ASYNC = createAsyncThunk(
     }
   }
 );
+
+export const CARD_DETAIL_GET_ASYNC = createAsyncThunk(
+  "ads/CARD_DETAIL_GET_ASYNC", 
+  async (id , {rejectWithValue}) => {
+    try {
+      const response = await axios.get(`${CARD_DETAIL_GET_API}${id}`)
+      console.log(response.data);
+      return response.data
+    } catch (e) {
+      return rejectWithValue(e.message);
+    }
+  }
+)
