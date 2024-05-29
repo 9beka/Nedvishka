@@ -4,6 +4,7 @@ import authSlicer from "./Slices/authSlicer";
 import alertSlicer from "./Slices/alertSlicer";
 import adsSlicer from "./Slices/adsSlicer";
 import profileSlicer from "./Slices/profileSlicer";
+import favoriteSlicer from "./Slices/favoriteSlicer";
 export const store = configureStore({
   reducer: {
     rangeOfPrice: rangePriceSlicer,
@@ -11,5 +12,6 @@ export const store = configureStore({
     alert: alertSlicer,
     ads: adsSlicer,
     profile: profileSlicer,
+    favorite: favoriteSlicer,
   },
 });

@@ -23,9 +23,7 @@ const MainPage = () => {
       <Header />
       <div className="main__wrapper">
         <div className="main__wrapper__fon"></div>
-        <div className="container">
-          <FilterForm />
-        </div>
+
         <Sell />
         <OurAgency />
         <AboutUs />

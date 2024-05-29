@@ -16,8 +16,7 @@ const Sell = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(ADS_GET_CARTS_ASYNC());
-    dispatch(GET_CONVERTER());
+    Promise.all([dispatch(ADS_GET_CARTS_ASYNC()), dispatch(GET_CONVERTER())]);
   }, [dispatch]);
 
   const { dataOfAds, converter } = useSelector((state) => state.ads);
@@ -53,7 +52,7 @@ const Sell = () => {
   return (
     <div className={cls.sell__block}>
       <div className="wrapper">
-        <h1 className={`${cls.sell__p} title`}>Срочная продажа</h1>
+        <h1 className={`${cls.sell__p}`}>Срочная продажа</h1>
         <div className={cls.sell__wrapper}>
           {displayedAds.map((item, index) => (
             <AllAdsCard key={index} converter={converter} item={item} />

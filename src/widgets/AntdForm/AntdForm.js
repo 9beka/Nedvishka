@@ -37,11 +37,11 @@ const AntdForm = () => {
     });
   const onFinish = (values) => {
     const formData = new FormData();
-    Object.keys(values).forEach(key => {
-      if (key !== 'Upload') {
+    Object.keys(values).forEach((key) => {
+      if (key !== "Upload") {
         const value = values[key];
         if (Array.isArray(value)) {
-          value.forEach(item => formData.append(key, item));
+          value.forEach((item) => formData.append(key, item));
         } else {
           formData.append(key, value);
         }
@@ -49,13 +49,13 @@ const AntdForm = () => {
     });
 
     if (values.Upload && values.Upload.fileList) {
-      values.Upload.fileList.forEach(file => {
-        formData.append('files', file.originFileObj);
+      values.Upload.fileList.forEach((file) => {
+        formData.append("files", file.originFileObj);
       });
     }
     dispatch(ADS_POST_ASYNC(formData));
 
-    // form.resetFields();
+    form.resetFields();
     setFileList([]);
     setYourName("");
     setTextAreaValue("");
@@ -528,7 +528,7 @@ const AntdForm = () => {
             </Select>
           </Form.Item>
         </HocAdaptiveWrapper>
-              <AIdescription/>
+        <AIdescription />
         <HocAdaptiveWrapper screenWidth={screenWidth}>
           <Form.Item
             name="PriceForm"

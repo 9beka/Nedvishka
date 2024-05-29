@@ -8,7 +8,13 @@ import { UserOutlined, PlusOutlined } from "@ant-design/icons";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import { useSelector } from "react-redux";
 
-const HeaderMenu = ({ setState, state, notifyFunction, token }) => {
+const HeaderMenu = ({
+  setOpenModal,
+  setState,
+  state,
+  notifyFunction,
+  token,
+}) => {
   const { profile } = useSelector((state) => state.profile);
 
   const renderItems = renderLinks.map((el) => (
@@ -43,6 +49,7 @@ const HeaderMenu = ({ setState, state, notifyFunction, token }) => {
           style={{ cursor: "pointer" }}
           onClick={() => {
             setState(false);
+            setOpenModal(true);
             notifyFunction(true);
           }}
           size={100}

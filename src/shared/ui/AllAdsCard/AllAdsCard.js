@@ -5,14 +5,19 @@ import {
   WhatsAppOutlined,
   ShareAltOutlined,
   HeartOutlined,
+  HeartFilled,
 } from "@ant-design/icons";
 import { SwiperImage } from "../../../widgets/index";
 import { UserOutlined } from "@ant-design/icons";
+import { useDispatch } from "react-redux";
+import { ADD_FAVORITE_ASYNC } from "../../../app/providers/Redux/actions/actions";
 
 const AllAdsCard = ({ item, converter }) => {
+  const dispatch = useDispatch();
+
   const {
     Districts,
-    Floor, 
+    Floor,
     PloshadM2,
     PriceForm,
     Sostoyanie,
@@ -22,12 +27,17 @@ const AllAdsCard = ({ item, converter }) => {
     Upload,
     Rooms,
     createdBy,
+    _id,
   } = item;
 
   const toUsd = PriceForm / converter.sell_usd;
   const imagesList = [];
 
   Upload?.map((image) => imagesList.push(image.thumbUrl));
+
+  const handleAddFavorite = () => {
+    Promise.all([dispatch(ADD_FAVORITE_ASYNC(_id))]);
+  };
 
   return (
     <div className={cls["card"]}>
@@ -41,6 +51,13 @@ const AllAdsCard = ({ item, converter }) => {
       <p className={cls.price__p}>{`$${toUsd.toFixed(
         2
       )} / ${PriceForm} сом`}</p>
+      <p
+        style={{
+          fontSize: 14,
+        }}
+      >
+        {_id}
+      </p>
       <div className={cls.footer__slide}>
         <Avatar
           size={70}
@@ -52,7 +69,7 @@ const AllAdsCard = ({ item, converter }) => {
       <div className={cls.footer__slide}>
         <WhatsAppOutlined />
         <ShareAltOutlined />
-        <HeartOutlined />
+        <HeartOutlined onClick={handleAddFavorite} />
       </div>
     </div>
   );

@@ -17,6 +17,7 @@ import ImageUploadAndCrop from "../../ImageUploadAndCrop/ImageUploadAndCrop";
 import { renderLinks } from "../../../shared/helpers";
 import { HeaderMenu } from "../../../features/ui";
 import HeaderNav from "../../../features/ui/Header/HeaderNav/HeaderNav";
+import { LogOutBtn } from "../../../shared/ui/Button";
 
 const Header = () => {
   const token = localStorage.getItem("token");
@@ -84,6 +85,7 @@ const Header = () => {
                   setState={setOpen}
                   state={open}
                   notifyFunction={notifyCheckToken}
+                  setOpenModal={setModalOpen}
                 />
                 <Modal
                   title="Ваш профиль"
@@ -126,6 +128,7 @@ const Header = () => {
                         ? "Неверифицированный"
                         : "Верифицированный"}
                     </p>
+                    <LogOutBtn />
                   </div>
                 </Modal>
                 <ImageUploadAndCrop

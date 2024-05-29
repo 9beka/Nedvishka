@@ -10,6 +10,7 @@ import {
   GET_PROFILE_API,
   UPDATE_IMAGE_PROFILE_API,
   DELETE_IMAGE_PROFILE_API,
+  GET_FAVORITE_API,
 } from "../../../../shared/config/api/api";
 export const REGISTER_ASYNC = createAsyncThunk(
   "auth/REGISTER_ASYNC",
@@ -179,6 +180,48 @@ export const DELETE_IMAGE_PROFILE = createAsyncThunk(
           },
         }
       );
+
+      return response.data;
+    } catch (e) {
+      return rejectWithValue(e.message);
+    }
+  }
+);
+
+export const ADD_FAVORITE_ASYNC = createAsyncThunk(
+  "favorite/ADD_FAVORITE_ASYNC",
+  async (productId, { rejectWithValue, getState }) => {
+    console.log(productId);
+    try {
+      const token = getState().auth.token;
+      const response = await axios.post(
+        `http://localhost:5000/favorite/toggle-favorite/${productId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      return response.data;
+    } catch (e) {
+      return rejectWithValue(e.message);
+    }
+  }
+);
+
+export const GET_FAVORITE_ASYNC = createAsyncThunk(
+  "favorite/GET_FAVORITE_ASYNC",
+  async (_, { rejectWithValue, getState }) => {
+    try {
+      const token = getState().auth.token;
+
+      const response = await axios.get(GET_FAVORITE_API, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      console.log(response.data);
 
       return response.data;
     } catch (e) {

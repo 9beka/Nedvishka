@@ -9,6 +9,7 @@ import { AntdTooltip } from "../../../../shared/ui";
 import { Avatar, Modal } from "antd";
 import { ImageUploadAndCrop } from "../../../../widgets";
 import { useSelector } from "react-redux";
+import { LogOutBtn } from "../../../../shared/ui/Button";
 
 const HeaderNav = ({
   avatarModalOpen,
@@ -154,6 +155,7 @@ const HeaderNav = ({
                 ? "Неверифицированный"
                 : "Верифицированный"}
             </p>
+            <LogOutBtn />
           </div>
         </Modal>
         <ImageUploadAndCrop
