@@ -74,7 +74,10 @@ const AllAdsCard = ({ item, converter }) => {
         <p className={cls.phone__p}>+{TelNumber}</p>
       </div>
       <div className={cls.footer__slide}>
-       <Link to={"https://wa.me/+996507688388"}> <WhatsAppOutlined /></Link>
+        <Link to={"https://wa.me/+996507688388"}>
+          {" "}
+          <WhatsAppOutlined />
+        </Link>
         <ShareAltOutlined />
         {isLiked ? (
           <HeartFilled onClick={handleAddFavorite} />
