@@ -1,6 +1,6 @@
 import React, { useLayoutEffect } from "react";
 import "./MainPage.scss";
-import { FilterForm, Sell } from "../../../features/ui";
+import { Sell } from "../../../features/ui";
 import { AboutUs, Contacts, Footer, Header, OurAgency } from "../../../widgets";
 import gsap from "gsap";
 import { useSelector } from "react-redux";

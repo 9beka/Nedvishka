@@ -15,7 +15,9 @@ import HeaderNav from "../../../features/ui/Header/HeaderNav/HeaderNav";
 import HeaderLogo from "./HeaderLogo/HeaderLogo";
 import HiddenByTokenHoc from "../../../shared/helpers/hoc/HiddenByTokenHoc";
 import { LogOutBtn } from "../../../shared/ui/Button";
-
+import { Modal , Avatar} from "antd";
+import { UserOutlined } from "@ant-design/icons";
+import ImageUploadAndCrop from "../../ImageUploadAndCrop/ImageUploadAndCrop";
 const Header = () => {
   const {token} = useSelector((state)=>state.auth);
   const dispatch = useDispatch();
@@ -82,7 +84,14 @@ const Header = () => {
                   setState={setOpen}
                   state={open}
                   notifyFunction={notifyCheckToken}
+                  setOpenModal={setModalOpen}
                 />
+               <HiddenByTokenHoc>
+                 <HeaderLogo   setModalOpen={setModalOpen}
+                  modalOpen={modalOpen}
+                  avatarModalOpen={avatarModalOpen}
+                  handleImageUpload={handleImageUpload}/>
+                
                 <Modal
                   title="Ваш профиль"
                   width="100%"
@@ -131,12 +140,6 @@ const Header = () => {
                   visible={avatarModalOpen}
                   onClose={() => setAvatarModalOpen(false)}
                   onUpload={handleImageUpload}
-               <HiddenByTokenHoc>
-                 <HeaderLogo
-                  setModalOpen={setModalOpen}
-                  modalOpen={modalOpen}
-                  avatarModalOpen={avatarModalOpen}
-                  handleImageUpload={handleImageUpload}
                   handleDeleteImageProfile={handleDeleteImageProfile}
                   />
              </HiddenByTokenHoc>

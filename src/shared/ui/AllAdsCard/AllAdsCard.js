@@ -1,6 +1,6 @@
 import React from "react";
 import cls from "./AllAdsCard.module.scss";
-import { Avatar, Spin } from "antd";
+import { Avatar } from "antd";
 import {
   WhatsAppOutlined,
   ShareAltOutlined,
@@ -16,7 +16,7 @@ import { ADD_FAVORITE_ASYNC } from "../../../app/providers/Redux/actions/actions
 const AllAdsCard = ({ item, converter }) => {
   const dispatch = useDispatch();
 
-  const { favorite, loading } = useSelector((state) => state.favorite);
+  const { favorite } = useSelector((state) => state.favorite);
 
   const {
     Districts,
