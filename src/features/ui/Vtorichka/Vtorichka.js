@@ -9,7 +9,11 @@ import {
   ShowButton,
   SliderFilter,
 } from "../../../shared/ui";
-import { stateData, nameOfMainDistrict } from "../../../shared/constants";
+import {
+  stateData,
+  nameOfMainDistrict,
+  allComplexNames,
+} from "../../../shared/constants";
 import { classNames } from "../../../shared/helpers";
 
 const Vtorichka = ({
@@ -20,6 +24,7 @@ const Vtorichka = ({
   handleValueId,
   handleValueSostoyanie,
   children,
+  handleValueComplex,
 }) => {
   return (
     <div className={classNames(cls.filterButtons)}>
@@ -32,6 +37,13 @@ const Vtorichka = ({
         <ModalOfCheckboxes
           data={nameOfMainDistrict}
           handleValueDistrict={handleValueDistrict}
+        />
+      </div>
+      <div className={classNames(cls.room__wrapper)}>
+        <h5>Жилые комплексы</h5>
+        <ModalOfCheckboxes
+          data={allComplexNames}
+          handleValueDistrict={handleValueComplex}
         />
       </div>
       <div className={classNames(cls.room__wrapper)}>

@@ -12,6 +12,7 @@ import {
   stateData,
   statusObject,
   communications,
+  allComplexNames,
 } from "../../../shared/constants";
 import ModalOfCheckboxes from "../../../features/ui/ModalOfCheckboxes/ModalOfCheckboxes";
 import { floorsArray } from "../../../shared/constants";
@@ -36,6 +37,8 @@ const AntdForm = () => {
   const [yourName, setYourName] = useState("");
   const [ownersPhoneNumber, setOwnersPhoneNumber] = useState("");
   const [districts, setDistricts] = useState([]);
+  const [complex, setComplex] = useState([]);
+
   const [streetCrossing, setStreetCrossing] = useState("");
   const [state, setState] = useState("");
   const [documentation, setDocumentation] = useState("");
@@ -45,8 +48,6 @@ const AntdForm = () => {
   const [paymentType, setPaymentType] = useState("");
   const [objectStatus, setObjectStatus] = useState("");
   const [priceSom, setPriceSom] = useState("");
-
-  console.log(rooms);
 
   const handleTextAreaChange = (e) => {
     setTextAreaValue(e.target.value);
@@ -79,10 +80,6 @@ const AntdForm = () => {
       containerId: "success-add-ads",
     });
 
-  const notifyErrorAddAds = (title) =>
-    toast.error(title, {
-      containerId: "error-add-ads",
-    });
   const { loading } = useSelector((state) => state.ads);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const dispatch = useDispatch();
@@ -90,7 +87,7 @@ const AntdForm = () => {
 
   const onFinish = (values) => {
     dispatch(ADS_POST_ASYNC(values));
-    // form.resetFields();
+    form.resetFields();
     setFileList([]);
     setYourName("");
     setTextAreaValue("");
@@ -120,6 +117,14 @@ const AntdForm = () => {
       const districtArray = [...districts, name];
       form.setFieldsValue({ Districts: districtArray });
       setDistricts(districtArray);
+    }
+  };
+
+  const handleValueComplex = (name) => {
+    if (!complex.includes(name)) {
+      const complexArray = [...complex, name];
+      form.setFieldsValue({ Complex: complexArray });
+      setComplex(complexArray);
     }
   };
 
@@ -401,6 +406,17 @@ const AntdForm = () => {
           </Form.Item>
 
           <Form.Item
+            name="Complex"
+            rules={[{ required: true, message: "Выберите жилые комплекс(ы)" }]}
+          >
+            <label className={cls.label__form}>Жилые комплекс</label>
+            <ModalOfCheckboxes
+              handleValueDistrict={handleValueComplex}
+              data={allComplexNames}
+            />
+          </Form.Item>
+
+          <Form.Item
             name="StreetAround"
             rules={[{ required: true, message: "Введите пересечение улиц" }]}
           >
@@ -555,19 +571,6 @@ const AntdForm = () => {
           </Form.Item>
         </HocAdaptiveWrapper>
 
-        <label className={cls.label__form}>Описание</label>
-        <Form.Item
-          name="Texteditor"
-          rules={[{ required: true, message: "Введите описание" }]}
-        >
-          <div className={cls.AntdForm__textArea__Wrapper}>
-            <Button className={cls.AntdForm__btn} onClick={handleButtonClick}>
-              СОЗДАТЬ ИИ ОПИСАНИЕ
-            </Button>
-            <TextArea value={textAreaValue} onChange={handleTextAreaChange} />
-          </div>
-        </Form.Item>
-
         <HocAdaptiveWrapper screenWidth={screenWidth}>
           <Form.Item
             name="PriceForm"
@@ -597,6 +600,19 @@ const AntdForm = () => {
             />
           </Form.Item>
         </HocAdaptiveWrapper>
+
+        <label className={cls.label__form}>Описание</label>
+        <Form.Item
+          name="Texteditor"
+          rules={[{ required: true, message: "Введите описание" }]}
+        >
+          <div className={cls.AntdForm__textArea__Wrapper}>
+            <Button className={cls.AntdForm__btn} onClick={handleButtonClick}>
+              СОЗДАТЬ ИИ ОПИСАНИЕ
+            </Button>
+            <TextArea value={textAreaValue} onChange={handleTextAreaChange} />
+          </div>
+        </Form.Item>
 
         <Form.Item name="agentNote">
           <label className={cls.label__form}>

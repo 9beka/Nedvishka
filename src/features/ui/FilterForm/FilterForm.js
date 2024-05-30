@@ -25,6 +25,7 @@ const FilterForm = ({
   handleValueTipNedvishki,
   handleValueSotka,
   sotka,
+  handleValueComplex,
 }) => {
   const optionArr = [
     {
@@ -39,6 +40,7 @@ const FilterForm = ({
           priceForm={priceForm}
           handleValueId={handleValueId}
           handleValueSostoyanie={handleValueSostoyanie}
+          handleValueComplex={handleValueComplex}
         />
       ),
     },
@@ -54,6 +56,7 @@ const FilterForm = ({
           priceForm={priceForm}
           handleValueId={handleValueId}
           handleValueSostoyanie={handleValueSostoyanie}
+          handleValueComplex={handleValueComplex}
         />
       ),
     },
@@ -70,6 +73,7 @@ const FilterForm = ({
           handleValueId={handleValueId}
           handleValueSostoyanie={handleValueSostoyanie}
           handleValueTipNedvishki={handleValueTipNedvishki}
+          handleValueComplex={handleValueComplex}
         />
       ),
     },
@@ -87,6 +91,7 @@ const FilterForm = ({
           handleValueSostoyanie={handleValueSostoyanie}
           handleValueSotka={handleValueSotka}
           sotka={sotka}
+          handleValueComplex={handleValueComplex}
         />
       ),
     },
@@ -104,6 +109,7 @@ const FilterForm = ({
           handleValueSostoyanie={handleValueSostoyanie}
           handleValueSotka={handleValueSotka}
           sotka={sotka}
+          handleValueComplex={handleValueComplex}
         />
       ),
     },

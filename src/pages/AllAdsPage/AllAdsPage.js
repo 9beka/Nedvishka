@@ -16,6 +16,8 @@ const AllAdsPage = () => {
   const [tabsValue, setTabsValue] = useState("Все");
   const [rooms, setRooms] = useState("");
   const [districts, setDistricts] = useState([]);
+  const [complex, setComplex] = useState([]);
+
   const [priceForm, setPriceForm] = useState([0, 200000]);
   const [valueId, setValueId] = useState("");
   const [sostoyanie, setSostoyanie] = useState([]);
@@ -39,7 +41,9 @@ const AllAdsPage = () => {
           (!valueId || item._id.includes(valueId)) &&
           (sostoyanie.length === 0 || sostoyanie.includes(item.Sostoyanie)) &&
           (tipNedvishki.length === 0 ||
-            tipNedvishki.includes(item.TipNedvishki))
+            tipNedvishki.includes(item.TipNedvishki)) &&
+          (complex.length === 0 ||
+            item.Complex.some((item) => item.includes(complex)))
         );
       } else if (
         tabsValue === "Дома\nи\nучастки" ||
@@ -54,7 +58,9 @@ const AllAdsPage = () => {
           (!valueId || item._id.includes(valueId)) &&
           (sostoyanie.length === 0 || sostoyanie.includes(item.Sostoyanie)) &&
           item.PloshadM2 >= sotka[0] &&
-          item.PloshadM2 <= sotka[1]
+          item.PloshadM2 <= sotka[1] &&
+          (complex.length === 0 ||
+            item.Complex.some((item) => item.includes(complex)))
         );
       } else {
         return (
@@ -65,7 +71,9 @@ const AllAdsPage = () => {
           item.PriceForm >= priceForm[0] &&
           item.PriceForm <= priceForm[1] &&
           (!valueId || item._id.includes(valueId)) &&
-          (sostoyanie.length === 0 || sostoyanie.includes(item.Sostoyanie))
+          (sostoyanie.length === 0 || sostoyanie.includes(item.Sostoyanie)) &&
+          (complex.length === 0 ||
+            item.Complex.some((item) => item.includes(complex)))
         );
       }
     })
@@ -86,6 +94,13 @@ const AllAdsPage = () => {
     if (!districts.includes(name)) {
       const districtArray = [...districts, name];
       setDistricts(districtArray);
+    }
+  };
+
+  const handleValueComplex = (name) => {
+    if (!complex.includes(name)) {
+      const complexArray = [...complex, name];
+      setComplex(complexArray);
     }
   };
 
@@ -133,6 +148,7 @@ const AllAdsPage = () => {
             handleValueTipNedvishki={handleValueTipNedvishki}
             handleValueSotka={handleValueSotka}
             sotka={sotka}
+            handleValueComplex={handleValueComplex}
           />
           <div className={cls["all-ads-page__wrapper"]}>{renderData}</div>
         </div>

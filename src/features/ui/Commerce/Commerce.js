@@ -10,6 +10,7 @@ const Commerce = ({
   handleValueSostoyanie,
   handleValueSotka,
   sotka,
+  handleValueComplex,
 }) => {
   const styleInput = {
     border: "2px solid #6CA5DC",
@@ -22,6 +23,7 @@ const Commerce = ({
       priceForm={priceForm}
       handleValueId={handleValueId}
       handleValueSostoyanie={handleValueSostoyanie}
+      handleValueComplex={handleValueComplex}
     >
       <h5>Площадь м2</h5>
       <div>

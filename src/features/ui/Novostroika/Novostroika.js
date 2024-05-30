@@ -11,6 +11,7 @@ const Novostroika = ({
   handleValueId,
   handleValueSostoyanie,
   handleValueTipNedvishki,
+  handleValueComplex,
 }) => {
   return (
     <Vtorichka
@@ -20,6 +21,7 @@ const Novostroika = ({
       priceForm={priceForm}
       handleValueId={handleValueId}
       handleValueSostoyanie={handleValueSostoyanie}
+      handleValueComplex={handleValueComplex}
     >
       <SelectChecboxes
         handleValueTipNedvishki={handleValueTipNedvishki}

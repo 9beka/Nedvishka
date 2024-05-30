@@ -17,7 +17,13 @@ const SwiperImage = ({ images }) => {
     >
       {images?.map((image, index) => (
         <SwiperSlide key={index}>
-          <Image src={image || image.thumbUrl} alt={`Slide ${index}`} />
+          <Image
+            style={{
+              width: "100%",
+            }}
+            src={image || image.thumbUrl}
+            alt={`Slide ${index}`}
+          />
         </SwiperSlide>
       ))}
     </Swiper>
