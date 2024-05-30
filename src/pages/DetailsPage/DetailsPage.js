@@ -21,9 +21,9 @@ const DetailsPage = () => {
 
   detail.Upload?.map((image) => imagesList.push(image.thumbUrl));
 
-  const renderDistricts = detail.Districts.map((item) => item);
+  const renderDistricts = detail.Districts?.map((item) => item);
 
-  const renderCommunication = detail.communication.map((item) => item);
+  const renderCommunication = detail.communication?.map((item) => item);
 
   return (
     <div className={cls.detail}>

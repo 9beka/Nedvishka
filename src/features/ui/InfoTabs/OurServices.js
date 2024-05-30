@@ -2,7 +2,7 @@ import React from 'react';
 import cls from "./InfoTabs.module.scss";
 import {Button} from "../../../shared/ui";
 import MediaQuery from "react-responsive";
-
+import OurServicesImg  from '../../../shared/assets/img/OurServicesImg.jpg';
 const OurServices = () => {
     return (
 
@@ -13,7 +13,7 @@ const OurServices = () => {
                     <div className='row'>
                         <div className="col-6">
                             <div className={cls.box}>
-                                <img className={cls.serviceImg} src="https://ned.kg/wp-content/uploads/img/Rectangle-7.png?v=1632727285" alt=""/>
+                                <img className={cls.serviceImg} src={OurServicesImg} alt=""/>
                             </div>
                         </div>
                         <div className="col-6">

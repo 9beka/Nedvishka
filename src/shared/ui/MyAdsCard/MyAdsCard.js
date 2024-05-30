@@ -5,7 +5,6 @@ import {
   DeleteFilled,
   WhatsAppOutlined,
   ShareAltOutlined,
-  HeartOutlined,
 } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
 import { ADS_DELETE_ASYNC } from "../../../app/providers/Redux/actions/actions";

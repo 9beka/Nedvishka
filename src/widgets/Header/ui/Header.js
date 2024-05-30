@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import logoIcon from "../../../shared/assets/svg/logo.svg";
+import logotip from "../../../shared/assets/img/logotip.jpg"
 import styles from "./Header.module.scss";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { toast, ToastContainer } from "react-toastify";
@@ -84,7 +84,7 @@ const Header = () => {
       <div className={styles.header}>
         <div className="container">
           <div className={styles.header__wrap}>
-            <img className={styles["header-logo"]} src={logoIcon} alt="Logo" />
+            <img className={styles["header-logo"]} src={logotip} alt="Logo" />
             {windowWidth <= 768 ? (
               <>
                 <HeaderMenu
