@@ -3,7 +3,6 @@ import cls from "./AllAdsCard.module.scss";
 import { Avatar } from "antd";
 import {
   WhatsAppOutlined,
-  ShareAltOutlined,
   HeartOutlined,
   HeartFilled,
 } from "@ant-design/icons";
@@ -22,6 +21,7 @@ const AllAdsCard = ({ item, converter }) => {
   const dispatch = useDispatch();
 
   const { favorite } = useSelector((state) => state.favorite);
+  const { myAdsCart } = useSelector((state) => state.ads);
 
   const {
     Districts,
@@ -37,11 +37,13 @@ const AllAdsCard = ({ item, converter }) => {
     createdBy,
     _id,
   } = item;
-
+  const digitsID = _id.replace(/\D/g, "");
   const toUsd = PriceForm / converter.sell_usd;
   const imagesList = [];
-
+  const { profile } = useSelector((state) => state.profile);
   Upload?.map((image) => imagesList.push(image.thumbUrl));
+
+  const isTrueNumber = myAdsCart.items?.filter((el) => el._id === _id);
 
   const handleAddFavorite = () => {
     dispatch(ADD_FAVORITE_ASYNC(_id));
@@ -72,7 +74,7 @@ const AllAdsCard = ({ item, converter }) => {
           fontSize: 14,
         }}
       >
-        {_id}
+        {digitsID}
       </p>
       <div className={cls.footer__slide}>
         <Avatar
@@ -80,14 +82,15 @@ const AllAdsCard = ({ item, converter }) => {
           src={createdBy?.image}
           icon={!createdBy?.imageUrl && <UserOutlined />}
         />
-        <p className={cls.phone__p}>+{TelNumber}</p>
+        <p className={cls.phone__p}>
+          +{isTrueNumber ? profile.telephoneNumber : TelNumber}
+        </p>
       </div>
       <div className={cls.footer__slide}>
         <Link to={"https://wa.me/+996507688388"}>
           {" "}
           <WhatsAppOutlined />
         </Link>
-        <ShareAltOutlined />
         {isLiked ? (
           <HeartFilled onClick={handleAddFavorite} />
         ) : (

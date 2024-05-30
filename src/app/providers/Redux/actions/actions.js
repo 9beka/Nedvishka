@@ -17,6 +17,7 @@ import {
 export const REGISTER_ASYNC = createAsyncThunk(
   "auth/REGISTER_ASYNC",
   async (userData, { rejectWithValue }) => {
+    console.log(userData , "REGISTER_ASYNC:");
     try {
       const response = await axios.post(REGISTER_API, userData);
       if (response.data.token) {

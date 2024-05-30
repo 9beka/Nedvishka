@@ -199,9 +199,7 @@ const AntdForm = () => {
               },
             ]}
           >
-            <label className={cls.label__form}>
-              Телефон владельца (996700000000)
-            </label>
+
             <InputNumber
               placeholder="Введите номер владельца"
               className={cls.AntdForm__InputNumber}

@@ -61,7 +61,6 @@ const Sell = () => {
         </div>
 
         <div className={`${cls.btn__wrap} button-gsap`}>
-          {/* <Button text="Посмотреть все" style="viewAll" /> */}
           <Button
             type="primary"
             style={{

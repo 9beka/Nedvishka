@@ -1,4 +1,4 @@
-import { Input } from "antd";
+import { Input, InputNumber } from "antd";
 import React from "react";
 
 export const southDistricts = [
@@ -677,69 +677,6 @@ export const communications = [
   },
 ];
 
-export const renderApiSlides = [
-  {
-    id: 1,
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvu-G6FOZu74ps1Z_PKw6Nri9nd-mEjVrQfdljgxjWYA&s",
-    apartment: "Элитка, 2 ком, 67 м2, этаж 12/12, Сост: Евроремонт",
-    geo: "Филармония, Уметалиева-Фрунзе",
-    price: "$73 500 / 6 594 420сом",
-    avatar:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxh3AaVIDSy-NJG-UTcSURNp_GgeVniwH1e6UL7bbNpQ&s",
-    phone: "+996555555555",
-  },
-  {
-    id: 2,
-    img: "https://ned.kg//storage/153795/conversions/64a55acf30605_IMG_5318-bigpreview.jpg",
-    apartment: "Элитка, 2 ком, 67 м2, этаж 12/12, Сост: Евроремонт",
-    geo: "Филармония, Уметалиева-Фрунзе",
-    price: "$73 500 / 6 594 420сом",
-    avatar:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxh3AaVIDSy-NJG-UTcSURNp_GgeVniwH1e6UL7bbNpQ&s",
-    phone: "+996555555555",
-  },
-  {
-    id: 3,
-    img: "https://ned.kg//storage/180648/conversions/652e49c65d0c6_D71842FD-75C3-45DF-AAFA-18696EF4EA5B-bigpreview.jpg",
-    apartment: "Элитка, 2 ком, 67 м2, этаж 12/12, Сост: Евроремонт",
-    geo: "Филармония, Уметалиева-Фрунзе",
-    price: "$73 500 / 6 594 420сом",
-    avatar:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxh3AaVIDSy-NJG-UTcSURNp_GgeVniwH1e6UL7bbNpQ&s",
-    phone: "+996555555555",
-  },
-  {
-    id: 4,
-    img: "https://ned.kg//storage/180648/conversions/652e49c65d0c6_D71842FD-75C3-45DF-AAFA-18696EF4EA5B-bigpreview.jpg",
-    apartment: "Элитка, 2 ком, 67 м2, этаж 12/12, Сост: Евроремонт",
-    geo: "Филармония, Уметалиева-Фрунзе",
-    price: "$73 500 / 6 594 420сом",
-    avatar:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxh3AaVIDSy-NJG-UTcSURNp_GgeVniwH1e6UL7bbNpQ&s",
-    phone: "+996555555555",
-  },
-
-  {
-    id: 5,
-    img: "https://ned.kg//storage/153795/conversions/64a55acf30605_IMG_5318-bigpreview.jpg",
-    apartment: "Элитка, 2 ком, 67 м2, этаж 12/12, Сост: Евроремонт",
-    geo: "Филармония, Уметалиева-Фрунзе",
-    price: "$73 500 / 6 594 420сом",
-    avatar:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxh3AaVIDSy-NJG-UTcSURNp_GgeVniwH1e6UL7bbNpQ&s",
-    phone: "+996555555555",
-  },
-  {
-    id: 6,
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvu-G6FOZu74ps1Z_PKw6Nri9nd-mEjVrQfdljgxjWYA&s",
-    apartment: "Элитка, 2 ком, 67 м2, этаж 12/12, Сост: Евроремонт",
-    geo: "Филармония, Уметалиева-Фрунзе",
-    price: "$73 500 / 6 594 420сом",
-    avatar:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxh3AaVIDSy-NJG-UTcSURNp_GgeVniwH1e6UL7bbNpQ&s",
-    phone: "+996555555555",
-  },
-];
 export const allComplexNames = [
   {
     mainProps: "ИХЛАС (IHLAS)",
@@ -1853,6 +1790,15 @@ const validateUsername = (_, value) => {
   }
 };
 
+const validatePhoneNumber = (rule, value, callback) => {
+  const phoneNumberRegex = /^996\d{9}$/;
+  if (!phoneNumberRegex.test(value)) {
+    callback("Пожалуйста, введите номер телефона в формате: 996XXXXXXXXX");
+  } else {
+    callback();
+  }
+};
+
 export const renderItemForm = [
   {
     label: "Имя пользователя",
@@ -1919,6 +1865,21 @@ export const renderItemForm = [
       }),
     ],
     children: <Input.Password />,
+  },
+  {
+    label: "Введите номер",
+    name: "telephoneNumber",
+    rules: [
+      {
+        required: true,
+        type: "number",
+        message: "Введите номер в числовом формате",
+      },
+      {
+        validator:validatePhoneNumber
+      }
+    ],
+    children: <InputNumber style={{width:"100%" , }} />,
   },
 ];
 

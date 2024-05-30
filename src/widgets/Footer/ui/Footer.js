@@ -7,10 +7,9 @@ const Footer = () => {
             <div className={cls.footer__wrapper}>
                 <div className={cls.footer__block}>
                     <p className={cls.footer__p}>Связь с нами</p>
-                    <Link>Джантошева 121 / Байтик Баатыра, Бишкек, Кыргызстан</Link>
+                    <Link>Байтик баатыра 70</Link>
                     <Link target='_blank' to={"https://wa.me/+996507688388"}>WhatsApp</Link>
                     <Link>+996 507 688 388</Link>
-                    <Link>kyrgyz.ned@gmail.com</Link>
                     <Link>Кыргыз Недвижимость</Link>
                 </div>
                 <div className={cls.footer__block}>

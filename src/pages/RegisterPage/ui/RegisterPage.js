@@ -47,7 +47,7 @@ const RegisterPage = () => {
           name="register"
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
-          autoComplete="off"
+          autoComplete="on"
           className={cls.register__form}
         >
           <p className={cls.register__title}>Регистрация</p>
