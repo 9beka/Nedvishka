@@ -10,9 +10,16 @@ import { FilterForm } from "../../features/ui";
 
 const AllAdsPage = () => {
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(ADS_GET_CARTS_ASYNC());
+    dispatch(GET_CONVERTER());
+  }, [dispatch]);
   const { dataOfAds, converter } = useSelector((state) => state.ads);
   const { loading } = useSelector((state) => state.favorite);
 
+  if(dataOfAds.length){
+    console.log("pizda");
+  }
   const [tabsValue, setTabsValue] = useState("Все");
   const [rooms, setRooms] = useState("");
   const [districts, setDistricts] = useState([]);
@@ -24,10 +31,7 @@ const AllAdsPage = () => {
   const [tipNedvishki, setTipNedvishki] = useState([]);
   const [sotka, setSotka] = useState([0, 50000]);
 
-  useEffect(() => {
-    dispatch(ADS_GET_CARTS_ASYNC());
-    dispatch(GET_CONVERTER());
-  }, [dispatch]);
+
 
   const renderData = dataOfAds
     .filter((item) => {
@@ -38,7 +42,7 @@ const AllAdsPage = () => {
             item.Districts.some((district) => districts.includes(district))) &&
           item.PriceForm >= priceForm[0] &&
           item.PriceForm <= priceForm[1] &&
-          (!valueId || item._id.includes(valueId)) &&
+          (!valueId || item._id?.replace(/\D/g, "").includes(valueId)) &&
           (sostoyanie.length === 0 || sostoyanie.includes(item.Sostoyanie)) &&
           (tipNedvishki.length === 0 ||
             tipNedvishki.includes(item.TipNedvishki)) &&
@@ -80,10 +84,6 @@ const AllAdsPage = () => {
     .map((item) => (
       <AllAdsCard key={item._id} item={item} converter={converter} />
     ));
-
-  useEffect(() => {
-    dispatch(ADS_GET_CARTS_ASYNC());
-  }, [dispatch]);
 
   const handleValueRooms = (e) => {
     const value = e?.target?.value;

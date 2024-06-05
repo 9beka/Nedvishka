@@ -68,7 +68,7 @@ const AllAdsCard = ({ item, converter }) => {
       <p className={cls.geo__p}>{Districts?.map((dist) => `${dist}, `)}</p>
       <p className={cls.price__p}>{`$${toUsd.toFixed(
         2
-      )} / ${PriceForm} сом`}</p>
+      )} / ${PriceForm?.toLocaleString("ru-RU")} сом`}</p>
       <p
         style={{
           fontSize: 14,

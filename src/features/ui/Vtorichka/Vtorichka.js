@@ -6,7 +6,6 @@ import {
   RoomButton,
   SearchInput,
   SelectChecboxes,
-  ShowButton,
   SliderFilter,
 } from "../../../shared/ui";
 import {
@@ -71,9 +70,9 @@ const Vtorichka = ({
           priceForm={priceForm}
         />
       </div>
-      <div className={classNames(cls.room__wrapper)}>
+      {/* <div className={classNames(cls.room__wrapper)}>
         <ShowButton />
-      </div>
+      </div> */}
     </div>
   );
 };

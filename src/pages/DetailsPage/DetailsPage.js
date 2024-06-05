@@ -125,7 +125,7 @@ const DetailsPage = () => {
               />
               <h5>{renderDistricts}</h5>
               <h5>
-                <strong>ID:</strong> {detail._id}
+                <strong>ID:</strong> {detail._id?.replace(/\D/g, "")}
               </h5>
             </div>
             <div>
@@ -173,7 +173,9 @@ const DetailsPage = () => {
             <div className={cls["detail-info"]}>
               <p>
                 <span className={cls["span-descr"]}>ID объекта:</span>
-                <strong className={cls["strong-descr"]}>{detail._id}</strong>
+                <strong className={cls["strong-descr"]}>
+                  {detail._id?.replace(/\D/g, "")}
+                </strong>
               </p>
               <p>
                 <span className={cls["span-descr"]}>Цена:</span>
