@@ -1,5 +1,4 @@
-
-import React, { useEffect, useState,useMemo,useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import cls from "./AllAdsPage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { AllAdsCard, MyLoader } from "../../shared/ui";
@@ -14,6 +13,9 @@ const AllAdsPage = () => {
   const { dataOfAds, converter } = useSelector((state) => state.ads);
   const { loading } = useSelector((state) => state.favorite);
 
+  if(dataOfAds.length){
+    console.log("pizda");
+  }
   const [tabsValue, setTabsValue] = useState("Все");
   const [rooms, setRooms] = useState("");
   const [districts, setDistricts] = useState([]);
@@ -25,10 +27,17 @@ const AllAdsPage = () => {
   const [tipNedvishki, setTipNedvishki] = useState([]);
   const [sotka, setSotka] = useState([0, 50000]);
 
-  useEffect(() => {
-    dispatch(ADS_GET_CARTS_ASYNC());
-    dispatch(GET_CONVERTER());
-  }, [dispatch]);
+  const resetFilters = () => {
+    setTabsValue("Все");
+    setRooms("");
+    setDistricts([]);
+    setComplex([]);
+    setPriceForm([0, 200000]);
+    setValueId("");
+    setSostoyanie([]);
+    setTipNedvishki([]);
+    setSotka([0, 50000]);
+  };
 
 
   useEffect(() => {
@@ -51,6 +60,7 @@ const AllAdsPage = () => {
                 tipNedvishki.includes(item.TipNedvishki)) &&
             (complex.length === 0 ||
                 item.Complex.some((item) => item.includes(complex)))
+
         );
       } else if (
           tabsValue === "Дома\nи\nучастки" ||
