@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-import React, { useEffect, useState } from "react";
-=======
+
 import React, { useEffect, useState,useMemo,useCallback } from "react";
->>>>>>> master
 import cls from "./AllAdsPage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { AllAdsCard, MyLoader } from "../../shared/ui";
@@ -21,10 +18,7 @@ const AllAdsPage = () => {
   const [rooms, setRooms] = useState("");
   const [districts, setDistricts] = useState([]);
   const [complex, setComplex] = useState([]);
-<<<<<<< HEAD
 
-=======
->>>>>>> master
   const [priceForm, setPriceForm] = useState([0, 200000]);
   const [valueId, setValueId] = useState("");
   const [sostoyanie, setSostoyanie] = useState([]);
@@ -36,71 +30,11 @@ const AllAdsPage = () => {
     dispatch(GET_CONVERTER());
   }, [dispatch]);
 
-<<<<<<< HEAD
-  const renderData = dataOfAds
-    .filter((item) => {
-      if (tabsValue === "Все") {
-        return (
-          (!rooms || item.Rooms === rooms) &&
-          (districts.length === 0 ||
-            item.Districts.some((district) => districts.includes(district))) &&
-          item.PriceForm >= priceForm[0] &&
-          item.PriceForm <= priceForm[1] &&
-          (!valueId || item._id.includes(valueId)) &&
-          (sostoyanie.length === 0 || sostoyanie.includes(item.Sostoyanie)) &&
-          (tipNedvishki.length === 0 ||
-            tipNedvishki.includes(item.TipNedvishki)) &&
-          (complex.length === 0 ||
-            item.Complex.some((item) => item.includes(complex)))
-        );
-      } else if (
-        tabsValue === "Дома\nи\nучастки" ||
-        tabsValue === "Коммерческая"
-      ) {
-        return (
-          (!rooms || item.Rooms === rooms) &&
-          (districts.length === 0 ||
-            item.Districts.some((district) => districts.includes(district))) &&
-          item.PriceForm >= priceForm[0] &&
-          item.PriceForm <= priceForm[1] &&
-          (!valueId || item._id.includes(valueId)) &&
-          (sostoyanie.length === 0 || sostoyanie.includes(item.Sostoyanie)) &&
-          item.PloshadM2 >= sotka[0] &&
-          item.PloshadM2 <= sotka[1] &&
-          (complex.length === 0 ||
-            item.Complex.some((item) => item.includes(complex)))
-        );
-      } else {
-        return (
-          item.TipNedvishki === tabsValue &&
-          (!rooms || item.Rooms === rooms) &&
-          (districts.length === 0 ||
-            item.Districts.some((district) => districts.includes(district))) &&
-          item.PriceForm >= priceForm[0] &&
-          item.PriceForm <= priceForm[1] &&
-          (!valueId || item._id.includes(valueId)) &&
-          (sostoyanie.length === 0 || sostoyanie.includes(item.Sostoyanie)) &&
-          (complex.length === 0 ||
-            item.Complex.some((item) => item.includes(complex)))
-        );
-      }
-    })
-    .map((item) => (
-      <AllAdsCard key={item._id} item={item} converter={converter} />
-    ));
 
-=======
->>>>>>> master
   useEffect(() => {
     dispatch(ADS_GET_CARTS_ASYNC());
   }, [dispatch]);
 
-<<<<<<< HEAD
-  const handleValueRooms = (e) => {
-    const value = e?.target?.value;
-    setRooms(value);
-  };
-=======
 
   const filteredData = useMemo(() => {
     return dataOfAds.filter((item) => {
@@ -164,7 +98,6 @@ const AllAdsPage = () => {
     const value = e?.target?.value;
     setRooms(value);
   }, []);
->>>>>>> master
 
   const handleValueDistrict = (name) => {
     if (!districts.includes(name)) {
