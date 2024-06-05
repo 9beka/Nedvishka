@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useMemo,useCallback } from "react";
 import cls from "./AllAdsPage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { AllAdsCard, MyLoader } from "../../shared/ui";
 import {
   ADS_GET_CARTS_ASYNC,
-  GET_CONVERTER,
 } from "../../app/providers/Redux/actions/actions";
 import { FilterForm } from "../../features/ui";
 
@@ -168,6 +167,7 @@ const AllAdsPage = () => {
             handleValueSotka={handleValueSotka}
             sotka={sotka}
             handleValueComplex={handleValueComplex}
+            resetFilters={resetFilters}
           />
           <div className={cls["all-ads-page__wrapper"]}>{renderData}</div>
         </div>

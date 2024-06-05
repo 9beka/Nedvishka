@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from "react";
+import React, {useEffect, useState, useCallback,} from "react";
 import cls from "./DetailsPage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -87,6 +87,7 @@ const DetailsPage = () => {
   const { id } = useParams();
   const [swiper, setSwiper] = useState(null);
 
+
   useEffect(() => {
     dispatch(CARD_DETAIL_GET_ASYNC(id));
     dispatch(GET_CONVERTER());
@@ -125,8 +126,7 @@ const DetailsPage = () => {
               />
               <h5>{renderDistricts}</h5>
               <h5>
-                <strong>ID:</strong> {detail._id}
-              </h5>
+                <strong>ID:</strong> {detail._id?.replace(/\D/g, "")}              </h5>
             </div>
             <div>
               <Swiper
@@ -173,7 +173,7 @@ const DetailsPage = () => {
             <div className={cls["detail-info"]}>
               <p>
                 <span className={cls["span-descr"]}>ID объекта:</span>
-                <strong className={cls["strong-descr"]}>{detail._id}</strong>
+                <strong className={cls["strong-descr"]}>{detail._id?.replace(/\D/g, "")}</strong>
               </p>
               <p>
                 <span className={cls["span-descr"]}>Цена:</span>
@@ -239,6 +239,6 @@ const DetailsPage = () => {
       </div>
     </>
   );
-};
+ };
 
 export default DetailsPage;
