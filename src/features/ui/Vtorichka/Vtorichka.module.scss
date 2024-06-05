@@ -1,0 +1,72 @@
+.filterButtons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 20px;
+  align-items: center;
+
+  & div:last-child {
+    justify-self: center;
+  }
+
+  button {
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-weight: 700;
+    margin-right: 3px;
+    height: 36px;
+  }
+
+  input, select {
+    border: 2px solid #6CA5DC;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .filterButtons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    gap: 20px;
+    align-items: center;
+
+    & div:last-child {
+      justify-self: center;
+    }
+
+    button {
+      padding: 5px;
+      border-radius: 3px;
+      font-weight: 700;
+    }
+
+    input, select {
+      border: 2px solid #6CA5DC;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .filterButtons {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-rows: auto;
+    gap: 20px;
+    align-items: center;
+
+    & div:last-child {
+      justify-self: center;
+    }
+
+    button {
+      padding: 5px;
+      border-radius: 3px;
+      font-weight: 700;
+    }
+
+    input, select {
+      border: 2px solid #6CA5DC;
+    }
+  }
+}
+

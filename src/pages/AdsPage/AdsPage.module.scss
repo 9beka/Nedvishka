@@ -1,0 +1,72 @@
+.AdsPage__background {
+  background: var(--white-color);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: auto;
+  padding: 50px 0;
+  text-align: center;
+
+  p {
+    color: var(--white-color);
+    font-weight: bold;
+  }
+
+  p:first-child {
+    font-size: 50px;
+  }
+
+  p:nth-child(2) {
+    font-size: 20px;
+    margin-bottom: 50px;
+  }
+
+  .adsPage__form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .AdsPage__background {
+    padding: 80px 0;
+
+    p:first-child {
+      font-size: 40px;
+    }
+
+    p:nth-child(2) {
+      font-size: 18px;
+      margin-bottom: 40px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .AdsPage__background {
+    text-align: left;
+    padding: 60px 0;
+
+    p:first-child {
+      font-size: 30px;
+    }
+
+    p:nth-child(2) {
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .AdsPage__background {
+    p:first-child {
+      font-size: 20px;
+    }
+
+    p:nth-child(2) {
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+  }
+}

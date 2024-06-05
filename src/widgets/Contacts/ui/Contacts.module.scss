@@ -1,0 +1,62 @@
+.contacts {
+  background-image: url('https://ned.kg/wp-content/uploads/img/image-5.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 100px 0;
+
+  .contacts__wrap {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    p {
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      letter-spacing: 1.2px;
+    }
+
+    input {
+      border-radius: 5px;
+      padding: 10px 40px;
+    }
+
+    button {
+      margin: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .contacts {
+    padding: 100px 0;
+
+    .contacts__wrap {
+      display: grid;
+      grid-template-columns: repeat(1,1fr);
+      grid-template-rows: repeat(3,1fr);
+      gap: 20px;
+
+      p {
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        letter-spacing: 1.2px;
+      }
+
+      input {
+        width: 100%;
+        border-radius: 5px;
+        padding: 10px 40px;
+      }
+
+      button {
+        margin: 0;
+      }
+    }
+  }
+}
