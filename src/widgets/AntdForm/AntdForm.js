@@ -54,7 +54,11 @@ const AntdForm = () => {
     };
   }, []);
 
+<<<<<<< HEAD
   
+=======
+
+>>>>>>> master
   return (
     <>
       {loading && <MyLoader />}
@@ -445,6 +449,10 @@ const AntdForm = () => {
             handleValueUpload={handleValueUpload}
             fileList={fileList}
             setFileList={setFileList}
+<<<<<<< HEAD
+=======
+            maxFiles={12}
+>>>>>>> master
           />
         </Form.Item>
 

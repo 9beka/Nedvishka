@@ -1,11 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useMemo, useCallback } from "react";
 import cls from "./MyAdsPage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { MyLoader, MyAdsCard, AntdEmpty } from "../../shared/ui";
-import {
-  ADS_GET_OWNERS_ASYNC,
-  GET_CONVERTER,
-} from "../../app/providers/Redux/actions/actions";
+import { ADS_GET_OWNERS_ASYNC, GET_CONVERTER } from "../../app/providers/Redux/actions/actions";
 
 function MyAdsPage() {
   const dispatch = useDispatch();
@@ -16,37 +13,38 @@ function MyAdsPage() {
     dispatch(GET_CONVERTER());
   }, [dispatch]);
 
-  console.log(myAdsCart);
+  const renderCards = useMemo(() => {
+    if (!myAdsCart || !myAdsCart.items || myAdsCart.items.length === 0) {
+      return (
+          <AntdEmpty
+              description="У Вас нет собственных объявлений!"
+              btn_text="Добавить объявление"
+          />
+      );
+    }
 
-  const renderCards =
-    myAdsCart && myAdsCart.items
-      ? myAdsCart.items.map((item) => (
-          <MyAdsCard
+    return myAdsCart.items.map((item) => (
+        <MyAdsCard
             key={item._id}
             item={item}
             userId={myAdsCart.userId}
             converter={converter}
-          />
-        ))
-      : null;
+        />
+    ));
+  }, [myAdsCart, converter]);
+
+
+  const renderLoader = useMemo(() => loading && <MyLoader />, [loading]);
+
   return (
-    <>
-      {loading && <MyLoader />}
       <div className="container">
         <div className={cls["myAdsPage"]}>
           <div className={cls["myAdsPage-cardWrapper"]}>
-            {myAdsCart.items?.length === 0 ? (
-              <AntdEmpty
-                description="У Вас нет собственных объявлений!"
-                btn_text="Добавить объявление"
-              />
-            ) : (
-              renderCards
-            )}
+            {renderLoader}
+            {renderCards}
           </div>
         </div>
       </div>
-    </>
   );
 }
 
