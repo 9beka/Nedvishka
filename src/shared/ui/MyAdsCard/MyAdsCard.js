@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import cls from "./MyAdsCard.module.scss";
 import { Button, Avatar } from "antd";
 import {
@@ -7,10 +7,11 @@ import {
   ShareAltOutlined,
 } from "@ant-design/icons";
 import { useDispatch } from "react-redux";
-import { ADS_DELETE_ASYNC } from "../../../app/providers/Redux/actions/actions";
+import { ADS_DELETE_ASYNC, CARD_DETAIL_GET_ASYNC } from "../../../app/providers/Redux/actions/actions";
 import { SwiperImage } from "../../../widgets/index";
 import { useNavigate } from "react-router-dom";
 import { UserOutlined } from "@ant-design/icons";
+import { ADD_DETAILID } from "../../../app/providers/Redux/Slices/detailsSlicer";
 
 function MyAdsCard({ item, userId, converter }) {
   const { product, _id } = item;
@@ -37,10 +38,11 @@ function MyAdsCard({ item, userId, converter }) {
     );
   };
 
-  const handleId = () => {
-    navigate(`/details/${_id}`);
-  };
-
+  const handleId = useCallback(() => {
+    dispatch(ADD_DETAILID(item.product._id));
+    dispatch(CARD_DETAIL_GET_ASYNC(item.product._id));
+    navigate(`/details/${item.product._id}`);
+}, [dispatch, navigate, item.product._id]);
   const toUsd = PriceForm / converter.sell_usd;
   const imagesList = [];
 

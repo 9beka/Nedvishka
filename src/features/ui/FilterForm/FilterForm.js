@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import cls from "./FilterForm.module.scss";
-import { Tabs } from "antd";
+import { Button, Tabs } from "antd";
 import { HomeOutlined } from "@ant-design/icons";
 import DomainIcon from "@mui/icons-material/Domain";
 import HouseIcon from "@mui/icons-material/House";
@@ -26,6 +26,7 @@ const FilterForm = ({
   handleValueSotka,
   sotka,
   handleValueComplex,
+  resetFilters,
 }) => {
   const optionArr = [
     {
@@ -144,6 +145,9 @@ const FilterForm = ({
               centered
               onChange={handleTabsValue}
             />
+            <Button onClick={resetFilters} style={{textAlign:"center" , margin: "10px 0"}} type="primary">
+              Сбросить фильтры
+            </Button>
           </div>
         </MediaQuery>
 
@@ -155,6 +159,9 @@ const FilterForm = ({
               left
               onChange={handleTabsValue}
             />
+            <Button onClick={resetFilters} type="primary">
+              Сбросить фильтры  
+            </Button>
           </div>
         </MediaQuery>
       </section>

@@ -152,14 +152,17 @@ const DetailsPage = () => {
                       background: "var(--light-blue-color)",
                       padding: "40px",
                       borderRadius: "20px",
+                      objectFit: "cover",
                     }}
                     key={index}
                   >
-                    <Image
-                      style={{ width: "100%", height: "500px" }}
-                      src={image}
-                      alt={`Slide ${index}`}
-                    />
+                    <div style={{ height: "400px" }}>
+                      <Image
+                        style={{ width: "100%", height: "400px" }}
+                        src={image}
+                        alt={`Slide ${index}`}
+                      />
+                    </div>
                   </SwiperSlide>
                 ))}
               </Swiper>

@@ -31,7 +31,17 @@ const AllAdsPage = () => {
   const [tipNedvishki, setTipNedvishki] = useState([]);
   const [sotka, setSotka] = useState([0, 50000]);
 
-
+  const resetFilters = () => {
+    setTabsValue("Все");
+    setRooms("");
+    setDistricts([]);
+    setComplex([]);
+    setPriceForm([0, 200000]);
+    setValueId("");
+    setSostoyanie([]);
+    setTipNedvishki([]);
+    setSotka([0, 50000]);
+  };
 
   const renderData = dataOfAds
     .filter((item) => {
@@ -149,6 +159,7 @@ const AllAdsPage = () => {
             handleValueSotka={handleValueSotka}
             sotka={sotka}
             handleValueComplex={handleValueComplex}
+            resetFilters={resetFilters}
           />
           <div className={cls["all-ads-page__wrapper"]}>{renderData}</div>
         </div>
