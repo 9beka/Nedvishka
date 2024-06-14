@@ -1,6 +1,5 @@
 import { lazy } from "react";
 import {
-  AllAdsPage,
   DetailsPage,
   FavoritePage,
   MyAdsPage,
@@ -8,7 +7,7 @@ import {
 
 const AboutPage = lazy(() => import("../../../pages/AboutPage/AboutPage"));
 const AdsPage = lazy(() => import("../../../pages/AdsPage/AdsPage"));
-
+const AllAdsPage = lazy(()=>import("../../../pages/AllAdsPage/AllAdsPage"))
 export const AppRoutes = {
   MYADS: "myAds",
   ABOUT: "about",

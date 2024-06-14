@@ -43,6 +43,10 @@ const UploadComponent = ({
                 onPreview={handlePreview}
                 onChange={handleChange}
                 onRemove={handleRemove}
+                beforeUpload={(file)=>{
+                    console.log(file);
+                    return false
+                }}
             >
                 {fileList.length >= maxFiles ? null : uploadButton}
             </Upload>

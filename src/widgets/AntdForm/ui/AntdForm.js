@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import cls from "./AntdForm.module.scss";
-import { Button, Form, Select, InputNumber, Input, Switch } from "antd";
+import { Button, Form, Select, InputNumber, Input } from "antd";
 import { MyLoader, RoomButton, UploadComponent } from "../../../shared/ui";
 import {
   documents,
@@ -16,7 +16,6 @@ import {
 } from "../../../shared/constants";
 import ModalOfCheckboxes from "../../../features/ui/ModalOfCheckboxes/ModalOfCheckboxes";
 import { floorsArray } from "../../../shared/constants";
-import { MapOfCity } from "../../../features/2gisMap/ui";
 import TextArea from "antd/es/input/TextArea";
 import HocAdaptiveWrapper from "./HocAdaptiveWrapper";
 import { useDispatch, useSelector } from "react-redux";
@@ -429,14 +428,6 @@ const AntdForm = () => {
           </Form.Item>
         </HocAdaptiveWrapper>
 
-        <Form.Item name="TagCoordination">
-          <Button className={cls.AntdForm__marker__btn}>
-            Разместите Маркер и адрес собственности
-          </Button>
-        </Form.Item>
-
-        <MapOfCity />
-
         <HocAdaptiveWrapper screenWidth={screenWidth}>
           <Form.Item
             name="Sostoyanie"
@@ -600,7 +591,13 @@ const AntdForm = () => {
             />
           </Form.Item>
         </HocAdaptiveWrapper>
-
+        <Form.Item name="agentNote">
+          <label className={cls.label__form}>
+            Примечание от владельца / агента (* не отображается в интерфейсе
+            гостей)
+          </label>
+          <TextArea />
+        </Form.Item>
         <label className={cls.label__form}>Описание</label>
         <Form.Item
           name="Texteditor"
@@ -612,14 +609,6 @@ const AntdForm = () => {
             </Button>
             <TextArea value={textAreaValue} onChange={handleTextAreaChange} />
           </div>
-        </Form.Item>
-
-        <Form.Item name="agentNote">
-          <label className={cls.label__form}>
-            Примечание от владельца / агента (* не отображается в интерфейсе
-            гостей)
-          </label>
-          <TextArea />
         </Form.Item>
 
         <Form.Item

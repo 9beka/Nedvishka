@@ -1,11 +1,11 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, useEffect, useMemo } from "react";
 import cls from "./AllAdsCard.module.scss";
 import { Avatar } from "antd";
 import { WhatsAppOutlined, HeartOutlined, HeartFilled, UserOutlined } from "@ant-design/icons";
 import { SwiperImage } from "../../../widgets/index";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { ADD_FAVORITE_ASYNC, CARD_DETAIL_GET_ASYNC } from "../../../app/providers/Redux/actions/actions";
+import { ADD_FAVORITE_ASYNC, CARD_DETAIL_GET_ASYNC, GET_CONVERTER } from "../../../app/providers/Redux/actions/actions";
 import { ADD_DETAILID } from "../../../app/providers/Redux/Slices/detailsSlicer";
 
 const AllAdsCard = ({ item, converter }) => {
@@ -13,9 +13,11 @@ const AllAdsCard = ({ item, converter }) => {
     const navigate = useNavigate();
 
     const { favorite } = useSelector((state) => state.favorite);
-    const { myAdsCart } = useSelector((state) => state.ads);
+    const { myAdsCart} = useSelector((state) => state.ads);
     const { profile } = useSelector((state) => state.profile);
-
+    useEffect(() => {
+        dispatch(GET_CONVERTER());
+    }, [dispatch]);
     const {
         Districts, Floor, PloshadM2, PriceForm, Sostoyanie, TelNumber, TipNedvishki,
         TotalFloor, Upload, Rooms, createdBy, _id,
@@ -27,7 +29,7 @@ const AllAdsCard = ({ item, converter }) => {
 
     const isTrueNumber = useMemo(() => myAdsCart.items?.some(el => el._id === _id), [myAdsCart.items, _id]);
     const isLiked = useMemo(() => favorite?.some(favItem => favItem._id === _id), [favorite, _id]);
-
+console.log(myAdsCart);
     const handleAddFavorite = useCallback(() => {
         dispatch(ADD_FAVORITE_ASYNC(_id));
     }, [dispatch, _id]);

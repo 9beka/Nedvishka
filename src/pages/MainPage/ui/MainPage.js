@@ -1,5 +1,5 @@
 
-import React, {useEffect, useState, Suspense, lazy} from "react";
+import React, {useEffect, Suspense, lazy} from "react";
 import {useSelector} from "react-redux";
 import gsap from "gsap";
 import "./MainPage.scss";

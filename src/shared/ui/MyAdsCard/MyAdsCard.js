@@ -57,6 +57,7 @@ function MyAdsCard({ item, userId, converter }) {
         className={cls.apartment__p}
       >{`${TipNedvishki}, ${Rooms} ком, ${PloshadM2} м2, этаж ${Floor} / ${TotalFloor}, Сост: ${Sostoyanie}`}</p>
       <p className={cls.geo__p}>{Districts?.map((dist) => `${dist}, `)}</p>
+      <p></p>
       <p className={cls.price__p}>{`$${toUsd.toFixed(
         2
       )} / ${PriceForm?.toLocaleString("ru-RU")} сом`}</p>

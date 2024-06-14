@@ -108,7 +108,7 @@ export const ADS_GET_CARTS_ASYNC = createAsyncThunk(
 );
 export const GET_CONVERTER = createAsyncThunk(
   "ads/GET_CONVERTER",
-  async (_, { rejectWithValue }) => {
+  async (_, { rejectWithValue, dispatch }) => {
     try {
       const response = await axios.get("https://data.fx.kg/api/v1/average/", {
         headers: {
