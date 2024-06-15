@@ -6,7 +6,7 @@ import {
   WhatsAppOutlined,
   ShareAltOutlined,
 } from "@ant-design/icons";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ADS_DELETE_ASYNC, CARD_DETAIL_GET_ASYNC } from "../../../app/providers/Redux/actions/actions";
 import { SwiperImage } from "../../../widgets/index";
 import { useNavigate } from "react-router-dom";
@@ -31,7 +31,7 @@ function MyAdsCard({ item, userId, converter }) {
   } = product || item;
 
   const dispatch = useDispatch();
-
+  const { profile } = useSelector((state) => state.profile);
   const handleDeleteBtn = () => {
     dispatch(
       ADS_DELETE_ASYNC({ id: _id, userId: userId, card_Id: product._id })
@@ -57,17 +57,17 @@ function MyAdsCard({ item, userId, converter }) {
         className={cls.apartment__p}
       >{`${TipNedvishki}, ${Rooms} ком, ${PloshadM2} м2, этаж ${Floor} / ${TotalFloor}, Сост: ${Sostoyanie}`}</p>
       <p className={cls.geo__p}>{Districts?.map((dist) => `${dist}, `)}</p>
-      <p></p>
       <p className={cls.price__p}>{`$${toUsd.toFixed(
         2
       )} / ${PriceForm?.toLocaleString("ru-RU")} сом`}</p>
+      <p>Номер владельца : +{TelNumber}</p>
       <div className={cls.footer__slide}>
         <Avatar
           size={70}
           src={createdBy?.image}
           icon={!createdBy?.imageUrl && <UserOutlined />}
         />
-        <p className={cls.phone__p}>+{TelNumber}</p>
+        <p className={cls.phone__p}>+{profile.telephoneNumber}</p>
       </div>
       <div className={cls.footer__slide}>
         <WhatsAppOutlined />

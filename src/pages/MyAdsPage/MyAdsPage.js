@@ -1,8 +1,8 @@
-import React, { useEffect, useMemo, useCallback } from "react";
+import React, { useEffect, useMemo } from "react";
 import cls from "./MyAdsPage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { MyLoader, MyAdsCard, AntdEmpty } from "../../shared/ui";
-import { ADS_GET_OWNERS_ASYNC, GET_CONVERTER } from "../../app/providers/Redux/actions/actions";
+import { ADS_GET_OWNERS_ASYNC} from "../../app/providers/Redux/actions/actions";
 
 function MyAdsPage() {
   const dispatch = useDispatch();
@@ -10,7 +10,6 @@ function MyAdsPage() {
 
   useEffect(() => {
     dispatch(ADS_GET_OWNERS_ASYNC());
-    dispatch(GET_CONVERTER());
   }, [dispatch]);
 
   const renderCards = useMemo(() => {

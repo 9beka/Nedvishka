@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useCallback, useState } from "react";
 import cls from "./Sell.module.scss";
 import { AllAdsCard } from "../../../shared/ui";
 import { useSelector, useDispatch } from "react-redux";
-import { ADS_GET_CARTS_ASYNC, GET_CONVERTER } from "../../../app/providers/Redux/actions/actions";
+import { ADS_GET_CARTS_ASYNC, ADS_GET_OWNERS_ASYNC} from "../../../app/providers/Redux/actions/actions";
 import { Button } from "antd";
 import { useNavigate } from "react-router-dom";
 
@@ -14,7 +14,7 @@ const Sell = () => {
 
     useEffect(() => {
         dispatch(ADS_GET_CARTS_ASYNC());
-        dispatch(GET_CONVERTER());
+        dispatch(ADS_GET_OWNERS_ASYNC())
     }, [dispatch]);
 
     useEffect(() => {

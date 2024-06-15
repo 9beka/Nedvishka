@@ -3,7 +3,6 @@ import cls from "./DetailsPage.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import {
   CARD_DETAIL_GET_ASYNC,
-  GET_CONVERTER,
 } from "../../app/providers/Redux/actions/actions";
 import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -89,7 +88,6 @@ const DetailsPage = () => {
 
   useEffect(() => {
     dispatch(CARD_DETAIL_GET_ASYNC(id));
-    dispatch(GET_CONVERTER());
   }, [dispatch, id]);
 
   const imagesList = detail.Upload?.map((image) => image.thumbUrl) || [];

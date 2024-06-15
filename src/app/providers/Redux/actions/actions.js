@@ -63,7 +63,7 @@ export const ADS_POST_ASYNC = createAsyncThunk(
 
 export const ADS_GET_OWNERS_ASYNC = createAsyncThunk(
   "ads/ADS_GET_OWNERS_ASYNC",
-  async (_, { rejectWithValue, getState }) => {
+  async (_, { rejectWithValue, getState ,dispatch}) => {
     try {
       const token = getState().auth.token;
       const response = await axios.get(ADS_GET_OWNERS_API, {
@@ -71,6 +71,7 @@ export const ADS_GET_OWNERS_ASYNC = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       });
+     dispatch(GET_CONVERTER())
       return response.data;
     } catch (e) {
       return rejectWithValue(e.message);
@@ -100,6 +101,7 @@ export const ADS_GET_CARTS_ASYNC = createAsyncThunk(
   async (_, { rejectWithValue, dispatch }) => {
     try {
       const response = await axios.get(ADS_GET_API);
+      dispatch(GET_CONVERTER())
       return response.data.card;
     } catch (e) {
       return rejectWithValue(e.message);
@@ -233,10 +235,11 @@ export const GET_FAVORITE_ASYNC = createAsyncThunk(
 
 export const CARD_DETAIL_GET_ASYNC = createAsyncThunk(
   "ads/CARD_DETAIL_GET_ASYNC",
-  async (_id, { rejectWithValue }) => {
+  async (_id, { rejectWithValue ,dispatch }) => {
     try {
       const response = await axios.get(`${CARD_DETAIL_GET_API}${_id}`);
       console.log(response.data);
+      dispatch(GET_CONVERTER())
       return response.data;
     } catch (e) {
       return rejectWithValue(e.message);
