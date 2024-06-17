@@ -106,6 +106,19 @@
   }
 }
 
+.span-descr {
+  font-weight: bold;
+}
+
+.strong-descr {
+  display: block; /* Или использовать display: inline-block; для менее агрессивного разрыва строк */
+  margin-top: 10px; /* Добавить отступ сверху */
+  white-space: pre-line; /* Сохранить пробелы и переводы строк */
+}
+
+.description-line {
+  margin-bottom: 5px; /* Отступ снизу для каждой строки */
+}
 .arrow-3 {
   color: #337ab7;
   cursor: pointer;

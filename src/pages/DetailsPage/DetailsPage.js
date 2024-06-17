@@ -93,6 +93,8 @@ const DetailsPage = () => {
   const imagesList = detail.Upload?.map((image) => image.thumbUrl) || [];
   const renderDistricts =
     detail.Districts?.map((item) => item).join(", ") || "";
+  const renderComplex =
+    detail.Complex?.map((item) => item).join(", ") || "";
   const renderCommunication =
     detail.communication?.map((item) => item).join(", ") || "";
 
@@ -123,7 +125,7 @@ const DetailsPage = () => {
               />
               <h5>{renderDistricts}</h5>
               <h5>
-                <strong>ID:</strong> {detail._id?.replace(/\D/g, "")}{" "}
+                <strong>ID:</strong> {detail?._id?.replace(/\D/g, "")}{" "}
               </h5>
             </div>
             <div>
@@ -206,6 +208,12 @@ const DetailsPage = () => {
                 </strong>
               </p>
               <p>
+                <span className={cls["span-descr"]}>Жилой комплекс:</span>
+                <strong className={cls["strong-descr"]}>
+                  {renderComplex}
+                </strong>
+              </p>
+              <p>
                 <span className={cls["span-descr"]}>Этаж:</span>
                 <strong className={cls["strong-descr"]}>
                   {detail.Floor}/{detail.TotalFloor}
@@ -222,7 +230,7 @@ const DetailsPage = () => {
                 </strong>
               </p>
               <p>
-                <span className={cls["span-descr"]}>Коммуникации:</span>
+                <span className={cls["span-descr"]}>Пересечение улиц:</span>
                 <strong className={cls["strong-descr"]}>
                   {detail.StreetAround}
                 </strong>
@@ -230,7 +238,7 @@ const DetailsPage = () => {
               <p>
                 <span className={cls["span-descr"]}>Описание:</span>
                 <strong className={cls["strong-descr"]}>
-                  {detail.Texteditor}
+                {detail.Texteditor}
                 </strong>
               </p>
             </div>

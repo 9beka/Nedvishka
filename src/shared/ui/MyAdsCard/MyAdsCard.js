@@ -7,9 +7,12 @@ import {
   ShareAltOutlined,
 } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { ADS_DELETE_ASYNC, CARD_DETAIL_GET_ASYNC } from "../../../app/providers/Redux/actions/actions";
+import {
+  ADS_DELETE_ASYNC,
+  CARD_DETAIL_GET_ASYNC,
+} from "../../../app/providers/Redux/actions/actions";
 import { SwiperImage } from "../../../widgets/index";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserOutlined } from "@ant-design/icons";
 import { ADD_DETAILID } from "../../../app/providers/Redux/Slices/detailsSlicer";
 
@@ -42,7 +45,7 @@ function MyAdsCard({ item, userId, converter }) {
     dispatch(ADD_DETAILID(item.product._id));
     dispatch(CARD_DETAIL_GET_ASYNC(item.product._id));
     navigate(`/details/${item.product._id}`);
-}, [dispatch, navigate, item.product._id]);
+  }, [dispatch, navigate, item.product._id]);
   const toUsd = PriceForm / converter.sell_usd;
   const imagesList = [];
 
@@ -70,7 +73,9 @@ function MyAdsCard({ item, userId, converter }) {
         <p className={cls.phone__p}>+{profile.telephoneNumber}</p>
       </div>
       <div className={cls.footer__slide}>
-        <WhatsAppOutlined />
+        <Link target="_blank" to={"https://wa.me/+996507688388"}>
+          <WhatsAppOutlined />
+        </Link>
         <ShareAltOutlined />
       </div>
       <div className={cls["myAdsCard-buttons"]}>

@@ -1,7 +1,6 @@
 import React from 'react';
 import cls from "./AdsPage.module.scss";
-import {AntdForm} from "../../widgets";
-
+import { AntdForm } from '../../widgets/AntdForm';
 const AdsPage = () => {
     return (
         <section className={cls.AdsPage__background}>
