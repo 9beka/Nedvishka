@@ -20,7 +20,10 @@ const AllAdsCard = ({ item, converter }) => {
         TotalFloor, Upload, Rooms, createdBy, _id,
     } = item;
 
-    const digitsID = useMemo(() => _id.replace(/\D/g, ""), [_id]);
+    const getLastFiveDigits = (id) => id ? id.replace(/\D/g, "").slice(-5) : '';
+
+    const digitsID = getLastFiveDigits(_id);
+    console.log(digitsID);
     const toUsd = useMemo(() => PriceForm / converter.sell_usd, [PriceForm, converter]);
     const imagesList = useMemo(() => Upload?.map(image => image.thumbUrl), [Upload]);
 
@@ -51,7 +54,7 @@ const AllAdsCard = ({ item, converter }) => {
                 <p className={cls.phone__p}>+{isTrueNumber ? profile.telephoneNumber : TelNumber}</p>
             </div>
             <div className={cls.footer__slide}>
-                <Link to={"https://wa.me/+996507688388"}>
+                <Link target="_blank" to={"https://wa.me/+996507688388"}>
                     <WhatsAppOutlined />
                 </Link>
                 {isLiked ? (

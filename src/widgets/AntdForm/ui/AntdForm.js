@@ -85,11 +85,12 @@ const AntdForm = () => {
   const [fileList, setFileList] = useState([]);
 
   const onFinish = (values) => {
+    console.log(values , "values from antdForm");
     dispatch(ADS_POST_ASYNC(values));
-    form.resetFields();
-    setFileList([]);
-    setYourName("");
-    setTextAreaValue("");
+    // form.resetFields();
+    // setFileList([]);
+    // setYourName("");
+    // setTextAreaValue("");
     notifySuccessAddAds("Вы успешно добавили объявление!");
     console.log(values);
   };
@@ -233,6 +234,7 @@ const AntdForm = () => {
         form={form}
         name="min 992"
         onFinish={onFinish}
+        encType="multipart/form-data"
         onError={() =>
           notifySuccessAddAds("Произошла ошибка при добавлении объявления!")
         }
@@ -620,7 +622,7 @@ const AntdForm = () => {
             handleValueUpload={handleValueUpload}
             fileList={fileList}
             setFileList={setFileList}
-            maxFiles={10}
+            maxFiles={12}
           />
         </Form.Item>
 
