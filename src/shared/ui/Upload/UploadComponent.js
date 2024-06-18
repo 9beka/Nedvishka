@@ -1,67 +1,92 @@
-import React, {useState} from "react";
-import {PlusOutlined} from "@ant-design/icons";
-import {Image, Upload} from "antd";
+import React, { useEffect, useState } from "react";
+import { PlusOutlined } from "@ant-design/icons";
+import { Image, Upload } from "antd";
+import { uploadFileToS3 } from "./UploadAWSS3";
 
 const UploadComponent = ({
-                             fileList,
-                             setFileList,
-                             handleValueUpload,
-                             maxFiles,
-                         }) => {
-    const [previewOpen, setPreviewOpen] = useState(false);
-    const [previewImage, setPreviewImage] = useState("");
+  fileList,
+  setFileList,
+  handleValueUpload,
+  maxFiles,
+}) => {
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const [previewImage, setPreviewImage] = useState("");
 
-    const handlePreview = async (file) => {
-        setPreviewImage(file.url || file.preview);
-        setPreviewOpen(true);
-    };
+  useEffect(() => {
+    handleValueUpload();
+  }, [fileList ,handleValueUpload]);
+  const handlePreview = async (file) => {
+    setPreviewImage(file.url || file.thumbUrl);
+    setPreviewOpen(true);
+  };
 
-    const handleChange = ({fileList: newFileList}) => {
-        handleValueUpload();
-        setFileList(newFileList.slice(0, maxFiles));
-    };
+  const handleRemove = (file) => {
+    const newFileList = fileList.filter((item) => item.uid !== file.uid);
+    setFileList(newFileList);
+  };
+  const handleBeforeUpload = async (file) => {
+    try {
+      const uploadResult = await uploadFileToS3(file);
+      console.log(`message.success${file.name} file uploaded successfully`);
+      console.log("Upload Result:", uploadResult);
+      if (!uploadResult.Location) {
+        throw new Error("Failed to get upload location");
+      }
+      const newFileList = [
+        ...fileList,
+        {
+          uid: file.uid,
+          name: `${Date.now()}_${file.name}`,
+          status: "done",
+          url: uploadResult.Location,
+          thumbUrl: uploadResult.Location,
+        },
+      ];
 
-    const handleRemove = (file) => {
-        const newFileList = fileList.filter((item) => item.uid !== file.uid);
-        setFileList(newFileList);
-    };
+      console.log(newFileList);
+      setFileList(newFileList.slice(0, maxFiles));
+      handleValueUpload();
+    } catch (error) {
+      return console.log(`error${file.name} file uploaded error` ,error);
+    }
+    return false;
+  };
 
-    const uploadButton = (
-        <div>
-            <PlusOutlined/>
-            <div style={{marginTop: 8}}>Upload</div>
-        </div>
-    );
-
-    return (
-        <>
-            <Upload
-                action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
-                listType="picture-card"
-                accept="image/*"
-                fileList={fileList}
-                onPreview={handlePreview}
-                onChange={handleChange}
-                onRemove={handleRemove}
-                beforeUpload={(file)=>{
-                    console.log(file);
-                    return false
-                }}
-            >
-                {fileList.length >= maxFiles ? null : uploadButton}
-            </Upload>
-            {previewImage && (
-                <Image
-                    width={200}
-                    src={previewImage}
-                    preview={{
-                        visible: previewOpen,
-                        onVisibleChange: (visible) => setPreviewOpen(visible),
-                    }}
-                />
-            )}
-        </>
-    );
+  // const handleChange = ({fileList: newFileList}) => {
+  //     handleValueUpload();
+  //     setFileList(newFileList.slice(0, maxFiles));
+  // };
+  const uploadButton = (
+    <div>
+      <PlusOutlined />
+      <div style={{ marginTop: 8 }}>Upload</div>
+    </div>
+  );
+  console.log(fileList);
+  return (
+    <>
+      <Upload
+        listType="picture-card"
+        accept="image/*"
+        fileList={fileList}
+        onPreview={handlePreview}
+        onRemove={handleRemove}
+        beforeUpload={handleBeforeUpload}
+      >
+        {fileList.length >= maxFiles ? null : uploadButton}
+      </Upload>
+      {previewImage && (
+        <Image
+          width={300}
+          src={previewImage}
+          preview={{
+            visible: previewOpen,
+            onVisibleChange: (visible) => setPreviewOpen(visible),
+          }}
+        />
+      )}
+    </>
+  );
 };
 
 export default UploadComponent;

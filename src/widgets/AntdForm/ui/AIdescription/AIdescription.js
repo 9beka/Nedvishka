@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import TextArea from "antd/es/input/TextArea";
-import cls from "../../AntdForm.module.scss"
+import cls from "../../ui/AntdForm.module.scss"
+import { Button, Form } from "antd";
   const AIdescription = () => {
     const [textAreaValue, setTextAreaValue] = useState("");
     const [transactionType, setTransactionType] = useState("");

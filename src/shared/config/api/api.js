@@ -1,4 +1,4 @@
-const API = process.env.REACT_APP_API_BACK;
+export const API = process.env.REACT_APP_API_BACK;
 export const AUTH_API = API + "auth/";
 
 export const ADS_API = API + "cards/";

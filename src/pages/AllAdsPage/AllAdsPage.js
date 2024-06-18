@@ -12,9 +12,6 @@ const AllAdsPage = () => {
   const { dataOfAds, converter } = useSelector((state) => state.ads);
   const { loading } = useSelector((state) => state.favorite);
 
-  if(dataOfAds.length){
-    console.log("pizda");
-  }
   const [tabsValue, setTabsValue] = useState("Все");
   const [rooms, setRooms] = useState("");
   const [districts, setDistricts] = useState([]);
@@ -53,7 +50,7 @@ const AllAdsPage = () => {
                 item.Districts.some((district) => districts.includes(district))) &&
             item.PriceForm >= priceForm[0] &&
             item.PriceForm <= priceForm[1] &&
-            (!valueId || item._id.includes(valueId)) &&
+            (!valueId || item._id?.replace(/\D/g, "").includes(valueId)) &&
             (sostoyanie.length === 0 || sostoyanie.includes(item.Sostoyanie)) &&
             (tipNedvishki.length === 0 ||
                 tipNedvishki.includes(item.TipNedvishki)) &&
@@ -71,7 +68,7 @@ const AllAdsPage = () => {
                 item.Districts.some((district) => districts.includes(district))) &&
             item.PriceForm >= priceForm[0] &&
             item.PriceForm <= priceForm[1] &&
-            (!valueId || item._id.includes(valueId)) &&
+            (!valueId || item._id?.replace(/\D/g, "").includes(valueId)) &&
             (sostoyanie.length === 0 || sostoyanie.includes(item.Sostoyanie)) &&
             item.PloshadM2 >= sotka[0] &&
             item.PloshadM2 <= sotka[1] &&
@@ -86,7 +83,7 @@ const AllAdsPage = () => {
                 item.Districts.some((district) => districts.includes(district))) &&
             item.PriceForm >= priceForm[0] &&
             item.PriceForm <= priceForm[1] &&
-            (!valueId || item._id.includes(valueId)) &&
+            (!valueId || item._id?.replace(/\D/g, "").includes(valueId)) &&
             (sostoyanie.length === 0 || sostoyanie.includes(item.Sostoyanie)) &&
             (complex.length === 0 ||
                 item.Complex.some((item) => item.includes(complex)))
