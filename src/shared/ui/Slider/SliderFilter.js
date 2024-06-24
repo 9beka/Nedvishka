@@ -10,8 +10,9 @@ const SliderFilter = ({ priceForm, handleValuePrice }) => {
       </h5>
       <Slider
         range={{ draggableTrack: true }}
-        defaultValue={[0, 200000]}
-        max={200000}
+        defaultValue={[0, 20000000]}
+        max={20000000}
+        step={1000}
         onChange={handleValuePrice}
       />
     </>

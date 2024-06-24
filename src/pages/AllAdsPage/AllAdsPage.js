@@ -17,7 +17,7 @@ const AllAdsPage = () => {
   const [districts, setDistricts] = useState([]);
   const [complex, setComplex] = useState([]);
 
-  const [priceForm, setPriceForm] = useState([0, 200000]);
+  const [priceForm, setPriceForm] = useState([0, 20000000]);
   const [valueId, setValueId] = useState("");
   const [sostoyanie, setSostoyanie] = useState([]);
   const [tipNedvishki, setTipNedvishki] = useState([]);
@@ -28,7 +28,7 @@ const AllAdsPage = () => {
     setRooms("");
     setDistricts([]);
     setComplex([]);
-    setPriceForm([0, 200000]);
+    setPriceForm([0, 20000000]);
     setValueId("");
     setSostoyanie([]);
     setTipNedvishki([]);
@@ -63,6 +63,7 @@ const AllAdsPage = () => {
           tabsValue === "Коммерческая"
       ) {
         return (
+          item.TipNedvishki === tabsValue &&
             (!rooms || item.Rooms === rooms) &&
             (districts.length === 0 ||
                 item.Districts.some((district) => districts.includes(district))) &&
@@ -92,13 +93,13 @@ const AllAdsPage = () => {
     })
   }, [dataOfAds, tabsValue, rooms, districts, priceForm, valueId, sostoyanie, tipNedvishki, complex, sotka]);
 
-
+console.log(filteredData);
   const renderData = useMemo(() => {
+    
     return filteredData.map((item) => (
-        <AllAdsCard key={item._id} item={item} converter={converter} />
+          <AllAdsCard key={item._id} item={item} converter={converter} />
     ));
   }, [filteredData, converter]);
-
 
   const handleValueRooms = useCallback((e) => {
     const value = e?.target?.value;

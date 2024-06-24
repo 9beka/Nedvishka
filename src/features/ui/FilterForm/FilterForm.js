@@ -124,7 +124,7 @@ const FilterForm = ({
     handleValueRooms("");
     setDistricts([]);
     setActiveKey(activeKey);
-    setPriceForm([0, 200000]);
+    setPriceForm([0, 20000000]);
     setValueId("");
     setSostoyanie([]);
   };

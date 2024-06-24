@@ -45,7 +45,7 @@ function MyAdsCard({ item, userId, converter }) {
     dispatch(ADD_DETAILID(item.product._id));
     dispatch(CARD_DETAIL_GET_ASYNC(item.product._id));
     navigate(`/details/${item.product._id}`);
-  }, [dispatch, navigate, item.product._id]);
+  }, [dispatch, navigate, item?.product?._id]);
   const toUsd = PriceForm / converter.sell_usd;
   const imagesList = [];
 
