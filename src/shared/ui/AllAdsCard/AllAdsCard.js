@@ -17,18 +17,27 @@ const AllAdsCard = ({ item, converter }) => {
     const { profile } = useSelector((state) => state.profile);
     const {
         Districts, Floor, PloshadM2, PriceForm, Sostoyanie, TelNumber, TipNedvishki,
-        TotalFloor, Upload, Rooms, createdBy, _id,
+        TotalFloor, Upload, Rooms, createdBy, _id,createdAt
     } = item;
-
+        console.log(item)
+    const formatDate = (date) => {
+        return new Date(date).toLocaleString("ky-KG", {
+          year: 'numeric', 
+          month: 'numeric', 
+          day: 'numeric', 
+          hour: '2-digit', 
+          minute: '2-digit',
+          hour12: false
+        });
+      };
     const getLastFiveDigits = (id) => id ? id.replace(/\D/g, "").slice(-5) : '';
 
     const digitsID = getLastFiveDigits(_id);
-    console.log(digitsID);
     const toUsd = useMemo(() => PriceForm / converter.sell_usd, [PriceForm, converter]);
     const imagesList = useMemo(() => Upload?.map(image => image.thumbUrl), [Upload]);
 
     const isTrueNumber = useMemo(() => myAdsCart?.items?.some(el => el.product._id === _id), [myAdsCart.items, _id]);
-    console.log(myAdsCart,_id );
+    console.log(myAdsCart?.items,_id );
     const isLiked = useMemo(() => favorite?.some(favItem => favItem._id === _id), [favorite, _id]);
     const handleAddFavorite = useCallback(() => {
         dispatch(ADD_FAVORITE_ASYNC(_id));
@@ -48,7 +57,7 @@ const AllAdsCard = ({ item, converter }) => {
             <p className={cls.apartment__p}>{`${TipNedvishki}, ${Rooms} ком, ${PloshadM2} м2, этаж ${Floor} / ${TotalFloor}, Сост: ${Sostoyanie}`}</p>
             <p className={cls.geo__p}>{Districts?.map(dist => `${dist}, `)}</p>
             <p className={cls.price__p}>{`$${toUsd.toFixed(2)} / ${PriceForm} сом`}</p>
-            <p style={{ fontSize: 14 }}>{digitsID}</p>
+            <p style={{ fontSize: 14 }}>ID : {digitsID}</p>
             <div className={cls.footer__slide}>
                 <Avatar size={70} src={createdBy?.image} icon={!createdBy?.imageUrl && <UserOutlined />} />
                 <p className={cls.phone__p}>+{isTrueNumber ? profile.telephoneNumber : TelNumber}</p>
@@ -57,6 +66,7 @@ const AllAdsCard = ({ item, converter }) => {
                 <Link target="_blank" to={"https://wa.me/+996507688388"}>
                     <WhatsAppOutlined />
                 </Link>
+                <p className={cls.date__p}>{formatDate(createdAt)}</p>
                 {isLiked ? (
                     <HeartFilled onClick={handleAddFavorite} />
                 ) : (

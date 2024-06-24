@@ -455,6 +455,7 @@ const AntdForm = () => {
           >
             <label className={cls.label__form}>Документы</label>
             <Select
+              mode={"multiple"}
               placeholder="Выберите"
               allowClear
               onChange={(value) => documentationFunction(value)}

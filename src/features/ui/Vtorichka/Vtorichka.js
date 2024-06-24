@@ -70,9 +70,6 @@ const Vtorichka = ({
           priceForm={priceForm}
         />
       </div>
-      {/* <div className={classNames(cls.room__wrapper)}>
-        <ShowButton />
-      </div> */}
     </div>
   );
 };

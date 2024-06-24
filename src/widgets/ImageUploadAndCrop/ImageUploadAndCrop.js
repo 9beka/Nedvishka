@@ -37,6 +37,7 @@ const ImageUploadAndCrop = ({
 
   return (
     <Modal
+    visible={visible}
       title="Измените фото профиля"
       onCancel={onClose}
       footer={[

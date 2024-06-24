@@ -20,7 +20,7 @@ const InputMinMax = ({ handleValuePrice, priceForm }) => {
       />
       <InputNumber
         style={styleInput}
-        max={200000}
+        max={20000000}
         value={priceForm[1]}
         placeholder="Макс"
         onChange={(value) =>

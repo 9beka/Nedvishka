@@ -10,7 +10,6 @@ import {Header, Footer} from "../../../widgets";
 const Sell = lazy(() => import('../../../features/ui/Sell/Sell'));
 const OurAgency = lazy(() => import("../../../widgets/OurAgency/ui/OurAgency"));
 const AboutUs = lazy(() => import("../../../widgets/AboutUs/ui/AboutUs"));
-const Contacts = lazy(() => import("../../../widgets/Contacts/ui/Contacts"));
 
 const MainPage = () => {
     const {loading} = useSelector((state) => state.ads);
@@ -36,7 +35,6 @@ const MainPage = () => {
                     <Sell/>
                     <OurAgency/>
                     <AboutUs/>
-                    <Contacts/>
                 </Suspense>
 
             </div>

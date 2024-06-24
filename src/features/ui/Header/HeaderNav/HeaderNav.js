@@ -46,7 +46,7 @@ const HeaderNav = ({
       {el.name}
     </Link>
   ));
-
+  console.log('Modal open state:', modalOpen);
   return (
     <>
       <ul>{renderItems}</ul>
@@ -140,8 +140,12 @@ const HeaderNav = ({
                     justifyContent: "center",
                   }}
                   onClick={() => {
+                    console.log("Before setting modal states:", modalOpen, avatarModalOpen);
                     setAvatarModalOpen(true);
-                    setModalOpen(false);
+                    setTimeout(() => {
+                      setModalOpen(true);
+                      console.log("After setting modal states:", modalOpen, avatarModalOpen);
+                    }, 100);
                   }}
                   size={70}
                   src={profile.image}
